@@ -1,6 +1,13 @@
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Login',
+  description: 'About Maiker Construction`s',
+}
+
 export default function RootLayout({
   children,
 }: {

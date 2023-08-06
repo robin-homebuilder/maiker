@@ -1,18 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import type { Metadata } from 'next'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z  from 'zod'
 
 import { signIn } from 'next-auth/react';
-
-export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Login - Maiker Construction`s',
-}
 
 interface LoginFormInputs {
   email: string;
