@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 import { FaChevronRight } from "react-icons/fa";
-import Past_Projects from "@/components/Utils/ProjectsCard";
+// import Past_Projects from "@/components/Utils/ProjectsCard";
 
 export default function Home() {
   return (
@@ -160,7 +160,7 @@ export default function Home() {
             <h2 className="text-primary font-[800] text-center mb-[30px] text-[38px]">
               Past Projects
             </h2>
-            <Past_Projects />
+            {/* <Past_Projects /> */}
             <div className="flex justify-end">
               <Link href="/projects" className="text-warning text-[20px] font-[500] flex items-center">
                 More Projects <FaChevronRight />
