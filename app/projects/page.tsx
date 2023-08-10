@@ -3,8 +3,7 @@ import { getProjectsData } from "@/services/projectServices";
 import { ProjectProps } from "@/types";
 
 export default async function Projects() {
-  const res = await getProjectsData();
-  const data = await res.json();
+  const data = await getProjectsData();
   
   return (
     <>
@@ -23,3 +22,5 @@ export default async function Projects() {
     </>
   )
 }
+
+export const runtime = "edge";
