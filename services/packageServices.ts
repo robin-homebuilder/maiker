@@ -1,3 +1,5 @@
+"use server";
+
 import { PackageProps } from "@/types";
 
 type Slug = {

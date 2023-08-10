@@ -1,3 +1,5 @@
+"use server";
+
 type PaymentProps = {
   customer_name: string,
   email: string,

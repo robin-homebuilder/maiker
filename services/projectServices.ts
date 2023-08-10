@@ -1,3 +1,5 @@
+"use server";
+
 import { ProjectProps } from "@/types";
 
 export async function getProjectsData(){
