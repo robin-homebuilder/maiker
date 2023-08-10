@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 import { FaChevronRight } from "react-icons/fa";
+import Past_Projects from "@/components/Utils/ProjectsCard";
 
 export default function Home() {
   return (
@@ -132,7 +133,7 @@ export default function Home() {
             <div className="w-1/2 px-[50px] flex flex-col justify-center items-center">
               <h3 className="text-tertiary font-[800] text-[25px] text-center mb-5">Full Design & Construction Service</h3>
               <p className="text-dark text-center mb-5">All inclusive design and construction services offering seamless integration and cost-effectiveness ensuring the vision of the project is executed efficiently and creatively.</p>
-              <Link href="">
+              <Link href="/design">
                 <button className="bg-warning w-[200px] h-[42px] rounded-[20px] flex justify-center items-center text-[16px] font-[500]">
                   Design My Home <FaChevronRight />
                 </button>
@@ -143,7 +144,7 @@ export default function Home() {
             <div className="w-1/2 px-[50px] flex flex-col justify-center items-center">
               <h3 className="text-tertiary font-[800] text-[25px] text-center mb-5">Quote Your Architect’s Plans</h3>
               <p className="text-dark text-center mb-5">We work with your architect or building designer.  Let Maiker Constructions provide costing and support for your project during the design phase to ensure your project is on budget.</p>
-              <Link href="">
+              <Link href="/quote">
                 <button className="bg-warning w-[200px] h-[42px] rounded-[20px] flex justify-center items-center text-[16px] font-[500]">
                   Quote My Plans <FaChevronRight />
                 </button>
@@ -159,12 +160,7 @@ export default function Home() {
             <h2 className="text-primary font-[800] text-center mb-[30px] text-[38px]">
               Past Projects
             </h2>
-            <div className="flex gap-x-2 mb-3">
-              <div className="w-full h-[300px] bg-black"></div>
-              <div className="w-full h-[300px] bg-black"></div>
-              <div className="w-full h-[300px] bg-black"></div>
-              <div className="w-full h-[300px] bg-black"></div>
-            </div>
+            <Past_Projects />
             <div className="flex justify-end">
               <Link href="/projects" className="text-warning text-[20px] font-[500] flex items-center">
                 More Projects <FaChevronRight />

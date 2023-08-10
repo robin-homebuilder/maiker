@@ -1,13 +1,22 @@
 import ImageCard from "@/components/Utils/ImageCard";
+import { getProjectsData } from "@/services/projectServices";
+import { ProjectProps } from "@/types";
 
-export default function Projects() {
+export default async function Projects() {
+  const res = await getProjectsData();
+  const data = await res.json();
+  
   return (
     <>
       <section className='bg-accent py-[80px]'>
         <div className='max-w-[1250px] mx-auto'>
           <h1 className='text-primary font-[800] text-center mb-10'>Complete Projects</h1>
           <div className='flex flex-wrap justify-evenly gap-y-5'>
-            <ImageCard imageURL="/Full-Design-and-Construction-Service.svg"/>
+            {data.map((project: ProjectProps) => (
+              <div key={project._id}>
+                <ImageCard imageURL={project.main_image} imageBaseURL={project.image_base_url} title={project.title} other_image={project.other_image}/>
+              </div>
+            ))}
           </div>
         </div>
       </section>

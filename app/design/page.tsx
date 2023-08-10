@@ -1,5 +1,7 @@
 import Image from 'next/image'
-import { FaChevronRight } from 'react-icons/fa'
+import Link from 'next/link'
+
+import ScrollButton from '@/components/Utils/ScrollButton'
 
 export default function Design() {
   return (
@@ -21,7 +23,7 @@ export default function Design() {
               <p className='text-dark mb-5 text-center font-[500] px-10'>The second step is detailed design of your home and a full project quotation.</p>
               <p className='text-dark mb-5 text-center font-[500] px-10'>Maiker Constructions provides everything required for your project to be ready for contract and ready to build.</p>
               <div className='flex justify-center'>
-                <button type="button" className='bg-warning w-[200px] h-[42px] flex items-center justify-center rounded-[20px] text-[16px] shadow-mainShadow'>Start <FaChevronRight/></button>
+                <ScrollButton targetSectionId="select-package" />
               </div>
             </div>
             <div className='w-1/2'>
@@ -30,7 +32,7 @@ export default function Design() {
           </div>
         </div>
       </section>
-      <section className="py-[60px] max-w-[1250px] mx-auto">
+      <section className="py-[60px] max-w-[1250px] mx-auto scroll-mt-[115px]" id="select-package">
         <div className="flex flex-wrap justify-center">
           <h2 className="text-primary font-[800] text-center mb-5 text-[38px]">
             Select Package
@@ -56,7 +58,9 @@ export default function Design() {
               </ul>
               <hr className='my-5 border-t-2'/>
               <div className='flex justify-center'>
-                <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
+                <Link href="/payment/home-design-quotation">
+                  <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
+                </Link>
               </div>
             </div>
           </div>

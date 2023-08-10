@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer base {
   body {
-    color: rgb(var(--foreground-rgb));
+    color: white;
     background: white;
     font-weight: 400;
     line-height: 1.5;

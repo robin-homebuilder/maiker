@@ -9,10 +9,11 @@ const stripePromise = loadStripe(
   {locale: 'en-AU'}
 );
 
-export default function PaymentElement_Container({ clientSecret } : { clientSecret: string }) {
-  console.log(clientSecret)
+export default function PaymentElement_Container({ price } : { price : number }) {
   const options: StripeElementsOptions = {
-    clientSecret: clientSecret,
+    mode: 'payment',
+    currency: 'aud',
+    amount: price,
     appearance: {
       theme: "stripe",
       variables:{
@@ -21,10 +22,8 @@ export default function PaymentElement_Container({ clientSecret } : { clientSecr
       rules:{
         ".Input": {
           border: '1px solid #358AC3',
-          height: "43px"
         },
         ".Label": {
-          height: "42px",
           opacity: "0",
           lineHeight: "0"
         }
@@ -34,7 +33,7 @@ export default function PaymentElement_Container({ clientSecret } : { clientSecr
   
   return (
     <Elements stripe={stripePromise} options={options}>
-      <PaymentForm />
+      <PaymentForm price={price}/>
     </Elements>
   );
 }

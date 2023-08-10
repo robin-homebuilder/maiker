@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { FaPhone, FaEnvelope, FaInstagram, FaFacebookF, FaPinterest, FaLinkedinIn, FaYoutube, FaRegUser, FaChevronRight } from "react-icons/fa"
 
 import { NavigationLinks, NavigationLinksSecond } from "@/libs/navigationLinks";
+import { SocialMediaLinks } from "@/libs/socialMediaLinks";
 
 interface PageProps {
   page: string,
@@ -55,31 +56,13 @@ export default function Navbar( { page } : PageProps ) {
             </div>
             <div className="flex flex-row items-center gap-x-4 h-full">
               <div className="flex flex-row justify-center align-middle gap-x-2 text-white">
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaInstagram color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaFacebookF color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaPinterest color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaLinkedinIn color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaYoutube color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>
-                  </span>
-                </Link>
+                {SocialMediaLinks.map((item, index) => (
+                  <Link href={item.link} target="_blank" key={index}>
+                    <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
+                      {<item.icon color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>}
+                    </span>
+                  </Link>
+                ))}
               </div>
               <div className={`${(page == "home" && !scrolledPastSection) ? "bg-[#000000b3]" : "bg-tertiary"} h-full`}>
                 <Link href="/auth/login">

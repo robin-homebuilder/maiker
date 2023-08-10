@@ -1,5 +1,7 @@
 import Image from 'next/image'
-import { FaChevronRight } from 'react-icons/fa'
+import Link from 'next/link'
+
+import ScrollButton from '@/components/Utils/ScrollButton'
 
 export default function Quote() {
   return (
@@ -25,7 +27,7 @@ export default function Quote() {
                 Here at Maiker Constructions we provide project budgeting during the conceptual design phase that provides clients with clarity on the real construction cost of their project.  
               </p>
               <div className='flex justify-center'>
-                <button type="button" className='bg-warning w-[200px] h-[42px] flex items-center justify-center rounded-[20px] text-[16px] shadow-mainShadow'>Start <FaChevronRight/></button>
+                <ScrollButton targetSectionId="select-package" />
               </div>
             </div>
           </div>
@@ -37,7 +39,7 @@ export default function Quote() {
                 Are your designs ready and you&rsquo;re ready to build?  Our project quotation service provides a complete quotation of your project ready for contract.  This service typically takes 10 business days and we can have you on your journey to building your new home.
               </p>
               <div className='flex justify-center'>
-                <button type="button" className='bg-warning w-[200px] h-[42px] flex items-center justify-center rounded-[20px] text-[16px] shadow-mainShadow'>Start <FaChevronRight/></button>
+                <ScrollButton targetSectionId="select-package" />
               </div>
             </div>
             <div className='w-1/2'>
@@ -46,7 +48,7 @@ export default function Quote() {
           </div>
         </div>
       </section>
-      <section className="py-[60px] max-w-[1250px] mx-auto">
+      <section className="py-[60px] max-w-[1250px] mx-auto scroll-mt-[115px]" id="select-package">
         <div className="flex flex-wrap justify-center">
           <h2 className="text-primary font-[800] text-center mb-5 text-[38px]">
             Select Package
@@ -77,7 +79,9 @@ export default function Quote() {
               <hr className='my-5 border-t-2'/>
               <p className='text-warning text-center italic font-[700] mb-5 px-[60px]'>Note: A project budget is not suitable for a building contract (Refer project quotation).</p>
               <div className='flex justify-center'>
-                <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
+                <Link href="/payment/project-budget">
+                  <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -102,7 +106,9 @@ export default function Quote() {
               <hr className='my-5 border-t-2'/>
               <p className='text-warning text-center italic font-[700] mb-5'>Note:  A project quotation is suitable for a building contract. Excludes Soil Test and Contour and Feature Survey (By architect).</p>
               <div className='flex justify-center'>
-                <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
+                <Link href="/payment/project-quotation">
+                  <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
+                </Link>
               </div>
             </div>
           </div>

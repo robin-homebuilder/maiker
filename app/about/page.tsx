@@ -1,3 +1,5 @@
+"use client"
+
 import Image from 'next/image'
 
 export default function About() {
@@ -11,7 +13,7 @@ export default function About() {
           </p>
           <div className='flex gap-x-10'>
             <div className='w-1/2'>
-              <Image src="/About-Maiker-Construction.svg" width={605} height={426} alt="About Maiker Constructions"/>
+              <Image src="/About-Maiker-Construction.svg" width={605} height={426} alt="About Maiker Constructions" className="transition-opacity opacity-0 duretion-[2s]" onLoadingComplete={(image) => image.classList.remove("opacity-0")}/>
             </div>
             <div className='w-1/2'>
               <h2 className='text-tertiary font-[700] mb-5'>Discover Why Maiker Constructions Is Your Best Choice</h2>

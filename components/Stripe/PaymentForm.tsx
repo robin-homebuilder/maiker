@@ -1,25 +1,47 @@
 "use client";
 
-import { CardElement, useElements, useStripe, PaymentElement } from "@stripe/react-stripe-js";
 import axios from "axios";
-import React from "react";
+import React, { useRef } from "react";
 
-export default function PaymentForm() {
+import { useElements, useStripe, PaymentElement } from "@stripe/react-stripe-js";
+
+import { createPaymentIntent } from "@/services/stripeServices";
+
+export default function PaymentForm({ price } : { price : number }) {
   const stripe = useStripe();
   const elements = useElements();
+  const formRef = useRef<HTMLFormElement | null>(null); 
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      await elements?.submit();
 
       if (!stripe || !elements) {
         return;
       }
 
+      const {error: submitError} = await elements.submit();
+      if (submitError) {
+        return;
+      }
+
+      const formData = new FormData(formRef.current!);
+      const name = formData.get("name") as string;
+      const phone = formData.get("phone") as string;
+      const email = formData.get("email") as string;
+
+      const paymentProps = {
+        customer_name: name,
+        email: email,
+        amount: price
+      }
+
+      const clientSecret = await createPaymentIntent(paymentProps);
+      
       const {error} = await stripe.confirmPayment({
         elements,
+        clientSecret,
         confirmParams: {
           return_url: 'https://example.com/order/123/complete',
           payment_method_data: {
@@ -39,7 +61,7 @@ export default function PaymentForm() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} ref={formRef}>
       <h3 className='text-dark font-[900] text-[18px] mb-[30px]'>Enter Personal Details</h3>
       <div className="w-[390px] mb-[30px] flex flex-wrap gap-y-3">
         <input type="text" name="name" placeholder="Name" className="border border-tertiary rounded-[20px] h-[42px] w-full" required/>

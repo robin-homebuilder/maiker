@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { FaPhone, FaEnvelope, FaInstagram, FaFacebookF, FaPinterest, FaLinkedinIn, FaYoutube, FaChevronRight } from "react-icons/fa"
+import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa"
 
 import { NavigationLinks, NavigationLinksSecond } from "@/libs/navigationLinks";
+import { SocialMediaLinks } from "@/libs/socialMediaLinks";
 
 export default function Footer() {
   return (
@@ -58,31 +59,13 @@ export default function Footer() {
                 <Image src="/Maiker-Construction-Logo-White.svg" fill={true} alt="Maiker Construction Logo"/>
               </div>
               <div className="flex flex-row justify-start align-middle gap-x-2 text-white">
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaInstagram color="#205375" size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaFacebookF color="#205375" size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaPinterest color="#205375" size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaLinkedinIn color="#205375" size="13"/>
-                  </span>
-                </Link>
-                <Link href={""}>
-                  <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
-                    <FaYoutube color="#205375" size="13"/>
-                  </span>
-                </Link>
+                {SocialMediaLinks.map((item, index) => (
+                  <Link href={item.link} target="_blank" key={index}>
+                    <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
+                      {<item.icon color="#205375" size="13"/>}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
             <div className="w-[246px]">

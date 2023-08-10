@@ -16,7 +16,9 @@ import CarouselPreviousArrow from '../Utils/CarouselPreviousArrow';
 interface ProjectImageURLProps {
   isOpen: boolean;
   closeModal: () => void;
-  imageURL: string
+  imageURL: string;
+  imageBaseURL: string;
+  other_image: string[]
 }
 
 const settings = {
@@ -29,7 +31,7 @@ const settings = {
   prevArrow: <CarouselPreviousArrow />,
 };
 
-export default function ProjectImage_Modal({ isOpen, closeModal, imageURL } : ProjectImageURLProps) {
+export default function ProjectImage_Modal({ isOpen, closeModal, imageURL, imageBaseURL, other_image } : ProjectImageURLProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-30' onClose={closeModal}>
@@ -59,11 +61,13 @@ export default function ProjectImage_Modal({ isOpen, closeModal, imageURL } : Pr
                 <div className='w-[1250px] h-[810px] overflow-hidden relative'>
                 <Slider {...settings}>
                   <div className='w-[1250px] h-[810px] relative'>
-                    <Image src={`${imageURL}`} alt="" fill={true} className='object-cover'/>
+                    <Image src={`${process.env.APP_S3_BUCKET}${imageBaseURL}/${imageURL}`} alt={imageURL} fill={true} className='object-cover'/>
                   </div>
-                  <div className='w-[1250px] h-[810px] relative'>
-                    <Image src="/Kitchens-and-Bathrooms.svg" alt="" fill={true} className='object-cover'/>
-                  </div>
+                  {other_image.map((item, index) => (
+                    <div className='w-[1250px] h-[810px] relative' key={index}>
+                      <Image src={`${process.env.APP_S3_BUCKET}${imageBaseURL}/${item}`} alt={item} fill={true} className='object-cover'/>
+                    </div>
+                  ))}
                 </Slider>
                 </div>
                 <button
