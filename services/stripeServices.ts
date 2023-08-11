@@ -1,4 +1,4 @@
-"use server";
+// "use server";
 
 type PaymentProps = {
   customer_name: string,

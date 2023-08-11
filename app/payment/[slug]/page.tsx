@@ -3,6 +3,9 @@ import { getPackageBySlug } from "@/services/packageServices";
 import { createPaymentIntent } from "@/services/stripeServices";
 import { PackageProps } from "@/types";
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+
 export default async function Payment({ params }: { params: { slug: string }}) {
   const { slug } = params;
 
