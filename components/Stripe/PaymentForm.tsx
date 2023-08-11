@@ -38,7 +38,7 @@ export default function PaymentForm({ price } : { price : number }) {
       }
 
       const clientSecret = await createPaymentIntent(paymentProps);
-      
+      console.log(`secret: ${clientSecret}`)
       const {error} = await stripe.confirmPayment({
         elements,
         clientSecret,

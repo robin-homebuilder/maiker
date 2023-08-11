@@ -3,7 +3,7 @@ import { ProjectProps } from "@/types";
 
 export async function getProjectsData(){
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/projects`, { cache: 'no-store' })
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/project`, { cache: 'no-store' })
 
     const projects : ProjectProps[] = await response.json();
 
@@ -16,7 +16,7 @@ export async function getProjectsData(){
 
 export async function getPastProjectsData(){
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/projects/pasts`, { cache: 'no-store' })
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/project/pasts`, { cache: 'no-store' })
 
     const projects : ProjectProps[] = await response.json();
     

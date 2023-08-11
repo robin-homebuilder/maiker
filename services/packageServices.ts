@@ -8,7 +8,7 @@ type Slug = {
 
 export async function getPackageBySlug({ slug } : Slug){
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/package/${slug}`, { cache: 'no-store' })
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`, { cache: 'no-store' })
 
     const packageData : PackageProps = await response.json();
 

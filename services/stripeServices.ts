@@ -14,18 +14,18 @@ export async function createPaymentIntent({ amount, customer_name, email } : Pay
   }
 
   try {
-    const paymentIntent = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/stripe`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/stripe/payment-intent`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({data}),
+      body: JSON.stringify(data),
       cache: "no-store"
-    })
+    });
 
-    const responseText = await paymentIntent.text();
+    const paymentIntent = await response.json();
 
-    return responseText;
+    return paymentIntent;
   } catch (error) {
     console.error('Error while creating payment intent:', error);
     throw error;

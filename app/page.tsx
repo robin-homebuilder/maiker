@@ -7,9 +7,6 @@ import Footer from "../components/Footer/Footer";
 import { FaChevronRight } from "react-icons/fa";
 import Past_Projects from "@/components/Utils/ProjectsCard";
 
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
-
 export default function Home() {
   return (
     <>

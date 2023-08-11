@@ -7,7 +7,7 @@ export default function About() {
     <>
       <section className='bg-accent py-[80px]'>
         <div className='max-w-[1250px] mx-auto'>
-          <h1 className='text-primary font-[800] text-center mb-10'>About Maiker Construction&rsquo;s</h1>
+          <h1 className='text-primary font-[800] text-center mb-10'>About Maiker Construction&rsquo;s {process.env.NEXT_PUBLIC_API_BASE_URL}</h1>
           <p className='text-dark text-center mb-10'>
             Maiker Constructions recognise that every project is unique, requiring client specific solutions to deliver not only thoughtful and innovative spaces, but responsive, practical construction in a process we endeavour to make as stress-free as possible. 
           </p>

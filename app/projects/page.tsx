@@ -2,9 +2,6 @@ import ImageCard from "@/components/Utils/ImageCard";
 import { getProjectsData } from "@/services/projectServices";
 import { ProjectProps } from "@/types";
 
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store'
-
 export default async function Projects() {
   const data = await getProjectsData();
   
