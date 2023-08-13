@@ -27,7 +27,7 @@ export default function Design() {
               </div>
             </div>
             <div className='w-1/2'>
-              <Image src="/Design-My-Home.svg" width={605} height={426} alt="Design My Home"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.jpg`} width={605} height={426} alt="Design My Home"/>
             </div>
           </div>
         </div>

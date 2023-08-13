@@ -1,25 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { FaChevronRight } from "react-icons/fa";
+
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-import { FaChevronRight } from "react-icons/fa";
 import Past_Projects from "@/components/Utils/ProjectsCard";
+import ScrollButtonHome from "@/components/Utils/ScrollButtonHome";
 
 export default function Home() {
   return (
     <>
       <Navbar page="home" />
       <section className="h-[900px] overflow-hidden relative">
-        <Image src="/Footer-Image.svg" fill={true} alt="Maiker House Project Footer Logo" className="absolute top-0 object-cover h-[inherit]"/>
+        <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.png`} fill={true} alt="Maiker House Project Footer Logo" className="absolute top-0 object-cover h-[inherit]"/>
         <div className="z-10 relative max-w-[1250px] mx-auto mt-[200px]">
           <div className="w-[600px]">
             <h1 className="font-[800] mb-10 text-[38px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, set.</h1>
             <p className="font-[500] text-[18px] mb-10">Lorem ipsum dolor sit amet, consectetur do adipiscing elit, sed, consectetur do adipiscing elit, sed.</p>
-            <button type="button" className='bg-white text-dark px-5 rounded-[20px] h-8 flex items-center font-[600] gap-x-2 mb-10'>
-              Request Call Back <FaChevronRight />
-            </button>
+            <ScrollButtonHome targetSectionId="footer"/>
             <div className="w-[150px] h-[94px] relative">
               <Image src="/MBA_ProudMember.svg" fill={true} alt="Master Builders Queensland - Proud Member"/>
             </div>
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <div className='flex gap-x-10'>
             <div className='w-8/12'>
-              <Image src="/Discover-Maiker-Construction.svg" width={820} height={767} alt="Discover Maiker Constructions" className="object-cover h-[767px]"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Discover-Maiker-Construction.jpg`} width={820} height={767} alt="Discover Maiker Constructions" className="object-cover h-[767px]"/>
             </div>
             <div className='w-3/12'>
               <div className="mb-10 flex flex-wrap justify-center">
@@ -81,35 +81,35 @@ export default function Home() {
               <h2 className="text-[25px] font-[800] -rotate-90 absolute top-full left-0 w-[438px] text-center origin-top-left z-10">Home Renovations</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src="/Home-Renovations.svg" alt="Home Renovations" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.png`} alt="Home Renovations" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-1/5">
               <h2 className="text-[25px] font-[800] -rotate-90 absolute top-full left-0 w-[438px] text-center origin-top-left z-10">Home Extensions & Additions</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src="/Home-Extensions-and-Additions.svg" alt="Home Extensions & Additions" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Extensions-and-Additions.jpg`} alt="Home Extensions & Additions" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-1/5">
               <h2 className="text-[25px] font-[800] -rotate-90 absolute top-full left-0 w-[438px] text-center origin-top-left z-10">Contemporary Queenslander&rsquo;s</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src="/Contemporary-Queenslanders.svg" alt="Contemporary Queenslander's" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.jpg`} alt="Contemporary Queenslander's" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-1/5">
               <h2 className="text-[25px] font-[800] -rotate-90 absolute top-full left-0 w-[438px] text-center origin-top-left z-10">Kitchens & Bathrooms</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src="/Kitchens-and-Bathrooms.svg" alt="Kitchens & Bathrooms" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Kitchens-and-Bathrooms.jpg`} alt="Kitchens & Bathrooms" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-1/5">
               <h2 className="text-[25px] font-[800] -rotate-90 absolute top-full left-0 w-[438px] text-center origin-top-left z-10">Landscapes & Hardscapes</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src="/Landscapes-and-Hardscapes.svg" alt="Landscapes & Hardscapes" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Landscapes-and-Hardscapes.png`} alt="Landscapes & Hardscapes" className="object-cover" fill={true}/>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
           <div className="flex mb-10">
             <div className="w-1/2">
-              <Image src="/Full-Design-and-Construction-Service.svg" width={620} height={391} alt="Full Design and Construction Service" className="object-cover w-auto"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Full-Design-and-Construction-Service.jpg`} width={620} height={391} alt="Full Design and Construction Service" className="object-cover w-auto"/>
             </div>
             <div className="w-1/2 px-[50px] flex flex-col justify-center items-center">
               <h3 className="text-tertiary font-[800] text-[25px] text-center mb-5">Full Design & Construction Service</h3>
@@ -151,7 +151,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="w-1/2">
-              <Image src="/Quote-My-Plans.svg" width={620} height={391} alt="Quote Your Architect's Plans" className="object-cover w-auto"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.jpg`} width={620} height={391} alt="Quote Your Architect's Plans" className="object-cover w-auto"/>
             </div>
           </div>
         </section>
@@ -178,7 +178,7 @@ export default function Home() {
             </p>
           </div>
           <div className="w-full h-[600px] relative">
-            <Image src="/Where-We-Service.svg" fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/>
+            <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.png`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/>
           </div>
         </section>
       </main>
@@ -186,5 +186,3 @@ export default function Home() {
     </>
   )
 }
-
-// export const runtime = "edge";

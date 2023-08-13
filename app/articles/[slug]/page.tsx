@@ -32,7 +32,7 @@ export default async function Article() {
           {Articles.map((item, index) => (
             <div className="w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden">
               <div className="w-full h-[290px] relative">
-                <Image src={item.image} fill={true} alt="How to build a home" className="object-cover"/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.jpg`} fill={true} alt="How to build a home" className="object-cover"/>
               </div>
               <div className="px-[30px] py-5">
                 <h2 className="text-tertiary text-[24px] font-[800] text-center">{item.title}</h2>

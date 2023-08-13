@@ -18,7 +18,7 @@ export default function Navbar( { page } : PageProps ) {
   const [ scrolledPastSection, setScrolledPastSection ] = useState(false);
 
   const handleScroll = () => {
-    const sectionHeight = 800;
+    const sectionHeight = 10;
     if (window.scrollY > sectionHeight) {
       setScrolledPastSection(true);
     } else {
@@ -98,7 +98,7 @@ export default function Navbar( { page } : PageProps ) {
             <div className="flex gap-x-2.5">
               {NavigationLinksSecond.map((item, index) => (
                 <Link href={item.link} key={index}>
-                  <button type="button" className={`${(page == "home" && !scrolledPastSection) ? "bg-white text-dark" : " bg-tertiary shadow-mainShadow"} px-5 rounded-[20px] h-8 flex items-center font-[600] gap-x-2`}>
+                  <button type="button" className={`${(page == "home" && !scrolledPastSection) ? "bg-white text-dark" : " bg-tertiary shadow-mainShadow"} px-5 rounded-[20px] h-[42px] flex items-center font-[600] gap-x-2`}>
                     {item.name} <FaChevronRight />
                   </button>
                 </Link>

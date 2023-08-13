@@ -8,8 +8,8 @@ import { SocialMediaLinks } from "@/libs/socialMediaLinks";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden">
-      <Image src="/Footer-Image.svg" width={4000} height={2000} priority={true} alt="Maiker House Project Footer Logo" className="mb-5 absolute top-[-200px]"/>
+    <footer className="relative overflow-hidden" id="footer">
+      <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.png`} width={4000} height={2000} priority={true} alt="Maiker House Project Footer Logo" className="mb-5 absolute top-[-200px]"/>
       <div className="h-[482px] w-full py-[100px] z-10 relative bg-[#00000080]">
         <div className="max-w-[1250px] mx-auto items-center h-[42px]">
           <div className="flex gap-x-10">
@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="flex gap-x-2.5">
               {NavigationLinksSecond.map((item, index) => (
                 <Link href={item.link} key={index}>
-                  <button type="button" className="bg-white text-secondary px-5 font-[600] rounded-[20px] h-8 flex items-center gap-x-2 shadow-mainShadow">
+                  <button type="button" className="bg-white text-secondary px-5 font-[600] rounded-[20px] h-[42px] flex items-center gap-x-2 shadow-mainShadow">
                     {item.name} <FaChevronRight />
                   </button>
                 </Link>
