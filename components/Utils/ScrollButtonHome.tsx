@@ -12,6 +12,6 @@ export default function ScrollButtonHome({ targetSectionId } : { targetSectionId
   };
 
   return (
-    <button type="button" className='bg-white text-dark px-5 rounded-[20px] h-8 flex items-center font-[600] gap-x-2 mb-10' onClick={(e) => handleClick(e)}>Request Call Back <FaChevronRight /></button>
+    <button type="button" className='bg-white text-dark px-5 rounded-[20px] h-[42px] flex items-center font-[600] gap-x-2 mb-10' onClick={(e) => handleClick(e)}>Request Call Back <FaChevronRight /></button>
   )
 }

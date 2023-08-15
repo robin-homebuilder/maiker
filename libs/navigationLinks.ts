@@ -19,7 +19,7 @@ export const NavigationLinks = [
 
 export const NavigationLinksSecond = [
   {
-    name: "Quote My Home",
+    name: "Quote My Plans",
     link: "/quote"
   },
   {

@@ -8,25 +8,27 @@ export default function Design() {
     <>
       <section className='bg-accent py-[80px]'>
         <div className='max-w-[1250px] mx-auto'>
-          <h1 className='text-primary font-[800] text-center mb-5'>Design My Home</h1>
-          <h2 className='text-tertiary font-[800] text-center mb-5'>Home Design and Quotation Turn Key Service</h2>
-          <p className='text-dark text-center mb-10 px-10 mx-10'>
-            Are you looking for a builder that can manage the whole design and construction process?  1 point of contact and a business that manages all the items that will bring your home to life?
-          </p>
-          <div className='flex gap-x-10'>
-            <div className='w-1/2 px-[50px]'>
-              <h2 className='text-tertiary font-[700] text-center mb-5'>Design My Home</h2>
+          <div className='px-5 sm:px-0'>
+            <h1 className='text-primary font-[800] text-center mb-5'>Design My Home</h1>
+            <h2 className='text-tertiary font-[800] text-center mb-5'>Home Design and Quotation Turn Key Service</h2>
+            <p className='text-dark text-center mb-10 px-0 sm:px-10 mx-0 sm:mx-10'>
+              Are you looking for a builder that can manage the whole design and construction process?  1 point of contact and a business that manages all the items that will bring your home to life?
+            </p>
+          </div>
+          <div className='flex flex-wrap sm:flex-nowrap flex-col-reverse sm:flex-row gap-x-10'>
+            <div className='w-full sm:w-1/2 px-5 sm:px-[50px]'>
+              <h2 className='text-tertiary font-[700] text-center mb-5 text-[24px] sm:text-[21px]'>Design My Home</h2>
               <h2 className='text-warning italic font-[500] text-center mb-5'>A complete design and quotation service</h2>
               <p className='text-dark mb-5 text-center font-[500] px-10'>
                 Maiker Constructions provides a full turn key design and construction service. The first step of this process is the conceptual design and project costing of your home to ensure your project is on budget. 
               </p>
-              <p className='text-dark mb-5 text-center font-[500] px-10'>The second step is detailed design of your home and a full project quotation.</p>
-              <p className='text-dark mb-5 text-center font-[500] px-10'>Maiker Constructions provides everything required for your project to be ready for contract and ready to build.</p>
+              <p className='text-dark mb-5 text-center font-[500] px-0 sm:px-10'>The second step is detailed design of your home and a full project quotation.</p>
+              <p className='text-dark mb-5 text-center font-[500] px-0 sm:px-10'>Maiker Constructions provides everything required for your project to be ready for contract and ready to build.</p>
               <div className='flex justify-center'>
                 <ScrollButton targetSectionId="select-package" />
               </div>
             </div>
-            <div className='w-1/2'>
+            <div className='w-full sm:w-1/2 mb-5 sm:mb-0'>
               <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.jpg`} width={605} height={426} alt="Design My Home"/>
             </div>
           </div>
@@ -38,8 +40,8 @@ export default function Design() {
             Select Package
           </h2>
         </div>
-        <div className='flex justify-start'>
-          <div className='w-[604px] h-[523px] rounded-[20px] border border-primary overflow-hidden'>
+        <div className='flex flex-wrap sm:flex-nowrap justify-start px-5 sm:px-0'>
+          <div className='w-full h-full sm:w-[604px] sm:h-[523px] rounded-[20px] border border-primary overflow-hidden'>
             <span className='block bg-primary h-[26px] w-full'></span>
             <div className='p-5'>
               <h3 className='text-dark text-center text-[32px]'>Home Design and Quotation</h3>

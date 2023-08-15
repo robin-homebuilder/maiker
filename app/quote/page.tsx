@@ -8,17 +8,19 @@ export default function Quote() {
     <>
       <section className='bg-accent py-[80px]'>
         <div className='max-w-[1250px] mx-auto'>
-          <h1 className='text-primary font-[800] text-center mb-5'>Quote My Home</h1>
-          <h2 className='text-tertiary font-[800] text-center mb-5'>Suitable for Architect Plans not Prepared by Maiker Constructions</h2>
-          <p className='text-dark text-center mb-10'>
-            Whether your plans are in the concept phase or are detailed ready for construction, we can support your costing journey.
-          </p>
-          <div className='flex gap-x-10 mb-[60px]'>
-            <div className='w-1/2'>
+          <div className='px-5 sm:px-0'>
+            <h1 className='text-primary font-[800] text-center mb-5'>Quote My Home</h1>
+            <h2 className='text-tertiary font-[800] text-center mb-5'>Suitable for Architect Plans not Prepared by Maiker Constructions</h2>
+            <p className='text-dark text-center mb-10'>
+              Whether your plans are in the concept phase or are detailed ready for construction, we can support your costing journey.
+            </p>
+          </div>
+          <div className='flex flex-wrap sm:flex-nowrap gap-x-10 mb-[60px]'>
+            <div className='w-full sm:w-1/2 mb-5 sm:mb-0'>
               <Image src={`${process.env.APP_S3_BUCKET}/assets/Project-Budget.png`} width={605} height={426} alt="Project Budget"/>
             </div>
-            <div className='w-1/2 px-10'>
-              <h2 className='text-tertiary font-[700] text-center mb-5'>Project Budget</h2>
+            <div className='w-full sm:w-1/2 px-10'>
+              <h2 className='text-tertiary font-[700] text-center mb-5 text-[24px] sm:text-[21px]'>Project Budget</h2>
               <h2 className='text-warning italic font-[500] text-center mb-5'>Is your architect designed home within budget?</h2>
               <p className='text-dark mb-5 text-center font-[500]'>
                 Is your architect or building designer home within budget? A common issue we come across is that the plans a client has commissioned with an architect or building designer are over budget.  
@@ -31,9 +33,9 @@ export default function Quote() {
               </div>
             </div>
           </div>
-          <div className='flex gap-x-10'>
-            <div className='w-1/2 px-[50px]'>
-              <h2 className='text-tertiary font-[700] text-center mb-5'>Project Quotation</h2>
+          <div className='flex flex-wrap sm:flex-nowrap gap-x-10'>
+            <div className='w-full sm:w-1/2 px-[50px] mb-5 sm:mb-0'>
+              <h2 className='text-tertiary font-[700] text-center mb-5 text-[24px] sm:text-[21px]'>Project Quotation</h2>
               <h2 className='text-warning italic font-[500] text-center mb-5'>Do you have Architect plans ready to build?</h2>
               <p className='text-dark mb-5 text-center font-[500]'>
                 Are your designs ready and you&rsquo;re ready to build?  Our project quotation service provides a complete quotation of your project ready for contract.  This service typically takes 10 business days and we can have you on your journey to building your new home.
@@ -42,23 +44,23 @@ export default function Quote() {
                 <ScrollButton targetSectionId="select-package" />
               </div>
             </div>
-            <div className='w-1/2'>
+            <div className='w-full sm:w-1/2'>
               <Image src={`${process.env.APP_S3_BUCKET}/assets/Project-Quotation.png`} width={605} height={426} alt="Project Quotation"/>
             </div>
           </div>
         </div>
       </section>
       <section className="py-[60px] max-w-[1250px] mx-auto scroll-mt-[115px]" id="select-package">
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center px-5 sm:px-0">
           <h2 className="text-primary font-[800] text-center mb-5 text-[38px]">
             Select Package
           </h2>
-          <p className="text-center text-dark text-[16px] mb-[30px] w-4/5">
+          <p className="text-center text-dark text-[16px] mb-[30px] w-full sm:w-4/5">
             Whether your plans are in the concept phase or are detailed ready for construction, we can support your costing journey.
           </p>
         </div>
-        <div className='flex justify-between'>
-          <div className='w-[604px] h-[643px] rounded-[20px] border border-primary overflow-hidden'>
+        <div className='flex flex-wrap sm:flex-nowrap justify-between px-5 sm:px-0 gap-y-5 sm:gap-y-0'>
+          <div className='w-full h-full sm:w-[604px] sm:h-[643px] rounded-[20px] border border-primary overflow-hidden'>
             <span className='block bg-primary h-[26px] w-full'></span>
             <div className='p-5'>
               <h3 className='text-dark text-center text-[32px]'>Project Budget</h3>
@@ -77,7 +79,7 @@ export default function Quote() {
                 <li>Completed in 7 business days.</li>
               </ul>
               <hr className='my-5 border-t-2'/>
-              <p className='text-warning text-center italic font-[700] mb-5 px-[60px]'>Note: A project budget is not suitable for a building contract (Refer project quotation).</p>
+              <p className='text-warning text-center italic font-[700] mb-5 px-0 sm:px-[60px]'>Note: A project budget is not suitable for a building contract (Refer project quotation).</p>
               <div className='flex justify-center'>
                 <Link href="/payment/project-budget">
                   <button type="button" className='bg-warning w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Select</button>
@@ -85,7 +87,7 @@ export default function Quote() {
               </div>
             </div>
           </div>
-          <div className='w-[604px] h-[643px] rounded-[20px] border border-primary overflow-hidden'>
+          <div className='w-full h-full sm:w-[604px] sm:h-[643px] rounded-[20px] border border-primary overflow-hidden'>
             <span className='block bg-primary h-[26px] w-full'></span>
             <div className='p-5'>
               <h3 className='text-dark text-center text-[32px]'>Project Quotation</h3>

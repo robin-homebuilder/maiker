@@ -12,7 +12,7 @@ export default async function Projects() {
           <h1 className='text-primary font-[800] text-center mb-10'>Complete Projects</h1>
           <div className='flex flex-wrap justify-evenly gap-y-5'>
             {data.map((project: ProjectProps) => (
-              <div key={project._id}>
+              <div key={project._id} className="w-full sm:w-fit">
                 <ImageCard imageURL={project.main_image} imageBaseURL={project.image_base_url} title={project.title} other_image={project.other_image}/>
               </div>
             ))}

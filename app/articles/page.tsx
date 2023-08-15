@@ -28,11 +28,11 @@ export default function Articles() {
         </div>
       </section>
       <section className="max-w-[1250px] mx-auto py-[60px]">
-        <div className="flex gap-10">
+        <div className="flex flex-wrap sm:flex-nowrap gap-10 px-5 sm:px-0">
           {ArticlesList.map((item, index) => (
-            <div className="w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden shadow-secondShadow">
+            <div className="w-full sm:w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden shadow-secondShadow">
               <div className="w-full h-[290px] relative">
-                <Image src={item.image} fill={true} alt="How to build a home" className="object-cover"/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.jpg`} fill={true} alt="How to build a home" className="object-cover"/>
               </div>
               <div className="px-[30px] py-5">
                 <h2 className="text-tertiary text-[24px] font-[800] text-center">{item.title}</h2>

@@ -18,7 +18,7 @@ export default function ImageCard( { imageURL, imageBaseURL, title, other_image 
   
   return (
     <>
-      <div className='w-[283px] h-[283px]'>
+      <div className='w-full sm:w-[283px] h-[283px]'>
         <button type="button" className='w-full h-full bg-black relative' onClick={() => setOpenModal(true)}>
           <Image src={`${process.env.APP_S3_BUCKET}${imageBaseURL}/${imageURL}`} fill={true} alt={title} className="object-cover"/>
         </button>
