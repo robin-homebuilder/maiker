@@ -38,7 +38,7 @@ export default function About() {
             <div className='w-full sm:w-1/2 px-5 sm:px-0'>
               <div className='mb-5'>
                 <h2 className='text-primary text-[32px] font-[800] mb-3'>Meet the Managers</h2>
-                <p className='text-dark'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco..</p>
+                <p className='text-dark'>Meet the managers of Maiker Construction, Jeremy Verhey and Xavier Williams who bring over 40 years in residential construction.</p>
               </div>
               <div className='mb-5'>
                 <h2 className='text-tertiary font-[800] text-[25px] mb-3'>Jeremy Verhey</h2>
@@ -54,6 +54,9 @@ export default function About() {
               </div>
             </div>
             <div className='w-full sm:w-1/2'>
+              <div className="bg-gray-400 w-full h-full">
+
+              </div>
             </div>
           </div>
         </div>

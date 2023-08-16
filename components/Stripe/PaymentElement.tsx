@@ -2,14 +2,19 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe, StripeElementsOptions  } from "@stripe/stripe-js";
-import PaymentForm from "./PaymentForm";
+import StripeForm from "./StripeForm";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_PUBLISHABLE_KEY_TEST!,
   {locale: 'en-AU'}
 );
 
-export default function PaymentElement_Container({ price } : { price : number }) {
+interface Step3Props {
+  price: number,
+  handlePrevious: () => void;
+}
+
+export default function PaymentElement_Container({ price, handlePrevious } : Step3Props) {
   const options: StripeElementsOptions = {
     mode: 'payment',
     currency: 'aud',
@@ -33,7 +38,7 @@ export default function PaymentElement_Container({ price } : { price : number })
   
   return (
     <Elements stripe={stripePromise} options={options}>
-      <PaymentForm price={price}/>
+      <StripeForm price={price} handlePrevious={handlePrevious}/>
     </Elements>
   );
 }

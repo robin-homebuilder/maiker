@@ -1,4 +1,4 @@
-import PaymentElement_Container from "@/components/Stripe/PaymentElement";
+import PaymentForm from "@/components/Payment/PaymentForm";
 import { getPackageBySlug } from "@/services/packageServices";
 
 export default async function Payment({ params }: { params: { slug: string }}) {
@@ -10,13 +10,13 @@ export default async function Payment({ params }: { params: { slug: string }}) {
     <>
       <section className='bg-accent py-[80px]'>
         <div className='max-w-[1250px] mx-auto'>
-          <h1 className='text-primary font-[800] text-center mb-10'>Payment</h1>
+          <h1 className='text-primary font-[800] text-center mb-10'>Payment Form</h1>
           <div className='flex gap-x-10'>
             <div className='w-8/12'>
-              <h2 className='text-tertiary font-[800] text-[25px] mb-[30px]'>Enter Payment Information</h2>
-              <PaymentElement_Container price={packageData.price}/>
+              <PaymentForm price={packageData.price}/>
             </div>
             <div className='w-4/12'>
+              <h2 className='text-tertiary font-[800] text-[25px] mb-[30px]'>Selected Package</h2>
               <div className='w-[390px] border border-primary rounded-[20px] overflow-hidden bg-white'>
                 <span className='h-[26px] bg-primary block'></span>
                 <div className="p-5">
@@ -38,9 +38,6 @@ export default async function Payment({ params }: { params: { slug: string }}) {
                   {packageData.note &&
                     <p className='text-warning text-center italic font-[700] mb-5'>Note: {packageData.note}</p>
                   }
-                  <div className='flex justify-center'>
-                    <button type="button" className='border border-warning text-warning font-[500] w-[200px] h-[42px] text-[600] rounded-[20px] shadow-mainShadow text-[16px]'>Selected</button>
-                  </div>
                 </div>
               </div>
             </div>

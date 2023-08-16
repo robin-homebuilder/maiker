@@ -74,3 +74,16 @@
 .custom-checkbox:checked {
   @apply bg-primary border-primary shadow-none;
 }
+
+.scrollable-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

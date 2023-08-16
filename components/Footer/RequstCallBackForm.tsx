@@ -53,11 +53,11 @@ export default function RequstCallBackForm() {
 
   return (
     <form className="w-full flex flex-col gap-y-[30px]" onSubmit={onSubmit} ref={formRef}>
-      <input type="text" placeholder="First Name" name="firstName" className="w-full h-[45px] rounded-[20px]"/>
-      <input type="text" placeholder="Last Name" name="lastName" className="w-full h-[45px] rounded-[20px]"/>
+      <input type="text" placeholder="First Name" name="firstName" className="w-full h-[45px] rounded-[20px]" required/>
+      <input type="text" placeholder="Last Name" name="lastName" className="w-full h-[45px] rounded-[20px]" required/>
       <div className="flex flex-wrap sm:flex-nowrap gap-x-5 gap-y-[30px] sm:gap-y-0">
-        <input type="email" placeholder="Email" name="email" className="w-full h-[45px] rounded-[20px]"/>
-        <input type="text" placeholder="Phone" name="phone" className="w-full h-[45px] rounded-[20px]"/>
+        <input type="email" placeholder="Email" name="email" className="w-full h-[45px] rounded-[20px]" required/>
+        <input type="text" placeholder="Phone" name="phone" className="w-full h-[45px] rounded-[20px]" required/>
       </div>
       <div className="flex gap-x-3 justify-center">
         <button type="submit" className={`${submitStatus == 1 ? "bg-warning text-white shadow-mainShadow" : "bg-white text-dark"} rounded-[20px] w-[200px] flex items-center justify-center font-[600] h-[45px]`} disabled={submitStatus === 1}>
