@@ -12,9 +12,10 @@ const stripePromise = loadStripe(
 interface Step3Props {
   price: number,
   handlePrevious: () => void;
+  handleSubmit: () => void;
 }
 
-export default function PaymentElement_Container({ price, handlePrevious } : Step3Props) {
+export default function PaymentElement_Container({ price, handlePrevious, handleSubmit } : Step3Props) {
   const options: StripeElementsOptions = {
     mode: 'payment',
     currency: 'aud',
@@ -38,7 +39,7 @@ export default function PaymentElement_Container({ price, handlePrevious } : Ste
   
   return (
     <Elements stripe={stripePromise} options={options}>
-      <StripeForm price={price} handlePrevious={handlePrevious}/>
+      <StripeForm price={price} handlePrevious={handlePrevious} handleSubmit={handleSubmit}/>
     </Elements>
   );
 }

@@ -1,50 +1,40 @@
 "use client"
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import Step1 from './Step1';
-import Step2 from './Step2';
+import ClientInformationStep from './ClientInformationStep';
+import ProjectInformation from './ProjectInformation';
 import PaymentElement_Container from '../Stripe/PaymentElement';
 
-interface Step1Data {
-  name: string;
-  phone: string;
-  email: string;
-  // Add other fields as needed
-}
-
-interface Step2Data {
-  name: string;
-  phone: string;
-  email: string;
-  // Add other fields as needed
-}
+import { ClientInformationProps, ProjectInformationProps } from "@/types";
+import { createNewClient } from '@/services/newClientServices';
 
 interface PackageProps {
   price: number
 }
 
 export default function PaymentForm({ price } : PackageProps) {
-  const [ step, setStep ] = useState<number>(1);
-  // const [ step1Data, setStep1Data ] = useState<Step1Data>({});
-  // const [step2Data, setStep2Data] = useState<Step2Data>({});
-
-  const handleStep1Next = (data: Step1Data) => {
-    // setStep1Data(data);
-    setStep(step + 1);
-  };
-
+  const router = useRouter();
   
-  const handleStep2Next = (data: Step2Data) => {
-    // setStep2Data(data);
+  const [ step, setStep ] = useState<number>(1);
+  const [ step1Data, setStep1Data ] = useState<ClientInformationProps | null >(null);
+  const [ step2Data, setStep2Data ] = useState<ProjectInformationProps | null>(null);
+
+  const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+    event.preventDefault();
+    return (event.returnValue = 'Are you sure you want to leave?');
+  }
+
+  const handleStep1Next = (data: ClientInformationProps) => {
+    setStep1Data(data);
     setStep(step + 1);
+    
+    window.onbeforeunload = handleBeforeUnload;
   };
 
-  const handleStep2Previous = () => {
-    setStep(step - 1);
-  };
-
-  const handleNext = () => {
+  const handleStep2Next = (data: ProjectInformationProps) => {
+    setStep2Data(data);
     setStep(step + 1);
   };
 
@@ -52,17 +42,22 @@ export default function PaymentForm({ price } : PackageProps) {
     setStep(step - 1);
   };
 
-  const handleSubmit = () => {
-    // Handle form submission
+  const handleSubmit = async () => {
+
+    await createNewClient({client_information: step1Data!, project_information: step2Data! });
+
+    window.onbeforeunload = null;
+
+    router.push("/payment/success");
   };
 
   switch (step) {
     case 1:
-      return <Step1 onNext={handleStep1Next} />;
+      return <ClientInformationStep onNext={handleStep1Next} />;
     case 2:
-      return <Step2 onPrevious={handleStep2Previous} onNext={handleStep2Next} />;
+      return <ProjectInformation onPrevious={handlePrevious} onNext={handleStep2Next} />;
     case 3:
-      return <PaymentElement_Container price={price} handlePrevious={handlePrevious}/>;
+      return <PaymentElement_Container price={price} handlePrevious={handlePrevious} handleSubmit={handleSubmit}/>;
     default:
       return null;
   }

@@ -125,11 +125,11 @@ export default function Navbar( { page } : PageProps ) {
           </nav>
         </div>
       </div>
-      <div className={`block sm:hidden w-full fixed z-50 ${page == "home" ? "bg-[#00000080]" : "bg-white shadow-mainShadow"} h-[60px]`}>
+      <div className={`block sm:hidden w-full fixed z-50 ${(page == "home" && !scrolledPastSection) ? "bg-[#00000080]" : "bg-white shadow-mainShadow"} h-[60px]`}>
         <div className="flex justify-between px-5">
           <Link href="/">
             <div className="w-[94px] h-[60px] relative">
-              {page == "home" ?
+              {(page == "home" && !scrolledPastSection) ?
                 <Image src="/Maiker-Construction-Logo-White.svg" fill={true} alt="Maiker Construction Logo"/>
               :
                 <Image src="/Maiker-Construction-Logo-Blue.svg" fill={true} alt="Maiker Construction Logo"/>
@@ -137,7 +137,7 @@ export default function Navbar( { page } : PageProps ) {
             </div>
           </Link>
           <div className="flex justify-center items-center w-[30px] h-auto">
-            <button type="button" onClick={showHamburgerMenu} className={`w-full h-fit flex justify-center items-center ${page == "home" ? "text-white" : "text-primary"}`}>
+            <button type="button" onClick={showHamburgerMenu} className={`w-full h-fit flex justify-center items-center ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-primary"}`}>
               <FaBars size={25}/>
             </button>
           </div>

@@ -18,7 +18,8 @@ module.exports = {
         tertiary: "#358AC3",
         dark: "#000000",
         warning: "#F66B0E",
-        accent: "#F6F6F6"
+        accent: "#F6F6F6",
+        danger: "#DC3545"
       },
       boxShadow: {
         'mainShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)',
