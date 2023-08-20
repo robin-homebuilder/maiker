@@ -49,7 +49,7 @@ export default function ProjectInformation({ onPrevious, onNext } : ProjectInfor
   return (
     <>
       <h2 className='text-tertiary font-[800] text-[25px] mb-2.5'>Enter Project Information</h2>
-      <form onSubmit={onSubmit} className="scrollable-content overflow-y-scroll max-h-[750px] pr-1 pb-2.5">
+      <form onSubmit={onSubmit} className="scrollable-content overflow-y-scroll max-h-full sm:max-h-[750px] pr-1 pb-2.5">
         <div className="mb-10">
           <h3 className='text-dark font-[900] text-[18px] mb-2'>Site Address</h3>
           <input 
@@ -65,11 +65,11 @@ export default function ProjectInformation({ onPrevious, onNext } : ProjectInfor
         <div className="mb-10">
           <h3 className='text-dark font-[900] text-[18px] mb-2'>Add Documents</h3>
           <p className='text-dark mb-4'>Upload documents for pricing. Note that the more detailed the documentation is, the more accurate the budget.</p>
-          <div className='border border-tertiary rounded-[20px] w-full h-[364px] flex bg-white overflow-hidden'>
-            <div className='w-1/2 h-full border-r border-tertiary flex items-center'>
+          <div className='border border-tertiary rounded-[20px] w-full h-full sm:h-[364px] flex flex-wrap sm:flex-nowrap bg-white overflow-hidden'>
+            <div className='w-full sm:w-1/2 h-full border-b sm:border-b-0 border-r-0 sm:border-r border-tertiary flex items-center'>
               <FileUpload onFileUploaded={handleFileUpload}/>
             </div>
-            <div className='w-1/2 p-10'>
+            <div className='w-full sm:w-1/2 p-10'>
               <div className='scrollable-content max-h-full overflow-y-auto'>
                 {uploadedFiles.map((file, index) => (
                   <div className="mb-2.5 flex items-center justify-between" key={index}>

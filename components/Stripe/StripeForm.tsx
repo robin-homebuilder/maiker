@@ -77,7 +77,7 @@ export default function StripeForm({ price, handlePrevious, handleSubmit } : Ste
     <form onSubmit={onSubmit} ref={formRef}>
       <h2 className='text-tertiary font-[800] text-[25px] mb-10'>Enter Payment Information</h2>
       <h3 className='text-dark font-[900] text-[18px] mb-[30px]'>Amount Payable is ${price.toLocaleString('en-US', { minimumFractionDigits: 2 })} (inc GST)</h3>
-      <div className="w-[390px] mb-[30px]">
+      <div className="w-full sm:w-[390px] mb-[30px]">
         <PaymentElement options={{ fields: { billingDetails: { address: { country: "never" }} }, }}/>
       </div>
       <h3 className='text-dark font-[900] text-[18px] mb-5'>Payment Terms</h3>

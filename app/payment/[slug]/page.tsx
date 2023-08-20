@@ -8,16 +8,16 @@ export default async function Payment({ params }: { params: { slug: string }}) {
   
   return (
     <>
-      <section className='bg-accent py-[80px]'>
+      <section className='bg-accent py-[80px] px-5 sm:px-0'>
         <div className='max-w-[1250px] mx-auto'>
           <h1 className='text-primary font-[800] text-center mb-10'>Payment Form</h1>
-          <div className='flex gap-x-10'>
-            <div className='w-8/12'>
+          <div className='flex flex-wrap sm:flex-nowrap gap-x-10 flex-col-reverse sm:flex-row'>
+            <div className='w-full sm:w-8/12'>
               <PaymentForm price={packageData.price}/>
             </div>
-            <div className='w-4/12'>
-              <h2 className='text-tertiary font-[800] text-[25px] mb-[30px]'>Selected Package</h2>
-              <div className='w-[390px] border border-primary rounded-[20px] overflow-hidden bg-white'>
+            <div className='w-full sm:w-4/12 mb-5 sm:mb-0'>
+              <h2 className='text-tertiary font-[800] text-[25px] mb-4 sm:mb-[30px]'>Selected Package</h2>
+              <div className='w-full sm:w-[390px] border border-primary rounded-[20px] overflow-hidden bg-white'>
                 <span className='h-[26px] bg-primary block'></span>
                 <div className="p-5">
                   <h2 className="text-dark text-center text-[32px]">{packageData.title}</h2>

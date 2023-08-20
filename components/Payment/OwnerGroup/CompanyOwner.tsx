@@ -15,7 +15,7 @@ export default function CompanyOwner({ handleInputChange, handleRemoveGroup, own
         <button type="button" className='text-dark text-[17px]' onClick={handleRemoveGroup}><TfiClose /></button>
       </div>
       <div className="w-full flex flex-wrap gap-y-3">
-        <div className="w-full flex flex-wrap sm:flex-nowrap gap-x-2.5">
+        <div className="w-full flex flex-wrap sm:flex-nowrap gap-x-2.5 gap-y-3 sm:gap-y-0">
           <input 
             type="text" 
             name="company_name" 
@@ -35,7 +35,7 @@ export default function CompanyOwner({ handleInputChange, handleRemoveGroup, own
             required
           />
         </div>
-        <div className="w-full flex flex-wrap sm:flex-nowrap gap-x-2.5">
+        <div className="w-full flex flex-wrap sm:flex-nowrap gap-x-2.5 gap-y-3 sm:gap-y-0">
           <input 
             type="text" 
             name="first_name" 
@@ -55,7 +55,7 @@ export default function CompanyOwner({ handleInputChange, handleRemoveGroup, own
             required
           />
         </div>
-        <div className="w-full flex flex-wrap sm:flex-nowrap gap-x-2.5">
+        <div className="w-full flex flex-wrap sm:flex-nowrap gap-x-2.5 gap-y-3 sm:gap-y-0">
           <input 
             type="text" 
             name="phone" 

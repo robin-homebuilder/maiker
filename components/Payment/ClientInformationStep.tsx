@@ -123,7 +123,7 @@ export default function ClientInformationStep({ onNext } : Step1Props) {
       <h2 className='text-tertiary font-[800] text-[25px]'>Enter Client Information</h2>
       <p className='text-dark mb-3'>Enter client names and detail information for the project.</p>
       {ownerError && <p className="text-danger mb-3">{ownerError}</p>}
-      <form onSubmit={onSubmit} className="scrollable-content overflow-y-scroll max-h-[750px] pr-1 pb-2.5">
+      <form onSubmit={onSubmit} className="scrollable-content overflow-y-scroll max-h-full sm:max-h-[750px] pr-1 pb-2.5">
         {owners.length > 0 &&
           owners.map((owner, index) => (
             <div className="mb-4" key={index}>
@@ -137,10 +137,10 @@ export default function ClientInformationStep({ onNext } : Step1Props) {
             </div>
           ))
         }
-        <div className="flex gap-x-4">
-          <button type="button" className="text-tertiary font-[500] text-[16px] w-[200px] h-[42px] shadow-mainShadow border border-tertiary rounded-[20px] bg-white" onClick={addAdditionalOwner}>Add Additional Owner</button>
-          <button type="button" className="text-tertiary font-[500] text-[16px] w-[200px] h-[42px] shadow-mainShadow border border-tertiary rounded-[20px] bg-white" onClick={addCompanyOwner}>Add Company Owner</button>
-          <button type="button" className="text-tertiary font-[500] text-[16px] w-[200px] h-[42px] shadow-mainShadow border border-tertiary rounded-[20px] bg-white" onClick={addTrustOwner}>Add Trust Owner</button>
+        <div className="flex flex-wrap sm:flex-nowrap gap-x-4 gap-y-3 sm:gap-y-0">
+          <button type="button" className="text-tertiary font-[500] text-[16px] w-full sm:w-[200px] h-[42px] shadow-mainShadow border border-tertiary rounded-[20px] bg-white" onClick={addAdditionalOwner}>Add Additional Owner</button>
+          <button type="button" className="text-tertiary font-[500] text-[16px] w-full sm:w-[200px] h-[42px] shadow-mainShadow border border-tertiary rounded-[20px] bg-white" onClick={addCompanyOwner}>Add Company Owner</button>
+          <button type="button" className="text-tertiary font-[500] text-[16px] w-full sm:w-[200px] h-[42px] shadow-mainShadow border border-tertiary rounded-[20px] bg-white" onClick={addTrustOwner}>Add Trust Owner</button>
         </div>
         {/* <div className="mt-10">
           <h2 className='text-tertiary font-[800] text-[25px]'>Consultant Connect</h2>
@@ -157,7 +157,7 @@ export default function ClientInformationStep({ onNext } : Step1Props) {
           </div>
         </div> */}
         <div className="flex justify-end gap-x-2.5 mt-5">
-          <button type="submit" className="text-white bg-warning font-[500] text-[16px] rounded-[20px] w-[200px] h-[42px] shadow-mainShadow">Next</button>
+          <button type="submit" className="text-white bg-warning font-[500] text-[16px] rounded-[20px] w-full sm:w-[200px] h-[42px] shadow-mainShadow">Next</button>
         </div>
       </form>
     </>

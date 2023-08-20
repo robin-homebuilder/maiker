@@ -38,7 +38,7 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <div className="flex gap-x-2.5">
+            <div className="flex gap-x-2.5 w-full sm:w-auto justify-between">
               {NavigationLinksSecond.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <button type="button" className="bg-white text-secondary px-5 font-[600] rounded-[20px] h-[42px] flex items-center gap-x-0 sm:gap-x-2 shadow-mainShadow">
