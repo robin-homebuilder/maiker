@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Navbar page="home" />
       <section className="h-[900px] overflow-hidden relative">
-        <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.webp`} fill={true} priority={true} alt="Maiker House Project Footer Logo" className="absolute top-0 object-cover h-[inherit]"/>
+        <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.webp`} width={4000} height={2500} priority={true} alt="Maiker House Project Footer Logo" className="absolute top-0 object-cover h-[inherit]"/>
         <div className="z-10 relative max-w-[1250px] mx-auto mt-[150px] sm:mt-[200px]">
           <div className="w-full sm:w-[600px] px-5 sm:px-0">
             <h1 className="font-[800] mb-10 text-[30px] sm:text-[38px]">High quality contemporary and classic renovations builders to bring your home to life.</h1>
