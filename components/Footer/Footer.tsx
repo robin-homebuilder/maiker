@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="h-full sm:h-[482px] w-full relative">
         <div className="absolute h-full">
           <span className="bg-[#00000080] absolute w-full h-full" />
-          <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.png`} width={4000} height={2000} priority={true} alt="Maiker House Project Footer Logo" className="object-cover h-full"/>
+          <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.webp`} width={4000} height={2000} priority={true} alt="Maiker House Project Footer Logo" className="object-cover h-full"/>
         </div>
         <div className="max-w-[1250px] mx-auto items-center py-[30px] sm:py-[100px] relative z-10">
           <div className="flex flex-wrap sm:flex-nowrap gap-x-[30px] px-5 sm:px-0">

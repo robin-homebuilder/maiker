@@ -49,7 +49,7 @@ export default function StripeForm({ price, handlePrevious, handleSubmit } : Ste
 
       const clientSecret = await createPaymentIntent(paymentProps);
       
-      const {error} = await stripe.confirmPayment({
+      const { error } = await stripe.confirmPayment({
         elements,
         clientSecret,
         confirmParams: {
@@ -65,7 +65,12 @@ export default function StripeForm({ price, handlePrevious, handleSubmit } : Ste
         redirect: "if_required"
       });
 
-      handleSubmit();
+      if(error){
+        console.log(`error: ${error}`);
+      } else{
+        handleSubmit();
+      }
+
     } catch (error) {
       console.log(error);
     } finally {

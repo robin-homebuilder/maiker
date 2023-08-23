@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Navbar page="home" />
       <section className="h-[900px] overflow-hidden relative">
-        <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.png`} fill={true} alt="Maiker House Project Footer Logo" className="absolute top-0 object-cover h-[inherit]"/>
+        <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.webp`} fill={true} alt="Maiker House Project Footer Logo" className="absolute top-0 object-cover h-[inherit]"/>
         <div className="z-10 relative max-w-[1250px] mx-auto mt-[150px] sm:mt-[200px]">
           <div className="w-full sm:w-[600px] px-5 sm:px-0">
             <h1 className="font-[800] mb-10 text-[30px] sm:text-[38px]">High quality contemporary and classic renovations builders to bring your home to life.</h1>
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <div className='flex flex-wrap sm:flex-nowrap gap-x-10'>
             <div className='w-full sm:w-8/12'>
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Discover-Maiker-Construction.jpg`} width={820} height={767} alt="Discover Maiker Constructions" className="object-cover h-[250px] sm:h-[767px]"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Discover-Maiker-Construction.webp`} width={820} height={767} alt="Discover Maiker Constructions" className="object-cover h-[250px] sm:h-[767px]"/>
             </div>
             <div className='w-full sm:w-3/12 px-5 sm:px-0'>
               <div className="mb-2 flex flex-wrap justify-center mt-10 sm:mt-0">
@@ -81,35 +81,35 @@ export default function Home() {
               <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Home Renovations</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovations.png`} alt="Home Renovations" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Renovation.webp`} alt="Home Renovations" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-full h-[283px] sm:w-1/5 sm:h-auto">
               <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Home Extensions & Additions</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Extensions-and-Additions.jpg`} alt="Home Extensions & Additions" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Extensions-and-Additions.webp`} alt="Home Extensions & Additions" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-full h-[283px] sm:w-1/5 sm:h-auto">
               <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Contemporary Queenslander&rsquo;s</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.jpg`} alt="Contemporary Queenslander's" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.webp`} alt="Contemporary Queenslander's" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-full h-[283px] sm:w-1/5 sm:h-auto">
               <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Kitchens & Bathrooms</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Kitchens-and-Bathrooms.jpg`} alt="Kitchens & Bathrooms" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Kitchens-and-Bathrooms.webp`} alt="Kitchens & Bathrooms" className="object-cover" fill={true}/>
               </div>
             </div>
             <div className="relative w-full h-[283px] sm:w-1/5 sm:h-auto">
               <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Landscapes & Hardscapes</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Landscapes-and-Hardscapes.png`} alt="Landscapes & Hardscapes" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Landscapes-and-Hardscapes.webp`} alt="Landscapes & Hardscapes" className="object-cover" fill={true}/>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap sm:flex-nowrap mb-10">
             <div className="w-full sm:w-1/2 mb-2.5 sm:mb-0">
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Full-Design-and-Construction-Service.jpg`} width={620} height={391} alt="Full Design and Construction Service" className="object-cover w-auto"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Full-Design-and-Construction-Service.webp`} width={620} height={391} alt="Full Design and Construction Service" className="object-cover w-auto"/>
             </div>
             <div className="w-full sm:w-1/2 px-[50px] flex flex-col justify-center items-center">
               <h3 className="text-tertiary font-[800] text-[25px] text-center mb-5">Full Design & Construction Service</h3>
@@ -151,7 +151,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="w-full sm:w-1/2">
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.jpg`} width={620} height={391} alt="Quote Your Architect's Plans" className="object-cover w-auto"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.webp`} width={620} height={391} alt="Quote Your Architect's Plans" className="object-cover w-auto"/>
             </div>
           </div>
         </section>
@@ -178,7 +178,7 @@ export default function Home() {
             </p>
           </div>
           <div className="w-full h-[319px] sm:h-[600px] relative">
-            <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.png`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/>
+            <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.webp`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/>
           </div>
         </section>
       </main>

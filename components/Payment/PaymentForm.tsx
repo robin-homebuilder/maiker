@@ -9,6 +9,7 @@ import PaymentElement_Container from '../Stripe/PaymentElement';
 
 import { ClientInformationProps, ProjectInformationProps } from "@/types";
 import { createNewClient } from '@/services/newClientServices';
+import { processXero } from '@/services/xeroServices';
 
 interface PackageProps {
   price: number
@@ -43,8 +44,11 @@ export default function PaymentForm({ price } : PackageProps) {
   };
 
   const handleSubmit = async () => {
-
     await createNewClient({client_information: step1Data!, project_information: step2Data! });
+    
+    // const siteAddress = step2Data?.site_address;
+
+    // await processXero({client_information: step1Data!, site_address: siteAddress!, price: price });
 
     window.onbeforeunload = null;
 

@@ -29,7 +29,7 @@ export default function Design() {
               </div>
             </div>
             <div className='w-full sm:w-1/2 mb-5 sm:mb-0'>
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.jpg`} width={605} height={426} alt="Design My Home"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.webp`} width={605} height={426} alt="Design My Home"/>
             </div>
           </div>
         </div>
