@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
+import contactUs from '../../public/Contact-Us.webp'
 
 export default function Contact() {
   return (
@@ -14,7 +15,8 @@ export default function Contact() {
           </div>
           <div className="flex flex-wrap sm:flex-nowrap gap-x-10">
             <div className="w-full h-[319px] sm:w-[820px] sm:h-[528px] relative border border-[#C9C9C9] mb-5 sm:mb-0">
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Contact-Us.webp`} fill={true} alt="Contact Us" className="object-cover"/>
+              {/* <Image src={`${process.env.APP_S3_BUCKET}/assets/Contact-Us.webp`} fill={true} priority={true} sizes="(max-width: 820px) 100vw" alt="Contact Us" className="object-cover h-[319px] sm:h-[528px]"/> */}
+              <Image src={contactUs} alt="Contact Us" fill sizes="(max-width: 820px) 100vw" quality={100} priority={true} className="object-cover"/>
             </div>
             <div className="w-fit px-5 sm:px-0">
               <div className="mb-[60px]">

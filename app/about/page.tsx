@@ -13,7 +13,7 @@ export default function About() {
           </div>
           <div className='flex flex-wrap sm:flex-nowrap gap-x-10'>
             <div className='w-full sm:w-1/2 mb-5 sm:mb-0'>
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/About-Maiker-Construction.webp`} width={605} height={426} alt="About Maiker Constructions"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/About-Maiker-Construction.webp`} width={605} height={426} priority={true} className='w-full sm:w-[605px] h-full sm:h-[426px]' alt="About Maiker Constructions"/>
             </div>
             <div className='w-full sm:w-1/2 px-5 sm:px-0 text-center'>
               <h2 className='text-tertiary font-[700] mb-5 text-[23px] sm:text-[21px]'>Discover Why Maiker Constructions Is Your Best Choice</h2>

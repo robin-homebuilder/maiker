@@ -17,7 +17,7 @@ export default function Quote() {
           </div>
           <div className='flex flex-wrap sm:flex-nowrap gap-x-10 mb-[60px]'>
             <div className='w-full sm:w-1/2 mb-5 sm:mb-0'>
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Project-Budget.webp`} width={605} height={426} alt="Project Budget"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Project-Budget.webp`} priority={true} width={605} height={426} alt="Project Budget"/>
             </div>
             <div className='w-full sm:w-1/2 px-10'>
               <h2 className='text-tertiary font-[700] text-center mb-5 text-[24px] sm:text-[21px]'>Project Budget</h2>
@@ -45,7 +45,7 @@ export default function Quote() {
               </div>
             </div>
             <div className='w-full sm:w-1/2'>
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Project-Quotation.webp`} width={605} height={426} alt="Project Quotation"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Project-Quotation.webp`} priority={true} width={605} height={426} alt="Project Quotation"/>
             </div>
           </div>
         </div>
