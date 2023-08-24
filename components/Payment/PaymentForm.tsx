@@ -12,10 +12,11 @@ import { createNewClient } from '@/services/newClientServices';
 import { processXero } from '@/services/xeroServices';
 
 interface PackageProps {
-  price: number
+  price: number,
+  slug: string
 }
 
-export default function PaymentForm({ price } : PackageProps) {
+export default function PaymentForm({ price, slug } : PackageProps) {
   const router = useRouter();
   
   const [ step, setStep ] = useState<number>(1);
@@ -46,9 +47,9 @@ export default function PaymentForm({ price } : PackageProps) {
   const handleSubmit = async () => {
     await createNewClient({client_information: step1Data!, project_information: step2Data! });
     
-    // const siteAddress = step2Data?.site_address;
+    const siteAddress = step2Data?.site_address;
 
-    // await processXero({client_information: step1Data!, site_address: siteAddress!, price: price });
+    await processXero({client_information: step1Data!, site_address: siteAddress!, slug: slug });
 
     window.onbeforeunload = null;
 
@@ -61,7 +62,7 @@ export default function PaymentForm({ price } : PackageProps) {
     case 2:
       return <ProjectInformation onPrevious={handlePrevious} onNext={handleStep2Next} />;
     case 3:
-      return <PaymentElement_Container price={price} handlePrevious={handlePrevious} handleSubmit={handleSubmit}/>;
+      return <PaymentElement_Container price={price} handlePrevious={handlePrevious} handleSubmit={handleSubmit} client_information={step1Data!}/>;
     default:
       return null;
   }

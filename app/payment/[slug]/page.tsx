@@ -13,7 +13,7 @@ export default async function Payment({ params }: { params: { slug: string }}) {
           <h1 className='text-primary font-[800] text-center mb-10'>Payment Form</h1>
           <div className='flex flex-wrap sm:flex-nowrap gap-x-10 flex-col-reverse sm:flex-row'>
             <div className='w-full sm:w-8/12'>
-              <PaymentForm price={packageData.price}/>
+              <PaymentForm price={packageData.price} slug={slug}/>
             </div>
             <div className='w-full sm:w-4/12 mb-5 sm:mb-0'>
               <h2 className='text-tertiary font-[800] text-[25px] mb-4 sm:mb-[30px]'>Selected Package</h2>

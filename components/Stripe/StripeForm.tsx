@@ -8,15 +8,18 @@ import { createPaymentIntent } from "@/services/stripeServices";
 
 import { FaSpinner } from "react-icons/fa";
 
+import { ClientInformationProps } from "@/types";
+
 interface Step3Props {
   price: number,
   handlePrevious: () => void;
   handleSubmit: () => void;
+  client_information: ClientInformationProps
 }
 
-export default function StripeForm({ price, handlePrevious, handleSubmit } : Step3Props ) {
+export default function StripeForm({ price, handlePrevious, handleSubmit, client_information } : Step3Props ) {
   const [ isSubmitting, setIsSubmitting ] = useState(false);
-
+  
   const stripe = useStripe();
   const elements = useElements();
   const formRef = useRef<HTMLFormElement | null>(null); 
@@ -37,13 +40,8 @@ export default function StripeForm({ price, handlePrevious, handleSubmit } : Ste
 
       setIsSubmitting(true);
 
-      const formData = new FormData(formRef.current!);
-      const name = formData.get("name") as string;
-      const email = formData.get("email") as string;
-
       const paymentProps = {
-        customer_name: name,
-        email: email,
+        owner: client_information,
         amount: price
       }
 
@@ -70,11 +68,8 @@ export default function StripeForm({ price, handlePrevious, handleSubmit } : Ste
       } else{
         handleSubmit();
       }
-
     } catch (error) {
       console.log(error);
-    } finally {
-      // setIsSubmitting(false);
     }
   };
 

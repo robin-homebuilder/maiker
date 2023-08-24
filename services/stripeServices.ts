@@ -1,15 +1,16 @@
-// "use server";
+import { ClientInformationProps } from "@/types";
 
 type PaymentProps = {
-  customer_name: string,
-  email: string,
+  owner: ClientInformationProps,
   amount: number
 }
 
-export async function createPaymentIntent({ amount, customer_name, email } : PaymentProps){
+export async function createPaymentIntent({ amount, owner } : PaymentProps){
+  const user = owner.owners[0];
+  
   const data = {
-    customer_name,
-    email,
+    customer_name: `${user.first_name} ${user.last_name}`,
+    email: user.email,
     amount
   }
 

@@ -30,7 +30,7 @@ export default function Articles() {
       <section className="max-w-[1250px] mx-auto py-[60px]">
         <div className="flex flex-wrap sm:flex-nowrap gap-10 px-5 sm:px-0">
           {ArticlesList.map((item, index) => (
-            <div className="w-full sm:w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden shadow-secondShadow">
+            <div className="w-full sm:w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden shadow-secondShadow" key={index}>
               <div className="w-full h-[290px] relative">
                 <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.webp`} fill={true} alt="How to build a home" className="object-cover"/>
               </div>

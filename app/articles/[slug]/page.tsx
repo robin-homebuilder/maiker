@@ -30,7 +30,7 @@ export default async function Article() {
       <section className="max-w-[1250px] mx-auto py-[60px]">
         <div className="flex gap-10">
           {Articles.map((item, index) => (
-            <div className="w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden">
+            <div className="w-[390px] h-[513px] border border-primary rounded-[20px] overflow-hidden" key={index}>
               <div className="w-full h-[290px] relative">
                 <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.webp`} fill={true} alt="How to build a home" className="object-cover"/>
               </div>
