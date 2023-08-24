@@ -27,6 +27,7 @@ export async function processXero({ client_information, site_address, slug } : N
 			return false;
 		}
 	} catch (error) {
+		console.log(error)
 		throw error;
 	}
 }
