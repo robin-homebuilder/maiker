@@ -41,13 +41,13 @@ export default function About() {
               <div className='mb-5'>
                 <h2 className='text-tertiary font-[800] text-[25px] mb-3'>Jeremy Verhey</h2>
                 <p className='text-dark'>
-                  Jeremy Verhey is the general manager of Maiker Constructions and has 20 years experience in Carpentry, home design, development and project management.  
+                  General Manager Jeremy Verhey comes from a background in residential house building and design with some of Australia’s largest builders and brings 10 years project management experience working on large domestic and commercial projects throughout Australia.  Jeremy has 20 years experience in design, project management and home construction.
                 </p>
               </div>
               <div>
                 <h2 className='text-tertiary font-[800] text-[25px] mb-3'>Xavier Williams</h2>
                 <p className='text-dark'>
-                  Xavier Williams is the construction manager of Maiker Constructions and has 20 years experience in Carpentry and residential housing construction. 
+                  Construction Manager, Xavier Williams brings the onsite expertise that includes building architectural homes and some of Australia’s largest home builders display homes.  Xavier brings quality, and practicality to Maiker Constructions sites with over 20 years experience in carpentry and building.  
                 </p>
               </div>
             </div>

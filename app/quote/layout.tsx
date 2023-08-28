@@ -2,7 +2,7 @@ import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
 
 export const metadata = {
-  title: 'Quote My Home',
+  title: 'Quote My Home - Maiker Constructions',
   description: 'Quote My Home - Maiker Construction',
 }
 

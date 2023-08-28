@@ -49,8 +49,8 @@ export default function PaymentForm({ price, slug } : PackageProps) {
     
     const siteAddress = step2Data?.site_address;
 
-    const a = await processXero({client_information: step1Data!, site_address: siteAddress!, slug: slug });
-    console.log(a)
+    await processXero({client_information: step1Data!, site_address: siteAddress!, slug: slug });
+
     window.onbeforeunload = null;
 
     router.push("/payment/success");

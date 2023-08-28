@@ -16,10 +16,18 @@ interface ProjectImageProps {
 export default function ImageCard( { imageURL, imageBaseURL, title, other_image } : ProjectImageProps) {
   const [ openModal, setOpenModal ] = useState(false);
   
+  const showGallery = async () => {
+    if (window.innerWidth <= 768) {
+      document.documentElement.requestFullscreen();
+    }
+    // alert(window.screen.height)
+    setOpenModal(true);
+  }
+  
   return (
     <>
       <div className='w-full sm:w-[283px] h-[283px]'>
-        <button type="button" className='w-full h-full bg-black relative' onClick={() => setOpenModal(true)}>
+        <button type="button" className='w-full h-full bg-black relative' onClick={showGallery}>
           <Image src={`${process.env.APP_S3_BUCKET}${imageBaseURL}/${imageURL}`} fill={true} alt={title} className="object-cover"/>
         </button>
       </div>

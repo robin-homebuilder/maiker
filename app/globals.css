@@ -87,3 +87,7 @@
 .scrollable-content::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.slick-slider, .slick-list {
+  @apply w-full sm:w-auto h-full sm:h-auto
+}

@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar"
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Payment',
+  title: 'Payment - Maiker Constructions',
   description: 'About Maiker Construction`s',
 }
 
