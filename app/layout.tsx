@@ -2,6 +2,10 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Work_Sans } from 'next/font/google'
 
+import { Suspense } from 'react'
+
+import GoogleAnalytics from '@/components/Utils/GoogleAnalytics';
+
 const inter = Inter({ subsets: ['latin'] })
 
 const work_sans = Work_Sans({
@@ -21,6 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <GoogleAnalytics GA_MEASUREMENT_ID='G-DTWNPY5TKP'/>
+      </Suspense>
       <body className={work_sans.className}>
         {children}
       </body>
