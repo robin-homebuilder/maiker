@@ -17,8 +17,7 @@ export default function FileUpload({ onFileUploaded } : FileUploadProps) {
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
     onDrop,
     multiple: true,
-    accept: {'application/pdf': []},
-    maxSize: 2 * 1024 * 1024,
+    accept: {'application/pdf': []}
   });
 
   return (
@@ -31,7 +30,7 @@ export default function FileUpload({ onFileUploaded } : FileUploadProps) {
           <h3 className='text-tertiary text-[25px] font-[500] w-full text-center'>Drag and Drop File</h3>
           <h3 className='text-tertiary text-[25px] font-[500] w-full text-center'>or</h3>
           <button type="button" className="border border-tertiary bg-tertiary rounded-[20px] text-white text-[16px] font-[500] shadow-mainShadow w-[200px] h-[42px] mb-2.5">Browse</button>
-          <p className="text-dark text-center w-full">Max size 2MB and pdf format</p>
+          <p className="text-dark text-center w-full">Upload documents in pdf format</p>
           {isDragReject && <p className="text-danger">Files do not meet the specified requirements.</p>}
         </div>
       </div>

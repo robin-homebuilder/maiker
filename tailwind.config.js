@@ -19,7 +19,8 @@ module.exports = {
         dark: "#000000",
         warning: "#F66B0E",
         accent: "#F6F6F6",
-        danger: "#DC3545"
+        danger: "#DC3545",
+        fore: "#027ACA"
       },
       boxShadow: {
         'mainShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)',

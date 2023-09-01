@@ -31,12 +31,15 @@ export default function Footer() {
       <div className="h-full sm:h-[325px] w-full bg-secondary py-5 sm:py-[50px] z-10 relative px-5 sm:px-0">
         <div className="max-w-[1250px] mx-auto items-center">
           <div className="w-full flex flex-wrap sm:flex-nowrap justify-between items-center">
-            <div className="flex gap-x-0 sm:gap-x-[100px] justify-between sm:justify-start w-full sm:w-auto mb-4 sm:mb-0">
+            <div className="flex flex-wrap sm:flex-nowrap gap-x-5 sm:gap-x-[70px] gap-y-2.5 sm:gap-y-0 justify-between sm:justify-start w-full sm:w-auto mb-4 sm:mb-0">
               {NavigationLinks.map((item, index) => (
                 <Link href={item.link} key={index} className="text-white font-[400] text-[17px]">
                   {item.name}
                 </Link>
               ))}
+              <Link href="/privacy-policy" className="text-white font-[400] text-[17px]">
+                Privacy Policy
+              </Link>
             </div>
             <div className="flex gap-x-2.5 w-full sm:w-auto justify-between">
               {NavigationLinksSecond.map((item, index) => (
@@ -56,7 +59,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-row justify-start align-middle gap-x-2 text-white">
                 {SocialMediaLinks.map((item, index) => (
-                  <Link href={item.link} target="_blank" key={index}>
+                  <Link href={item.link} target="_blank" key={index} aria-label={item.name}>
                     <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
                       {<item.icon color="#205375" size="13"/>}
                     </span>
@@ -65,7 +68,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-full sm:w-[246px] mb-8 sm:mb-0">
-              <h3 className="font-[700] text-[18px]">Contact</h3>
+              <p className="font-[700] text-[18px]">Contact</p>
               <div className="mt-5">
                 <div className="flex gap-x-1 items-center mb-4"> 
                   <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
@@ -84,7 +87,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-full sm:w-[333px] mb-5 sm:mb-0">
-              <h3 className="font-[700] text-[18px]">Business</h3>
+              <p className="font-[700] text-[18px]">Business</p>
               <div className="mt-5">
                 <p className="mb-5">Avecco Pty Ltd t/a Maiker Constructions</p>
                 <p>ABN:36 123 456 789 QBCC: 123456</p>

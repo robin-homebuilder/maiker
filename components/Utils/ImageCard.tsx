@@ -20,7 +20,7 @@ export default function ImageCard( { imageURL, imageBaseURL, title, other_image 
     if (window.innerWidth <= 768) {
       document.documentElement.requestFullscreen();
     }
-    // alert(window.screen.height)
+    
     setOpenModal(true);
   }
   

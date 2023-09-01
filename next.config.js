@@ -2,8 +2,6 @@
 const nextConfig = {
   experimental: {
     appDir: true
-    // serverActions: true,
-    // serverComponentsExternalPackages: ["mongoose"],
   },
   env: {
     APP_S3_BUCKET: "https://maiker-contructions.s3.ap-southeast-2.amazonaws.com"

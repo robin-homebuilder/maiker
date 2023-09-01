@@ -75,16 +75,16 @@ export default function Navbar( { page } : PageProps ) {
             <div className="flex flex-row items-center gap-x-4 h-full">
               <div className="flex flex-row justify-center align-middle gap-x-2 text-white">
                 {SocialMediaLinks.map((item, index) => (
-                  <Link href={item.link} target="_blank" key={index}>
+                  <Link href={item.link} target="_blank" key={index} aria-label={item.name}>
                     <span className="w-[25px] h-[25px] bg-white rounded-full flex justify-center items-center">
                       {<item.icon color={`${(page == "home" && !scrolledPastSection) ? "#000000" : "#205375"}`} size="13"/>}
                     </span>
                   </Link>
                 ))}
               </div>
-              <div className={`${(page == "home" && !scrolledPastSection) ? "bg-[#000000b3]" : "bg-tertiary"} h-full`}>
+              <div className={`${(page == "home" && !scrolledPastSection) ? "bg-[#000000b3]" : "bg-fore"} h-full`}>
                 <Link href="/auth/login">
-                  <button type="button" className="flex gap-x-1 px-2 items-center h-full">
+                  <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full">
                     <FaRegUser size="13"/>
                     <p className="text-[14px]">Login</p>
                   </button>
@@ -116,7 +116,7 @@ export default function Navbar( { page } : PageProps ) {
             <div className="flex gap-x-2.5">
               {NavigationLinksSecond.map((item, index) => (
                 <Link href={item.link} key={index}>
-                  <button type="button" className={`${(page == "home" && !scrolledPastSection) ? "bg-white text-dark" : " bg-tertiary shadow-mainShadow"} px-5 rounded-[20px] h-[42px] flex items-center font-[600] gap-x-2`}>
+                  <button type="button" name={item.name} className={`${(page == "home" && !scrolledPastSection) ? "bg-white text-dark" : " bg-fore shadow-mainShadow"} px-5 rounded-[20px] h-[42px] flex items-center font-[600] gap-x-2`}>
                     {item.name} <FaChevronRight />
                   </button>
                 </Link>
@@ -137,7 +137,7 @@ export default function Navbar( { page } : PageProps ) {
             </div>
           </Link>
           <div className="flex justify-center items-center w-[30px] h-auto">
-            <button type="button" onClick={showHamburgerMenu} className={`w-full h-fit flex justify-center items-center ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-primary"}`}>
+            <button type="button" aria-label="hamburgerMenu" onClick={showHamburgerMenu} className={`w-full h-fit flex justify-center items-center ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-primary"}`}>
               <FaBars size={25}/>
             </button>
           </div>
@@ -145,7 +145,7 @@ export default function Navbar( { page } : PageProps ) {
       </div>
       <div className={`fixed top-0 right-0 h-full z-50 bg-tertiary ${showHamburger ? 'w-full' : 'w-0'} transition-all duration-300 ease-in-out overflow-x-hidden`}>
         <div className="p-5 w-full">
-          <button type="button" className="text-white text-[32px] mb-[30px]" onClick={hideHamburgerMenu}><CgClose /></button>
+          <button type="button" aria-label="close" className="text-white text-[32px] mb-[30px]" onClick={hideHamburgerMenu}><CgClose /></button>
           <div className="flex flex-wrap justify-center gap-y-[30px]">
             <Link href="/" onClick={removeOverflow}>
               <div className="w-[128px] h-[64px] relative">
@@ -163,7 +163,7 @@ export default function Navbar( { page } : PageProps ) {
               <div className="flex flex-wrap justify-center gap-y-3 gap-x-5 px-5">
                 {NavigationLinksSecond.map((item, index) => (
                   <Link href={item.link} key={index}>
-                    <button type="button" className={`bg-white text-tertiary shadow-mainShadow px-5 w-[200px] rounded-[20px] h-[42px] flex items-center text-[16px] font-[600] gap-x-2`} onClick={removeOverflow}>
+                    <button type="button" name={item.name} className={`bg-white text-fore shadow-mainShadow px-5 w-[200px] rounded-[20px] h-[42px] flex items-center text-[16px] font-[600] gap-x-2`} onClick={removeOverflow}>
                       {item.name} <FaChevronRight />
                     </button>
                   </Link>
@@ -172,7 +172,7 @@ export default function Navbar( { page } : PageProps ) {
             </nav>
             <div className="flex flex-row justify-start align-middle gap-x-4 text-white">
               {SocialMediaLinks.map((item, index) => (
-                <Link href={item.link} target="_blank" key={index}>
+                <Link href={item.link} target="_blank" key={index} aria-label={item.name}>
                   <span className="w-[32px] h-[32px] bg-white rounded-full flex justify-center items-center">
                     {<item.icon color="#205375" size="17"/>}
                   </span>

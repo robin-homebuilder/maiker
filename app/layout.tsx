@@ -5,6 +5,7 @@ import { Inter, Work_Sans } from 'next/font/google'
 import { Suspense } from 'react'
 
 import GoogleAnalytics from '@/components/Utils/GoogleAnalytics';
+import { FacebookPixelEvents } from '@/components/Utils/FacebookPixel';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <Suspense fallback={<p>Loading feed...</p>}>
         <GoogleAnalytics GA_MEASUREMENT_ID='G-DTWNPY5TKP'/>
+        <FacebookPixelEvents />
       </Suspense>
       <body className={work_sans.className}>
         {children}

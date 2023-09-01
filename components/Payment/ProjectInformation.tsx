@@ -13,6 +13,7 @@ interface ProjectInformationPageProps {
 
 export default function ProjectInformation({ onPrevious, onNext } : ProjectInformationPageProps) {
   const [ uploadedFiles, setUploadedFiles ] = useState<File[]>([]);
+  const [ showError, setShowError ] = useState(false);
 
   const [ formData, setFormData ] = useState<ProjectInformationProps>({
     site_address: '',
@@ -21,7 +22,13 @@ export default function ProjectInformation({ onPrevious, onNext } : ProjectInfor
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if(uploadedFiles.length == 0){
+      setShowError(true);
+      return;
+    }
     
+    setShowError(false);
     onNext(formData);
   }
 
@@ -32,6 +39,7 @@ export default function ProjectInformation({ onPrevious, onNext } : ProjectInfor
 
   const handleFileUpload = (files: File[]) => {
     setUploadedFiles((prevFiles) => [...prevFiles, ...files]);
+    setShowError(false);
   };
 
   const handleRemoveFile = (indexToRemove: number) => {
@@ -90,6 +98,7 @@ export default function ProjectInformation({ onPrevious, onNext } : ProjectInfor
               </div>
             </div>
           </div>
+          {showError && <p className="text-danger mt-2.5 font-[500]">Upload documents is required</p>}
         </div>
         <div className="flex justify-end gap-x-2.5 mt-5">
           <button type="submit" className="text-warning bg-white border border-warning font-[500] text-[16px] rounded-[20px] w-[200px] h-[42px] shadow-mainShadow" onClick={onPrevious}>Back</button>

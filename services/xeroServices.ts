@@ -2,16 +2,16 @@ import { ClientInformationProps } from "@/types";
 
 type NewClientInformationProps = {
   client_information: ClientInformationProps,
-	site_address: string,
+	project_id: string,
 	slug: string
 }
   
-export async function processXero({ client_information, site_address, slug } : NewClientInformationProps){
-	const { owners } = client_information
-	
+export async function processXero({ client_information, project_id, slug } : NewClientInformationProps){
+	const { owners } = client_information;
+
 	try {
     const formData = new FormData();
-    formData.append("site_address", site_address);
+    formData.append("project_id", project_id);
     formData.append("slug", slug);
     formData.append("owners", JSON.stringify(owners));
 

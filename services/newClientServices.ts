@@ -19,13 +19,15 @@ export async function createNewClient({ client_information, project_information 
       formData.append(`files`, file);
     }
 
-    await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/client`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/client`, {
       method: 'POST',
       body: formData,
       cache: "no-store"
     });
 
-    return 1;
+    const data = await response.json();
+    
+    return data.project_id;
   } catch (error) {
     console.error('Error while creating payment intent:', error);
     throw error;

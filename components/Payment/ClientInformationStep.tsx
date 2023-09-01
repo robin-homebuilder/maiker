@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-import { TfiClose } from "react-icons/tfi";
+import { useState } from "react";
 
 import { OwnerProps, ClientInformationProps, CompanyOwnerProps, TrusteeOwnerProps } from "@/types";
 

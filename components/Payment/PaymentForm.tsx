@@ -45,11 +45,9 @@ export default function PaymentForm({ price, slug } : PackageProps) {
   };
 
   const handleSubmit = async () => {
-    await createNewClient({client_information: step1Data!, project_information: step2Data! });
-    
-    const siteAddress = step2Data?.site_address;
+    const project_id = await createNewClient({client_information: step1Data!, project_information: step2Data! });
 
-    await processXero({client_information: step1Data!, site_address: siteAddress!, slug: slug });
+    await processXero({client_information: step1Data!, project_id: project_id!, slug: slug });
 
     window.onbeforeunload = null;
 

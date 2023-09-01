@@ -55,7 +55,7 @@ export default function TrustOwner({ handleInputChange, handleRemoveGroup, owner
           />
           <input 
             type="text" 
-            name="tr_lalast_namest_name" 
+            name="last_name" 
             placeholder="Contact Last Name*" 
             value={owner.last_name}
             onChange={handleInputChange}
