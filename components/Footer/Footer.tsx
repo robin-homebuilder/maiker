@@ -90,7 +90,7 @@ export default function Footer() {
               <p className="font-[700] text-[18px]">Business</p>
               <div className="mt-5">
                 <p className="mb-5">Avecco Pty Ltd t/a Maiker Constructions</p>
-                <p>ABN:36 123 456 789 QBCC: 123456</p>
+                <p>ABN:36 123 456 789 QBCC: <a href="https://www.onlineservices.qbcc.qld.gov.au/OnlineLicenceSearch/VisualElements/ShowDetailResultContent.aspx?LicNO=&licCat=LIC&name=avecco&firstName=&searchType=Contractor&FromPage=SearchContr" target="_blank">1263544</a></p>
               </div>
             </div>
             <div className="w-[246px] flex justify-start sm:justify-end">

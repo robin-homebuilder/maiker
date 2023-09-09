@@ -52,8 +52,8 @@ export default function About() {
               </div>
             </div>
             <div className='w-full sm:w-1/2'>
-              <div className="bg-gray-400 w-full h-full">
-
+              <div className="bg-gray-400 w-full h-full relative">
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Managers.webp`} fill priority={true} className='object-cover h-auto w-auto' alt="About Maiker Constructions"/>
               </div>
             </div>
           </div>

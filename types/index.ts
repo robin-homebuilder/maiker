@@ -70,6 +70,84 @@ export interface ProjectInformationProps {
   files: File[]
 }
 
-export interface NewClientInformationProps {
+export interface ExternalLink {
+  title: string,
+  url: string
+}
 
+export interface OtherLinks {
+  title: string,
+  slug: string
+}
+
+export interface ArticleProps {
+  title: String,
+  sub_title: string,
+  author: String,
+  content: string,
+  createdAt: string,
+  with_sidebar: boolean,
+  external_links: [ExternalLink]
+}
+
+export interface ArticlesProps {
+  title: String,
+  sub_title: string,
+  slug: string,
+  image: string
+}
+
+export interface MailAddressProps {
+  address: string,
+  address_line_1: string,
+  address_line_2: string,
+  suburb: string,
+  state: string,
+  postcode: string
+}
+
+export interface SiteAddressProps {
+  address: string,
+  address_line_1: string,
+  address_line_2: string,
+  suburb: string,
+  state: string,
+  postcode: string
+}
+
+export interface ClientOwnerProps {
+  type: "individual_owner" | "company_owner" | "trust_owner";
+  first_name: string;
+  last_name: string;
+  phone: string;
+  email: string;
+  company_name?: string;
+  abn?: string;
+  trustee_name?: string;
+  trust_name?: string;
+}
+
+export interface ProjectInformationOneProps {
+  project_type: string,
+  complete_plan: string,
+  architect_name: string,
+  architect_contact: string,
+  project_checkbox: string[],
+  files: File[]
+}
+
+export interface ProjectInformationTwoProps {
+  commence: string,
+  extensions: string,
+  project_budget: string,
+  completing_plan: string,
+  builder?: string,
+  quoting: string,
+  proposed_works: string
+}
+
+export interface ClientBriefProps {
+  brief_information: string,
+  client_checkbox: string[],
+  other_requirements?: string
 }

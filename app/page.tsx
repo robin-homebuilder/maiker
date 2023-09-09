@@ -18,7 +18,7 @@ export default function Home() {
         <div className="z-10 relative max-w-[1250px] mx-auto mt-[150px] sm:mt-[200px]">
           <div className="w-full sm:w-[600px] px-5 sm:px-0">
             <h1 className="font-[800] mb-10 text-[30px] sm:text-[38px]">High quality contemporary renovation builder to bring your home to life.</h1>
-            <p className="font-[500] text-[18px] mb-10">Maker Constructions designs and builds home renovations and additions projects. We specialize in timber construction and modernizing character homes including providing a complete landscape and hardscape solutions.</p>
+            <p className="font-[500] text-[18px] mb-10">Maiker Constructions designs and builds custom home renovations and additions projects. We specialize in timber construction and the modernisation of character homes, offering a comprehensive landscape and hardscape solution.</p>
             <ScrollButtonHome targetSectionId="footer"/>
             <div className="w-[150px] h-[94px] relative">
               <Image src="/MBA_ProudMember.svg" fill={true} alt="Master Builders Queensland - Proud Member"/>
