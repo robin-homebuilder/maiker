@@ -79,7 +79,7 @@ export default async function Article({ params }: { params: { slug: string }}) {
               <div className="w-full h-[238px] relative">
                 <Image src="/Article-CallBack.webp" alt="Article Callback" width={300} height={239} className="absolute top-0 left-0 object-cover"/>
                 <div className="absolute top-0 left-0 w-full h-full bg-[#00000080]"></div>
-                <div className="flex flex-wrap justify-center items-center px-3 z-10 mt-5">
+                <div className="flex flex-wrap justify-center items-center px-3 z-10 mt-5 pt-5 relative">
                   <p className="text-white text-[18px] font-[800] text-center mb-5">Request a Call Back</p>
                   <p className="text-white text-[16px] text-center mb-5">Lets start the process! Reach out for a call back to discuss your project and visit your site or home.</p>
                   <ScrollButtonHome targetSectionId="footer"/>

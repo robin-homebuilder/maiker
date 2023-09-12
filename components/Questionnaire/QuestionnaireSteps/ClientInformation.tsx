@@ -20,25 +20,6 @@ export default function ClientInformation({ handleNext, step1Data } : Step1Props
       last_name: "",
       phone: "",
       email: "",
-    },
-    {
-      type: "company_owner",
-      first_name: "",
-      last_name: "",
-      phone: "",
-      email: "",
-      company_name: "",
-      abn: "",
-    },
-    {
-      type:"trust_owner",
-      trustee_name: "",
-      trust_name: "",
-      abn: "",
-      first_name: "",
-      last_name: "",
-      phone: "",
-      email: ""
     }
   ]);
   
@@ -130,7 +111,7 @@ export default function ClientInformation({ handleNext, step1Data } : Step1Props
   return (
     <>
       <h2 className="text-tertiary text-[25px] font-[800]">1. Client Information</h2>
-      <p className="text-dark text-[16px] font-[500]">Enter client names and detail information for the project.</p>
+      <p className="text-dark text-[16px] font-[500]">Enter client information for the project.</p>
       {ownerError && <p className="text-danger mb-3">{ownerError}</p>}
       <form onSubmit={onSubmit} className="max-h-full pr-1 pb-2.5 mt-[25px]" autoComplete="off">
         {owners.length > 0 &&

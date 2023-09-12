@@ -42,7 +42,7 @@ export default async function Articles() {
               </div>
               <div className="px-[30px] py-5">
                 <h2 className="text-tertiary text-[24px] font-[800] line-clamp-2 text-center">{item.title}</h2>
-                <p className="text-dark text-[16px] text-center line-clamp-3 mb-2">{item.sub_title}</p>
+                <p className="text-dark text-[16px] text-center line-clamp-3 mb-2 h-[75px]">{item.sub_title}</p>
                 <div className="flex justify-center">
                   <Link href={`/articles/${item.slug}`}>
                     <button type="button" className="bg-warning h-10 rounded-[20px] px-[15px] flex items-center justify-center font-[500] text-[15px] w-[180px] shadow-mainShadow">View Article&nbsp;&nbsp;&nbsp;&nbsp;<FaChevronRight/></button>

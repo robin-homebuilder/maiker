@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link"
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { FaPhone, FaEnvelope, FaRegUser, FaChevronRight, FaBars } from "react-icons/fa"
+import { FaPhone, FaEnvelope, FaRegUser, FaChevronRight, FaBars, FaChevronDown } from "react-icons/fa"
 import { CgClose } from "react-icons/cg";
 
 import { NavigationLinks, NavigationLinksSecond } from "@/libs/navigationLinks";
@@ -17,7 +17,23 @@ interface PageProps {
 
 export default function Navbar( { page } : PageProps ) {
   const [ scrolledPastSection, setScrolledPastSection ] = useState(false);
-  const [ showHamburger, setShowHamburger ] = useState(false);
+  const [ showHamburger, setShowHamburger ] = useState<boolean>(false);
+  const [ showDropdown, setShowDropdown ] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleScroll = () => {
     const sectionHeight = 10;
@@ -50,6 +66,14 @@ export default function Navbar( { page } : PageProps ) {
   const removeOverflow = () => {
     document.body.classList.remove("overflow-hidden");
   }
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const closeDropdown = () => {
+    setShowDropdown(false);
+  };
   
   return (
     <>
@@ -108,6 +132,22 @@ export default function Navbar( { page } : PageProps ) {
           <nav className="flex gap-x-10 items-center">
             <div className="flex gap-x-10">
               {NavigationLinks.map((item, index) => (
+                item.link == "" ?
+                  <div className="relative" key={index} ref={dropdownRef}>
+                    <button type="button" className={`${(page == "home" && !scrolledPastSection) ? "text-white" : "text-dark"} font-[500] flex justify-center items-center gap-x-1`} onClick={toggleDropdown}>
+                      {item.name} <div className={`${showDropdown && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div>
+                    </button>
+                    {showDropdown && (
+                      <div className={`absolute top-full -left-5 shadow-mainShadow w-[200px] rounded-[20px] mt-2 ${(page == "home" && !scrolledPastSection) ? "bg-none" : "bg-white"}`}>
+                        {item.dropdownItems?.map((dropdownItem, i) => (
+                          <Link href={dropdownItem.link} key={i} className={`block px-5 py-3 text-[16px] font-[500] ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-dark"}`}>
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                :
                 <Link href={item.link} key={index} className={`${(page == "home" && !scrolledPastSection) ? "text-white" : "text-dark"} font-[500]`}>
                   {item.name}
                 </Link>

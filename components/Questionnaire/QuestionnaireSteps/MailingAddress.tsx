@@ -2,7 +2,11 @@ import Link from "next/link";
 
 import { useState } from "react";
 
+import Select from 'react-select';
+
 import { MailAddressProps } from "@/types";
+import AutoCompletePlace from "@/components/Utils/GooglePlaceAutoComplete";
+import { MailingAddressOptions } from "@/libs/selectOptions";
 
 interface Step2Props {
   handleNext: (data: MailAddressProps) => void;
@@ -20,6 +24,8 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
     postcode: ""
   });
 
+  const [ addressState, setAddressState ] = useState(step2Data?.state ? {value: step2Data.state, label: step2Data.state} : null);
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -34,21 +40,20 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
     }));
   };
 
+  const handleSelectChange = (selectedOption: any) => {
+    setAddressState(selectedOption);
+    setFormValues((prevData) => ({...prevData,  state: selectedOption.value}));
+  };
+
   return (
     <>
       <h2 className="text-tertiary text-[25px] font-[800]">2. Mailing Address</h2>
       <p className="text-dark text-[16px] font-[500]">Provide a single mailing address for any hard copy correspondance.</p>
       <form className="mt-[25px]" onSubmit={onSubmit} autoComplete="off">
         <div className="w-[620px]">
-          <input 
-            type="text" 
-            name="address" 
-            placeholder="Start Typing Address*"
-            value={formValues.address}
-            onChange={handleInputChange}
-            className="border border-tertiary rounded-[20px] h-[42px] w-full"
-            required
-          />
+          <div className="h-[42px]">
+            <AutoCompletePlace setFormValues={setFormValues} formValues={formValues}/>
+          </div>
           <hr className="py-0 my-4 border-[#CECECE]"/>
           <input 
             type="text" 
@@ -64,9 +69,8 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
             name="address_line_2" 
             value={formValues.address_line_2}
             onChange={handleInputChange}
-            placeholder="Address Line 2*"
+            placeholder="Address Line 2"
             className="border border-tertiary rounded-[20px] h-[42px] w-full mb-4"
-            required
           />
           <input 
             type="text" 
@@ -78,7 +82,57 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
             required
           />
           <div className="w-full flex gap-x-[30px]">
-            <input 
+            <div className="w-1/2">
+              <Select
+                options={MailingAddressOptions}
+                value={addressState}
+                onChange={handleSelectChange}
+                placeholder="State*"
+                isSearchable={false}
+                required
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    borderColor: state.isFocused ? "#358AC3" : "#358AC3",
+                    width: "100%",
+                    height: "42px",
+                    borderRadius: "20px",
+                    color: "black",
+                    paddingLeft: "20px",
+                    outline: "none",
+                    ":hover": {
+                      borderColor: "#358AC3"
+                    },
+                    borderWidth: state.isFocused ? "1px" : "1px",
+                  }),
+                  option: (provided, state) => ({
+                    ...provided,
+                    width: "100%",
+                    color: state.isSelected ? 'white' : "black",
+                    backgroundColor: state.isSelected ? '#358AC3' : 'white',
+                    ":hover": {
+                      backgroundColor: "lightgray"
+                    },
+                    zIndex: "120"
+                  }),
+                  menu: (provided) => ({
+                    ...provided,
+                    width: '100%',
+                    marginTop: "0px",
+                    zIndex: "120"
+                  }),
+                  valueContainer: (provided) => ({
+                    ...provided,
+                    paddingLeft: '0px',
+                  }),
+                  dropdownIndicator: (provided) => ({
+                    ...provided,
+                    color: 'black',
+                  }),
+                }}
+              />
+            </div>
+            {/* <input 
               type="text" 
               name="state" 
               value={formValues.state}
@@ -86,14 +140,14 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
               placeholder="State*"
               className="border border-tertiary rounded-[20px] h-[42px] w-full"
               required
-            />
+            /> */}
             <input 
               type="text" 
               name="postcode" 
               value={formValues.postcode}
               onChange={handleInputChange}
               placeholder="Postcode*"
-              className="border border-tertiary rounded-[20px] h-[42px] w-full"
+              className="border border-tertiary rounded-[20px] h-[42px] w-1/2"
               required
             />
           </div>

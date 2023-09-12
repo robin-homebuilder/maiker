@@ -83,6 +83,7 @@ export default function QuestionnaireForm() {
 
   const handlePrevious = () => {
     setStep(step - 1);
+    window.scrollTo(0, 0);
   }
 
   return (

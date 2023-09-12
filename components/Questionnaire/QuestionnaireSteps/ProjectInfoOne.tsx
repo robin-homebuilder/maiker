@@ -2,92 +2,31 @@
 
 import Link from "next/link";
 
-import FileUpload from "@/components/Utils/FileUpload";
-
-import { convertBytesToSize } from "@/libs/convertSize";
-
 import { ChangeEvent, useEffect, useState } from "react";
 import { TfiClose } from "react-icons/tfi";
-
 import Select from 'react-select';
 
 import { ProjectInformationOneProps } from "@/types";
+
+import FileUpload from "@/components/Utils/FileUpload";
+
+import { ProjectTypeOptions, YesNoOptions } from "@/libs/selectOptions";
+import { convertBytesToSize } from "@/libs/convertSize";
+import { ProjectOneCheckboxOptions } from "@/libs/checkboxOptions";
 
 interface Step4Props {
   handleNext: (data: ProjectInformationOneProps) => void;
   handlePrevious: () => void;
   step4Data: ProjectInformationOneProps | null;
 }
-
-const options = [
-  { value: 'Home Renovation', label: 'Home Renovation' },
-  { value: 'Addition / Extension', label: 'Addition / Extension' },
-  { value: 'House Raise', label: 'House Raise' },
-  { value: 'House Raise and Build Under', label: 'House Raise and Build Under' },
-  { value: 'New Home', label: 'New Home' }
-];
-
-const optionsYes = [
-  { value: 'Yes', label: 'Yes' },
-  { value: 'No', label: 'No' }
-];
-
-const checkboxOptions = [
-  {
-    value: "Concept Home Designs",
-    id: "concept_home_designs"
-  },
-  {
-    value: "Tender Drawings",
-    id: "tender_drawings"
-  },
-  {
-    value: "Construction Drawings",
-    id: "construction_drawings"
-  },
-  {
-    value: "Development Approval",
-    id: "development_approval"
-  },
-  {
-    value: "Building Approval",
-    id: "building_approval"
-  },
-  {
-    value: "Contour & Feature Survey",
-    id: "contour_feature_survey"
-  },
-  {
-    value: "Soil Test (Geotechnical Report)",
-    id: "soil_test"
-  },
-  {
-    value: "Wind Classification",
-    id: "wind_classification"
-  },
-  {
-    value: "Drainage Plans",
-    id: "drainage_plans"
-  },
-  {
-    value: "Services Information",
-    id: "services_information"
-  },
-  {
-    value: "Any Consultant Reports",
-    id: "consultant_reports"
-  },
-  {
-    value: "I have no idea what I have been given",
-    id: "no_idea"
-  },
-]
             
 export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data } : Step4Props) {
   const [ uploadedFiles, setUploadedFiles ] = useState<File[]>(step4Data?.files || []);
 
   const [ projectType, setProjectType ] = useState(step4Data?.project_type ? {value: step4Data.project_type, label: step4Data.project_type} : null);
   const [ planToComplete, setPlanToComplete ] = useState(step4Data?.complete_plan ? {value: step4Data.project_type, label: step4Data.complete_plan} : null);
+
+  const [ showArchitect, setShowArchitect ] = useState(false);
 
   const [ formData, setFormData ] = useState<ProjectInformationOneProps>(step4Data || {
     project_type: "",
@@ -112,6 +51,14 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
   const handleSelectChangePlan = (selectedOption: any) => {
     setPlanToComplete(selectedOption);
     setFormData((prevData) => ({...prevData,  complete_plan: selectedOption.value}));
+
+    if(selectedOption.value == "Yes"){
+      setShowArchitect(true);
+    } else{
+      setShowArchitect(false);
+      setFormData((prevData) => ({...prevData,  architect_name: ""}));
+      setFormData((prevData) => ({...prevData,  architect_contact: ""}));
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -163,7 +110,7 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">What type of project type does your enquiry relate to?</p>
           <Select
-            options={options}
+            options={ProjectTypeOptions}
             value={projectType}
             onChange={handleSelectChange}
             placeholder="Insert Project Type"
@@ -212,7 +159,7 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">Do you have plans for your Home Construction project or are you in process of completing plans?</p>
           <Select
-            options={optionsYes}
+            options={YesNoOptions}
             value={planToComplete}
             onChange={handleSelectChangePlan}
             placeholder="Yes / No"
@@ -258,33 +205,35 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
             }}
           />
         </div>
-        <div className="mb-7">
-          <p className="text-dark text-[16px] font-[500] mb-3">Who is your Architect or Home Designer?</p>
-          <div className="w-[620px] flex flex-wrap gap-y-3">
-            <input 
-              type="text" 
-              name="architect_name" 
-              value={formData.architect_name}
-              onChange={handleInputChange}
-              placeholder="Insert Name*"
-              className="border border-tertiary rounded-[20px] h-[42px] w-full"
-              required
-            />
-            <input 
-              type="text" 
-              name="architect_contact" 
-              value={formData.architect_contact} 
-              onChange={handleInputChange}
-              placeholder="Insert Contact Number*"
-              className="border border-tertiary rounded-[20px] h-[42px] w-full"
-              required
-            />
+        {showArchitect &&
+          <div className="mb-7">
+            <p className="text-dark text-[16px] font-[500] mb-3">Who is your Architect or Home Designer?</p>
+            <div className="w-[620px] flex flex-wrap gap-y-3">
+              <input 
+                type="text" 
+                name="architect_name" 
+                value={formData.architect_name}
+                onChange={handleInputChange}
+                placeholder="Insert Name*"
+                className="border border-tertiary rounded-[20px] h-[42px] w-full"
+                required
+              />
+              <input 
+                type="text" 
+                name="architect_contact" 
+                value={formData.architect_contact} 
+                onChange={handleInputChange}
+                placeholder="Insert Contact Number*"
+                className="border border-tertiary rounded-[20px] h-[42px] w-full"
+                required
+              />
+            </div>
           </div>
-        </div>
+        }
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">Please select from the following list if you have any of the following:</p>
           <div className="w-4/5 flex flex-wrap gap-y-5">
-            {checkboxOptions.map((item,index) => (
+            {ProjectOneCheckboxOptions.map((item,index) => (
               <div className="flex justify-start items-center gap-x-2.5 w-1/3" key={index}>
                 <input type="checkbox" className="custom-checkbox" onChange={handleCheckboxChange} value={item.value} id={item.id} checked={formData.project_checkbox.includes(item.value)}/>
                 <label htmlFor={item.id} className="text-tertiary cursor-pointer">{item.value}</label>

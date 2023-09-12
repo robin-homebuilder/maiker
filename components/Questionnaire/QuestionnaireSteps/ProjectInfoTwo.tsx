@@ -2,8 +2,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 import Select from 'react-select';
+import { PiCurrencyDollarBold } from "react-icons/pi";
 
 import { ProjectInformationTwoProps } from "@/types";
+import { YesNoOptions } from "@/libs/selectOptions";
 
 interface Step5Props {
   handleNext: (data: ProjectInformationTwoProps) => void;
@@ -11,13 +13,7 @@ interface Step5Props {
   step5Data: ProjectInformationTwoProps | null;
 }
 
-const optionsYes = [
-  { value: 'Yes', label: 'Yes' },
-  { value: 'No', label: 'No' }
-];
-
 export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data } : Step5Props) {
-
   const [ formValues, setFormValues ] = useState(step5Data || {
     commence: "",
     extensions: "",
@@ -40,6 +36,7 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
       setShowBuilder(true)
     } else{
       setShowBuilder(false)
+      setFormValues((prevData) => ({...prevData,  builder: ""}));
     }
   };
 
@@ -87,20 +84,24 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
         </div>
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-3">Do you have a project budget?</p>
-          <input 
-            type="number" 
-            name="project_budget" 
-            value={formValues.project_budget}
-            onChange={handleInputChange}
-            placeholder="Insert Amount*"
-            className="border border-tertiary rounded-[20px] h-[42px] w-[620px] no-spinners"
-            required
-          />
+          <div className="w-[620px] relative">
+            <div className="absolute top-0 left-4 h-full flex justify-center items-center">
+              <PiCurrencyDollarBold color="black" size={15}/>
+            </div>
+            <input 
+              type="number" 
+              name="project_budget" 
+              value={formValues.project_budget}
+              onChange={handleInputChange}
+              className="border border-tertiary rounded-[20px] h-[42px] w-full no-spinners pl-[35px]"
+              required
+            />
+          </div>
         </div>
         <div className="mb-7">
-          <p className="text-dark text-[16px] font-[500] mb-4">Do you have plans for your Home Construction project or are you in process of completing plans?</p>
+          <p className="text-dark text-[16px] font-[500] mb-4">Have you ever Built/Renovated or Extended before?</p>
           <Select
-            options={optionsYes}
+            options={YesNoOptions}
             value={built}
             onChange={handleSelectChangePlan}
             placeholder="Yes / No"

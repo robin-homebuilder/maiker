@@ -2,49 +2,17 @@ import Link from "next/link";
 
 import { ChangeEvent, useRef, useState } from "react";
 
-import { ClientBriefProps } from "@/types";
 import { FaSpinner } from "react-icons/fa";
+
+import { ClientBriefProps } from "@/types";
+
+import { ClientBriefCheckboxOptions } from "@/libs/checkboxOptions";
 
 interface Step6Props {
   handleNext: (data: ClientBriefProps) => void;
   handlePrevious: (data: ClientBriefProps) => void;
   step6Data: ClientBriefProps | null;
 }
-
-const checkboxOptions = [
-  {
-    value: "Discussion / Advice",
-    id: "discussion_advice"
-  },
-  {
-    value: "Architect or Home Designer",
-    id: "architect_home_designer"
-  },
-  {
-    value: "Building Approval Documentation",
-    id: "building_approval_documentation"
-  },
-  {
-    value: "Assistance obtaining Building Approval",
-    id: "assistance"
-  },
-  {
-    value: "Soil Test (Geotechnical Report)",
-    id: "soil_test"
-  },
-  {
-    value: "Wind Classification",
-    id: "wind_classification"
-  },
-  {
-    value: "Contour and Feature Survey",
-    id: "contour_feature_survey"
-  },
-  {
-    value: "Budget Cost Plan of Current Plans",
-    id: "budget_cost"
-  }
-]
 
 export default function ClientBrief({ handleNext, handlePrevious, step6Data } : Step6Props) {
   const [ isSubmitting, setIsSubmitting ] = useState(false);
@@ -131,7 +99,7 @@ export default function ClientBrief({ handleNext, handlePrevious, step6Data } : 
           <p className="text-dark text-[16px] font-[500] mb-3">What do you need next in order to proceed with your proposed project?</p>
           <p className="text-dark text-[15px] mb-4">The stage of home design and planning can be quite time-intensive, but meticulous attention to detail is crucial. By collecting as much information as possible at this stage, we can minimize potential extended delays in the future.</p>
           <div className="w-4/5 flex flex-wrap gap-y-5 mb-4">
-            {checkboxOptions.map((item,index) => (
+            {ClientBriefCheckboxOptions.map((item,index) => (
               <div className="flex justify-start items-center gap-x-2.5 w-1/3" key={index}>
                 <input type="checkbox" className="custom-checkbox" id={item.id} value={item.value} onChange={handleCheckboxChange} checked={formValues.client_checkbox.includes(item.value)}/>
                 <label htmlFor={item.id} className="text-tertiary cursor-pointer">{item.value}</label>

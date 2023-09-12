@@ -8,6 +8,32 @@ export const NavigationLinks = [
     link: "/projects"
   },
   {
+    name: "Services",
+    link: "",
+    dropdownItems: [
+      {
+        name: "Home Renovation",
+        link: "/au-home-renovation",
+      },
+      {
+        name: "Heritage Character Homes",
+        link: "/au-heritage-character-homes",
+      },
+      {
+        name: "Custom New Homes",
+        link: "/au-custom-new-homes",
+      },
+      {
+        name: "Home Additions",
+        link: "/au-home-additions",
+      },
+      {
+        name: "Home Raising",
+        link: "/au-home-raising",
+      },
+    ]
+  },
+  {
     name: "Articles",
     link: "/articles"
   },
