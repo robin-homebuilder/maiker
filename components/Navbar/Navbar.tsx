@@ -138,9 +138,9 @@ export default function Navbar( { page } : PageProps ) {
                       {item.name} <div className={`${showDropdown && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div>
                     </button>
                     {showDropdown && (
-                      <div className={`absolute top-full -left-5 shadow-mainShadow w-[200px] rounded-[20px] mt-2 ${(page == "home" && !scrolledPastSection) ? "bg-none" : "bg-white"}`}>
+                      <div className={`absolute top-full -left-5 shadow-[0px_2px_4px_1px_rgba(0,0,0,0.75)] w-[200px] rounded-[20px] mt-2 ${(page == "home" && !scrolledPastSection) ? "bg-none" : "bg-white"}`}>
                         {item.dropdownItems?.map((dropdownItem, i) => (
-                          <Link href={dropdownItem.link} key={i} className={`block px-5 py-3 text-[16px] font-[500] ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-dark"}`}>
+                          <Link href={dropdownItem.link} key={i} className={`block px-5 py-3 font-[500] ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-dark"}`}>
                             {dropdownItem.name}
                           </Link>
                         ))}
@@ -184,7 +184,7 @@ export default function Navbar( { page } : PageProps ) {
         </div>
       </div>
       <div className={`fixed top-0 right-0 h-full z-50 bg-tertiary ${showHamburger ? 'w-full' : 'w-0'} transition-all duration-300 ease-in-out overflow-x-hidden`}>
-        <div className="p-5 w-full">
+        <div className="px-5 py-3 w-full">
           <button type="button" aria-label="close" className="text-white text-[32px] mb-[30px]" onClick={hideHamburgerMenu}><CgClose /></button>
           <div className="flex flex-wrap justify-center gap-y-[30px]">
             <Link href="/" onClick={removeOverflow}>
@@ -195,6 +195,22 @@ export default function Navbar( { page } : PageProps ) {
             <nav className="flex flex-wrap items-center w-[-webkit-fill-available] -mx-5 gap-y-[30px]">
               <div className="flex flex-wrap gap-x-10 w-full border-t border-[#2E719E]">
                 {NavigationLinks.map((item, index) => (
+                  item.link == "" ?
+                    <div className="relative w-full border-b border-[#2E719E] h-full" key={index} ref={dropdownRef}>
+                      <button type="button" className={`text-white text-center font-[500] w-full p-5 text-[17px]  flex justify-center items-center gap-x-1`} onClick={toggleDropdown}>
+                        {item.name} <div className={`${showDropdown && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div>
+                      </button>
+                      <div className={`flex flex-wrap w-full rounded-[20px] duration-150 ${showDropdown ? "h-[330px]": "h-0"} overflow-hidden`}>
+                        {item.dropdownItems?.map((dropdownItem, i) => (
+                          <Link href={dropdownItem.link} key={i} className={`text-white text-center font-[500] w-full p-5 text-[17px]`} onClick={removeOverflow}>
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                      {/* {showDropdown && (
+                      )} */}
+                    </div>
+                  :
                   <Link href={item.link} key={index} className={`text-white text-center font-[500] w-full p-5 text-[17px] border-b border-[#2E719E]`} onClick={removeOverflow}>
                     {item.name}
                   </Link>

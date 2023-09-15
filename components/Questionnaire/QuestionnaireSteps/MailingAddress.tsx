@@ -21,10 +21,11 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
     address_line_2: "",
     suburb: "",
     state: "",
+    state_code: "",
     postcode: ""
   });
 
-  const [ addressState, setAddressState ] = useState(step2Data?.state ? {value: step2Data.state, label: step2Data.state} : null);
+  const [ addressState, setAddressState ] = useState(step2Data?.state ? {value: step2Data.state, label: step2Data.state_code} : null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +44,7 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
   const handleSelectChange = (selectedOption: any) => {
     setAddressState(selectedOption);
     setFormValues((prevData) => ({...prevData,  state: selectedOption.value}));
+    setFormValues((prevData) => ({...prevData,  state_code: selectedOption.label}));
   };
 
   return (
@@ -52,7 +54,7 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
       <form className="mt-[25px]" onSubmit={onSubmit} autoComplete="off">
         <div className="w-[620px]">
           <div className="h-[42px]">
-            <AutoCompletePlace setFormValues={setFormValues} formValues={formValues}/>
+            <AutoCompletePlace setFormValues={setFormValues} formValues={formValues} handleSelectChange={handleSelectChange}/>
           </div>
           <hr className="py-0 my-4 border-[#CECECE]"/>
           <input 
@@ -132,15 +134,6 @@ export default function MailingAddress({ handleNext, handlePrevious, step2Data }
                 }}
               />
             </div>
-            {/* <input 
-              type="text" 
-              name="state" 
-              value={formValues.state}
-              onChange={handleInputChange}
-              placeholder="State*"
-              className="border border-tertiary rounded-[20px] h-[42px] w-full"
-              required
-            /> */}
             <input 
               type="text" 
               name="postcode" 

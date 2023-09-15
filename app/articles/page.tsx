@@ -34,16 +34,16 @@ export default async function Articles() {
         </div>
       </section>
       <section className="max-w-[1250px] mx-auto py-[60px]">
-        <div className="flex flex-wrap sm:flex-nowrap gap-10 px-5 sm:px-0">
+        <div className="flex flex-wrap gap-10 px-5 sm:px-0">
           {articles.map((item, index) => (
-            <div className="w-full sm:w-[390px] h-[520px] border border-primary rounded-[20px] overflow-hidden shadow-secondShadow" key={index}>
+            <div className="w-full sm:w-[390px] h-[580px] border border-primary rounded-[20px] overflow-hidden shadow-secondShadow" key={index}>
               <div className="w-full h-[290px] relative">
                 <Image src={`${process.env.APP_S3_BUCKET}/${item.image}`} fill={true} alt="How to build a home" className="object-cover"/>
               </div>
-              <div className="px-[30px] py-5">
-                <h2 className="text-tertiary text-[24px] font-[800] line-clamp-2 text-center">{item.title}</h2>
+              <div className="px-[30px] py-5 h-[290px] relative">
+                <h2 className="text-tertiary text-[24px] font-[800] line-clamp-3 text-center mb-4">{item.title}</h2>
                 <p className="text-dark text-[16px] text-center line-clamp-3 mb-2 h-[75px]">{item.sub_title}</p>
-                <div className="flex justify-center">
+                <div className="flex justify-center absolute left-0 bottom-5 w-full">
                   <Link href={`/articles/${item.slug}`}>
                     <button type="button" className="bg-warning h-10 rounded-[20px] px-[15px] flex items-center justify-center font-[500] text-[15px] w-[180px] shadow-mainShadow">View Article&nbsp;&nbsp;&nbsp;&nbsp;<FaChevronRight/></button>
                   </Link>

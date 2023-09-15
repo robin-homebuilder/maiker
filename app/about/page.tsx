@@ -30,9 +30,9 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section className='py-[70px]'>
+      <section className='py-5 sm:py-[70px]'>
         <div className='max-w-[1250px] mx-auto'>
-          <div className='flex flex-wrap sm:flex-nowrap gap-x-10'>
+          <div className='flex flex-wrap sm:flex-nowrap gap-x-10 gap-y-5 sm:gap-y-0'>
             <div className='w-full sm:w-1/2 px-5 sm:px-0'>
               <div className='mb-5'>
                 <h2 className='text-primary text-[32px] font-[800] mb-3'>Meet the Managers</h2>
@@ -52,7 +52,7 @@ export default function About() {
               </div>
             </div>
             <div className='w-full sm:w-1/2'>
-              <div className="bg-gray-400 w-full h-full relative">
+              <div className="bg-gray-400 w-full h-[300px] sm:h-full relative">
                 <Image src={`${process.env.APP_S3_BUCKET}/assets/Managers.webp`} fill priority={true} className='object-cover h-auto w-auto' alt="About Maiker Constructions"/>
               </div>
             </div>

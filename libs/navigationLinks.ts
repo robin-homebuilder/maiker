@@ -13,23 +13,23 @@ export const NavigationLinks = [
     dropdownItems: [
       {
         name: "Home Renovation",
-        link: "/au-home-renovation",
+        link: "/home-renovation",
       },
       {
         name: "Heritage Character Homes",
-        link: "/au-heritage-character-homes",
+        link: "/heritage-character-homes",
       },
       {
         name: "Custom New Homes",
-        link: "/au-custom-new-homes",
+        link: "/custom-new-homes",
       },
       {
         name: "Home Additions",
-        link: "/au-home-additions",
+        link: "/home-additions",
       },
       {
         name: "Home Raising",
-        link: "/au-home-raising",
+        link: "/home-raising",
       },
     ]
   },

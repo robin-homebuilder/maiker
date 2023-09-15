@@ -1,9 +1,9 @@
-export interface ArticleProps {
-  title: String,
-  description: String,
-  author: String,
-  imageURL: String
-}
+// export interface ArticleProps {
+//   title: String,
+//   description: String,
+//   author: String,
+//   imageURL: String
+// }
 
 export interface UserProps {
   id: String,
@@ -81,13 +81,14 @@ export interface OtherLinks {
 }
 
 export interface ArticleProps {
-  title: String,
+  title: string,
   sub_title: string,
   author: String,
   content: string,
   createdAt: string,
   with_sidebar: boolean,
-  external_links: [ExternalLink]
+  external_links: [ExternalLink],
+  banner: string
 }
 
 export interface ArticlesProps {
@@ -103,6 +104,7 @@ export interface MailAddressProps {
   address_line_2: string,
   suburb: string,
   state: string,
+  state_code: string,
   postcode: string
 }
 
@@ -112,6 +114,7 @@ export interface SiteAddressProps {
   address_line_2: string,
   suburb: string,
   state: string,
+  state_code: string,
   postcode: string
 }
 

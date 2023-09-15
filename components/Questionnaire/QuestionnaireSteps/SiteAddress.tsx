@@ -21,10 +21,11 @@ export default function SiteAddress({ handleNext, handlePrevious, step3Data } : 
     address_line_2: "",
     suburb: "",
     state: "",
+    state_code: "",
     postcode: ""
   });
 
-  const [ addressState, setAddressState ] = useState(step3Data?.state ? {value: step3Data.state, label: step3Data.state} : null);
+  const [ addressState, setAddressState ] = useState(step3Data?.state ? {value: step3Data.state, label: step3Data.state_code} : null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +44,7 @@ export default function SiteAddress({ handleNext, handlePrevious, step3Data } : 
   const handleSelectChange = (selectedOption: any) => {
     setAddressState(selectedOption);
     setFormValues((prevData) => ({...prevData,  state: selectedOption.value}));
+    setFormValues((prevData) => ({...prevData,  state_code: selectedOption.label}));
   };
 
   return (
