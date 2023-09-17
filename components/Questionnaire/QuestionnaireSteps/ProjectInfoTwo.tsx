@@ -56,7 +56,7 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
 
   return (
     <>
-      <h2 className="text-tertiary text-[25px] font-[800]">5. Project Information - Part 2</h2>
+      <h2 className="text-tertiary text-[23px] sm:text-[25px] font-[800]">5. Project Information - Part 2</h2>
       <form className="mt-5" onSubmit={onSubmit} autoComplete="off">
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-3">When are you looking to commence your project?</p>
@@ -66,7 +66,7 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
             value={formValues.commence}
             onChange={handleInputChange}
             placeholder="Insert Reply*"
-            className="border border-tertiary rounded-[20px] h-[42px] w-[620px]"
+            className="border border-tertiary rounded-[20px] h-[42px] w-full sm:w-[620px]"
             required
           />
         </div>
@@ -78,13 +78,13 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
             value={formValues.extensions}
             onChange={handleInputChange}
             placeholder="Insert Reply*"
-            className="border border-tertiary rounded-[20px] h-[42px] w-[620px]"
+            className="border border-tertiary rounded-[20px] h-[42px] w-full sm:w-[620px]"
             required
           />
         </div>
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-3">Do you have a project budget?</p>
-          <div className="w-[620px] relative">
+          <div className="w-full sm:w-[620px] relative">
             <div className="absolute top-0 left-4 h-full flex justify-center items-center">
               <PiCurrencyDollarBold color="black" size={15}/>
             </div>
@@ -100,52 +100,54 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
         </div>
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">Have you ever Built/Renovated or Extended before?</p>
-          <Select
-            options={YesNoOptions}
-            value={built}
-            onChange={handleSelectChangePlan}
-            placeholder="Yes / No"
-            isSearchable={false}
-            required
-            styles={{
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                borderColor: state.isFocused ? "#358AC3" : "#358AC3",
-                width: "620px",
-                height: "42px",
-                borderRadius: "20px",
-                color: "black",
-                paddingLeft: "20px",
-                outline: "none",
-                ":hover": {
-                  borderColor: "#358AC3"
-                },
-                borderWidth: state.isFocused ? "1px" : "1px",
-              }),
-              option: (provided, state) => ({
-                ...provided,
-                width: "620px",
-                color: state.isSelected ? 'white' : "black",
-                backgroundColor: state.isSelected ? '#358AC3' : 'white',
-                ":hover": {
-                  backgroundColor: "lightgray"
-                }
-              }),
-              menu: (provided) => ({
-                ...provided,
-                width: '620px',
-                marginTop: "0px",
-              }),
-              valueContainer: (provided) => ({
-                ...provided,
-                paddingLeft: '0px',
-              }),
-              dropdownIndicator: (provided) => ({
-                ...provided,
-                color: 'black',
-              }),
-            }}
-          />
+          <div className="w-full sm:w-[620px]">
+            <Select
+              options={YesNoOptions}
+              value={built}
+              onChange={handleSelectChangePlan}
+              placeholder="Yes / No"
+              isSearchable={false}
+              required
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: state.isFocused ? "#358AC3" : "#358AC3",
+                  width: "100%",
+                  height: "42px",
+                  borderRadius: "20px",
+                  color: "black",
+                  paddingLeft: "20px",
+                  outline: "none",
+                  ":hover": {
+                    borderColor: "#358AC3"
+                  },
+                  borderWidth: state.isFocused ? "1px" : "1px",
+                }),
+                option: (provided, state) => ({
+                  ...provided,
+                  width: "100%",
+                  color: state.isSelected ? 'white' : "black",
+                  backgroundColor: state.isSelected ? '#358AC3' : 'white',
+                  ":hover": {
+                    backgroundColor: "lightgray"
+                  }
+                }),
+                menu: (provided) => ({
+                  ...provided,
+                  width: "100%",
+                  marginTop: "0px",
+                }),
+                valueContainer: (provided) => ({
+                  ...provided,
+                  paddingLeft: '0px',
+                }),
+                dropdownIndicator: (provided) => ({
+                  ...provided,
+                  color: 'black',
+                }),
+              }}
+            />
+          </div>
         </div>
         {showBuilder &&
           <div className="mb-7">
@@ -156,7 +158,7 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
               value={formValues.builder}
               onChange={handleInputChange}
               placeholder="Insert Builder*"
-              className="border border-tertiary rounded-[20px] h-[42px] w-[620px]"
+              className="border border-tertiary rounded-[20px] h-[42px] w-full sm:w-[620px]"
               required
             />
           </div>
@@ -169,7 +171,7 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
             value={formValues.quoting}
             onChange={handleInputChange}
             placeholder="Insert Reply*"
-            className="border border-tertiary rounded-[20px] h-[42px] w-[620px]"
+            className="border border-tertiary rounded-[20px] h-[42px] w-full sm:w-[620px]"
             required
           />
         </div>
@@ -181,16 +183,18 @@ export default function ProjectInfoTwo({ handleNext, handlePrevious, step5Data }
             value={formValues.proposed_works}
             onChange={handleInputChange}
             placeholder="Insert Reply*"
-            className="border border-tertiary rounded-[20px] h-[42px] w-[620px]"
+            className="border border-tertiary rounded-[20px] h-[42px] w-full sm:w-[620px]"
             required
           />
         </div>
-        <div className="w-full flex justify-end gap-x-4 mt-10">
-          <Link href="/">
-            <button type="button" className="text-warning text-[16px] font-[600] h-[42px] w-[120px] outline-none border-none">Cancel</button>
-          </Link>
-          <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[200px] h-[42px]" onClick={handlePrevious}>Back</button>
-          <button type="submit" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[200px] h-[42px]">Next</button>
+        <div className="w-full flex flex-wrap sm:flex-nowrap justify-end gap-x-4 mt-10 gap-y-5 sm:gap-y-0">
+          <div className="w-full sm:w-auto flex">
+            <Link href="/" className="block w-1/2 sm:w-[120px]">
+              <button type="button" className="text-warning text-[16px] font-[600] h-[42px] w-full">Cancel</button>
+            </Link>
+            <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-1/2 sm:w-[200px] h-[42px]" onClick={handlePrevious}>Back</button>
+          </div>
+          <button type="submit" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-full sm:w-[200px] h-[42px]">Next</button>
         </div>
       </form>
     </>

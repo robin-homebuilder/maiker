@@ -35,7 +35,7 @@ const AutoCompletePlace: React.FC<GoogleMapProps> = ({ setFormValues, formValues
         });
         
         const place = australiaResults[0];
-
+        console.log(place)
         let addressLine1 = '';
         let addressLine2 = '';
       
@@ -72,7 +72,7 @@ const AutoCompletePlace: React.FC<GoogleMapProps> = ({ setFormValues, formValues
           }
         }
 
-        addressLine2 = `${addressLine2ComponentStreetNumber?.long_name} ${addressLine2ComponentStreet?.long_name}`;
+        addressLine2 = `${addressLine2ComponentStreetNumber?.long_name ? `${addressLine2ComponentStreetNumber.long_name} ` : ""}${addressLine2ComponentStreet?.long_name || ""}`;
 
         if(addressLine1){
           setFormValues((prevFormValues) => ({

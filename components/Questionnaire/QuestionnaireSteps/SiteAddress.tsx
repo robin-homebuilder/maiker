@@ -52,7 +52,7 @@ export default function SiteAddress({ handleNext, handlePrevious, step3Data } : 
       <h2 className="text-tertiary text-[25px] font-[800]">3. Site Address</h2>
       <p className="text-dark text-[16px] font-[500]">Provide a single mailing address for any hard copy correspondance.</p>
       <form className="mt-[25px]" onSubmit={onSubmit} autoComplete="off">
-        <div className="w-[620px]">
+        <div className="w-full sm:w-[620px]">
           <div className="h-[42px]">
             <AutoCompletePlace setFormValues={setFormValues} formValues={formValues}/>
           </div>
@@ -145,12 +145,14 @@ export default function SiteAddress({ handleNext, handlePrevious, step3Data } : 
             />
           </div>
         </div>
-        <div className="w-full flex justify-end gap-x-4 mt-10">
-          <Link href="/">
-            <button type="button" className="text-warning text-[16px] font-[600] h-[42px] w-[120px]">Cancel</button>
-          </Link>
-          <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[200px] h-[42px]" onClick={handlePrevious}>Back</button>
-          <button type="submit" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[200px] h-[42px]">Next</button>
+        <div className="w-full flex flex-wrap sm:flex-nowrap justify-end gap-x-4 mt-10 gap-y-5 sm:gap-y-0">
+          <div className="w-full sm:w-auto flex">
+            <Link href="/" className="block w-1/2 sm:w-[120px]">
+              <button type="button" className="text-warning text-[16px] font-[600] h-[42px] w-full">Cancel</button>
+            </Link>
+            <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-1/2 sm:w-[200px] h-[42px]" onClick={handlePrevious}>Back</button>
+          </div>
+          <button type="submit" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-full sm:w-[200px] h-[42px]">Next</button>
         </div>
       </form>
     </>

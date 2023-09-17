@@ -4,7 +4,7 @@ import { ProjectProps } from "@/types";
 
 export default async function Projects() {
   const data = await getProjectsData();
-  
+
   return (
     <>
       <section className='bg-accent py-[80px]'>

@@ -105,110 +105,114 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
 
   return (
     <>
-      <h2 className="text-tertiary text-[25px] font-[800]">4. Project Information - Part 1</h2>
+      <h2 className="text-tertiary text-[23px] sm:text-[25px] font-[800]">4. Project Information - Part 1</h2>
       <form className="mt-5" onSubmit={onSubmit} autoComplete="off">
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">What type of project type does your enquiry relate to?</p>
-          <Select
-            options={ProjectTypeOptions}
-            value={projectType}
-            onChange={handleSelectChange}
-            placeholder="Insert Project Type"
-            isSearchable={false}
-            required
-            styles={{
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                borderColor: state.isFocused ? "#358AC3" : "#358AC3",
-                width: "620px",
-                height: "42px",
-                borderRadius: "20px",
-                color: "black",
-                paddingLeft: "20px",
-                outline: "none",
-                ":hover": {
-                  borderColor: "#358AC3"
-                },
-                borderWidth: state.isFocused ? "1px" : "1px",
-              }),
-              option: (provided, state) => ({
-                ...provided,
-                width: "620px",
-                color: state.isSelected ? 'white' : "black",
-                backgroundColor: state.isSelected ? '#358AC3' : 'white',
-                ":hover": {
-                  backgroundColor: "lightgray"
-                }
-              }),
-              menu: (provided) => ({
-                ...provided,
-                width: '620px',
-                marginTop: "0px",
-              }),
-              valueContainer: (provided) => ({
-                ...provided,
-                paddingLeft: '0px',
-              }),
-              dropdownIndicator: (provided) => ({
-                ...provided,
-                color: 'black',
-              }),
-            }}
-          />
+          <div className="w-full sm:w-[620px]">
+            <Select
+              options={ProjectTypeOptions}
+              value={projectType}
+              onChange={handleSelectChange}
+              placeholder="Insert Project Type"
+              isSearchable={false}
+              required
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: state.isFocused ? "#358AC3" : "#358AC3",
+                  width: "100%",
+                  height: "42px",
+                  borderRadius: "20px",
+                  color: "black",
+                  paddingLeft: "20px",
+                  outline: "none",
+                  ":hover": {
+                    borderColor: "#358AC3"
+                  },
+                  borderWidth: state.isFocused ? "1px" : "1px",
+                }),
+                option: (provided, state) => ({
+                  ...provided,
+                  width: "100%",
+                  color: state.isSelected ? 'white' : "black",
+                  backgroundColor: state.isSelected ? '#358AC3' : 'white',
+                  ":hover": {
+                    backgroundColor: "lightgray"
+                  }
+                }),
+                menu: (provided) => ({
+                  ...provided,
+                  width: "100%",
+                  marginTop: "0px",
+                }),
+                valueContainer: (provided) => ({
+                  ...provided,
+                  paddingLeft: '0px',
+                }),
+                dropdownIndicator: (provided) => ({
+                  ...provided,
+                  color: 'black',
+                }),
+              }}
+            />
+          </div>
         </div>
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">Do you have plans for your Home Construction project or are you in process of completing plans?</p>
-          <Select
-            options={YesNoOptions}
-            value={planToComplete}
-            onChange={handleSelectChangePlan}
-            placeholder="Yes / No"
-            isSearchable={false}
-            required
-            styles={{
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                borderColor: state.isFocused ? "#358AC3" : "#358AC3",
-                width: "620px",
-                height: "42px",
-                borderRadius: "20px",
-                color: "black",
-                paddingLeft: "20px",
-                outline: "none",
-                ":hover": {
-                  borderColor: "#358AC3"
-                },
-                borderWidth: state.isFocused ? "1px" : "1px",
-              }),
-              option: (provided, state) => ({
-                ...provided,
-                width: "620px",
-                color: state.isSelected ? 'white' : "black",
-                backgroundColor: state.isSelected ? '#358AC3' : 'white',
-                ":hover": {
-                  backgroundColor: "lightgray"
-                }
-              }),
-              menu: (provided) => ({
-                ...provided,
-                width: '620px',
-                marginTop: "0px",
-              }),
-              valueContainer: (provided) => ({
-                ...provided,
-                paddingLeft: '0px',
-              }),
-              dropdownIndicator: (provided) => ({
-                ...provided,
-                color: 'black',
-              }),
-            }}
-          />
+          <div className="w-full sm:w-[620px]">
+            <Select
+              options={YesNoOptions}
+              value={planToComplete}
+              onChange={handleSelectChangePlan}
+              placeholder="Yes / No"
+              isSearchable={false}
+              required
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: state.isFocused ? "#358AC3" : "#358AC3",
+                  width: "100%",
+                  height: "42px",
+                  borderRadius: "20px",
+                  color: "black",
+                  paddingLeft: "20px",
+                  outline: "none",
+                  ":hover": {
+                    borderColor: "#358AC3"
+                  },
+                  borderWidth: state.isFocused ? "1px" : "1px",
+                }),
+                option: (provided, state) => ({
+                  ...provided,
+                  width: "100%",
+                  color: state.isSelected ? 'white' : "black",
+                  backgroundColor: state.isSelected ? '#358AC3' : 'white',
+                  ":hover": {
+                    backgroundColor: "lightgray"
+                  }
+                }),
+                menu: (provided) => ({
+                  ...provided,
+                  width: "100%",
+                  marginTop: "0px",
+                }),
+                valueContainer: (provided) => ({
+                  ...provided,
+                  paddingLeft: '0px',
+                }),
+                dropdownIndicator: (provided) => ({
+                  ...provided,
+                  color: 'black',
+                }),
+              }}
+            />
+          </div>
         </div>
         {showArchitect &&
           <div className="mb-7">
             <p className="text-dark text-[16px] font-[500] mb-3">Who is your Architect or Home Designer?</p>
-            <div className="w-[620px] flex flex-wrap gap-y-3">
+            <div className="w-full sm:w-[620px] flex flex-wrap gap-y-3">
               <input 
                 type="text" 
                 name="architect_name" 
@@ -234,7 +238,7 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
           <p className="text-dark text-[16px] font-[500] mb-4">Please select from the following list if you have any of the following:</p>
           <div className="w-4/5 flex flex-wrap gap-y-5">
             {ProjectOneCheckboxOptions.map((item,index) => (
-              <div className="flex justify-start items-center gap-x-2.5 w-1/3" key={index}>
+              <div className="flex justify-start items-center gap-x-2.5 w-full sm:w-1/3" key={index}>
                 <input type="checkbox" className="custom-checkbox" onChange={handleCheckboxChange} value={item.value} id={item.id} checked={formData.project_checkbox.includes(item.value)}/>
                 <label htmlFor={item.id} className="text-tertiary cursor-pointer">{item.value}</label>
               </div>
@@ -243,7 +247,7 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
         </div>
         <div className="mb-7">
           <p className="text-dark text-[16px] font-[500] mb-4">Please upload any documents that you have that is relevant to your home site or home construction project.</p>
-          <div className='border border-tertiary rounded-[20px] w-[819px] h-full sm:h-[364px] flex flex-wrap sm:flex-nowrap bg-white overflow-hidden'>
+          <div className='border border-tertiary rounded-[20px] w-full sm:w-[819px] h-full sm:h-[364px] flex flex-wrap sm:flex-nowrap bg-white overflow-hidden'>
             <div className='w-full sm:w-1/2 h-full border-b sm:border-b-0 border-r-0 sm:border-r border-tertiary flex items-center'>
               <FileUpload onFileUploaded={handleFileUpload}/>
             </div>
@@ -269,12 +273,14 @@ export default function ProjectInfoOne({ handleNext, handlePrevious, step4Data }
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-end gap-x-4 mt-10">
-          <Link href="/">
-            <button type="button" className="text-warning text-[16px] font-[600] h-[42px] w-[120px]">Cancel</button>
-          </Link>
-          <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[200px] h-[42px]" onClick={handlePrevious}>Back</button>
-          <button type="submit" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[200px] h-[42px]">Next</button>
+        <div className="w-full flex flex-wrap sm:flex-nowrap justify-end gap-x-4 mt-10 gap-y-5 sm:gap-y-0">
+          <div className="w-full sm:w-auto flex">
+            <Link href="/" className="block w-1/2 sm:w-[120px]">
+              <button type="button" className="text-warning text-[16px] font-[600] h-[42px] w-full">Cancel</button>
+            </Link>
+            <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-1/2 sm:w-[200px] h-[42px]" onClick={handlePrevious}>Back</button>
+          </div>
+          <button type="submit" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-full sm:w-[200px] h-[42px]">Next</button>
         </div>
       </form>
     </>

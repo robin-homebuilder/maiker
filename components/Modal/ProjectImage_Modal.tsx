@@ -66,7 +66,8 @@ export default function ProjectImage_Modal({ isOpen, closeModal, imageURL, image
           <div className='fixed inset-0 bg-black bg-opacity-70' />
         </Transition.Child>
         <div className='fixed inset-0 overflow-y-auto'>
-          <div className='flex min-h-0 sm:min-h-full items-center justify-center sm:p-4 text-center w-[100vh] h-[100vw] rotate-90 top-[-100vw] absolute sm:w-full sm:h-full sm:rotate-0 sm:static sm:top-0 origin-bottom-left'>
+          {/* <div className='flex min-h-0 sm:min-h-full items-center justify-center p-0 sm:p-4 text-center w-[100vh] h-[100vw] rotate-90 top-[-100vw] absolute sm:w-full sm:h-full sm:rotate-0 sm:static sm:top-0 origin-bottom-left'> */}
+          <div className='flex min-h-0 md:max-lg:min-h-0 sm:min-h-full items-center justify-center p-0 md:max-lg:p-0 sm:p-4 text-center w-[100vh] h-[100vw] rotate-90 top-[-100vw] absolute sm:w-full sm:h-full sm:rotate-0 sm:static sm:top-0 md:max-lg:w-[100vw] md:max-lg:h-[100vh] md:max-lg:rotate-0 md:max-lg:absolute md:max-lg:top-0 origin-bottom-left'>
             <Transition.Child
               as={Fragment}
               enter='ease-out duration-300'
@@ -76,12 +77,14 @@ export default function ProjectImage_Modal({ isOpen, closeModal, imageURL, image
               leaveFrom='opacity-100 scale-100'
               leaveTo='opacity-0 scale-95'
             >
-              <Dialog.Panel className='relative w-full max-w-[1250px] max-h-[100vh] h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto transform rounded-none sm:rounded-[20px] bg-white text-left shadow-xl transition-all flex flex-col gap-5 text-dark'>
-                <div className={`w-full h-full absolute top-0 left-0 z-20 bg-[#00000080] ${showPanel ? "flex sm:hidden" : "hidden"} justify-center items-center gap-x-5`}>
+              {/* <Dialog.Panel className='relative w-full max-w-[1250px] max-h-[100vh] h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto transform rounded-none sm:rounded-[20px] bg-white text-left shadow-xl transition-all flex flex-col gap-5 text-dark'> */}
+              <Dialog.Panel className='relative w-full md:max-lg:w-full max-w-[1250px] max-h-[100vh] md:max-h-[100vh] h-full md:max-lg:h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto transform rounded-none md:max-lg:rounded-none sm:rounded-[20px] bg-white text-left shadow-xl transition-all flex flex-col gap-5 text-dark'>
+                <div className={`w-full h-full absolute top-0 left-0 z-20 bg-[#00000080] ${showPanel ? "flex md:max-lg:flex sm:hidden" : "hidden"} justify-center items-center gap-x-5`}>
                   <button type="button" className="bg-primary w-[180px] h-[42px] rounded-[20px] text-white" onClick={() => setShowPanel(false)}>View All Images</button>
                   <button type="button" className="bg-danger w-[150px] h-[42px] rounded-[20px] text-white" onClick={closeGallery}>Close</button>
                 </div>
-                <div className='w-[-webkit-fill-available] sm:w-[1250px] h-full sm:h-[800px] overflow-hidden relative'>
+                {/* <div className='w-[-webkit-fill-available] sm:w-[1250px] h-full sm:h-[800px] overflow-hidden relative'> */}
+                <div className='w-[-webkit-fill-available] md:max-lg:w-[-webkit-fill-available] sm:w-[1250px] h-full md:max-lg:h-full sm:h-[800px] overflow-hidden relative'>
                   <Slider {...settings}>
                     {/* <div className='w-[1250px] h-[810px] relative'> */}
                     <div>
@@ -90,7 +93,8 @@ export default function ProjectImage_Modal({ isOpen, closeModal, imageURL, image
                         src={`${process.env.APP_S3_BUCKET}${imageBaseURL}/${imageURL}`}
                         width={1250}
                         height={800}
-                        className="max-w-[1250px] sm:max-w-full max-h-[400px] sm:max-h-full w-full" 
+                        // className="max-w-[1250px] sm:max-w-full max-h-[400px] sm:max-h-full w-full" 
+                        className="max-w-[1250px] md:max-lg:max-w-[1250px] sm:max-w-full max-h-[400px] md:max-lg:max-h-[400px] sm:max-h-full w-full"
                       />
                     </div>
                     {other_image.map((item, index) => (
@@ -101,7 +105,8 @@ export default function ProjectImage_Modal({ isOpen, closeModal, imageURL, image
                           alt={item} 
                           width={1250}
                           height={800}
-                          className="max-w-[1250px] sm:max-w-full max-h-[400px] sm:max-h-full w-full"
+                          // className="max-w-[1250px] sm:max-w-full max-h-[400px] sm:max-h-full w-full" 
+                        className="max-w-[1250px] md:max-lg:max-w-[1250px] sm:max-w-full max-h-[400px] md:max-lg:max-h-[400px] sm:max-h-full w-full"
                         />
                       </div>
                     ))}
