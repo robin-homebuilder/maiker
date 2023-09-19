@@ -2,15 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 import ScrollButtonHome from "@/components/Utils/ScrollButtonHome";
+import { formatLocation } from "@/libs/formatLocationSlug";
 
-export default function HomeRaising() {
+export default function CustomNewHomes_Location({ params }: { params: { location: string }}) {
+  const { location } = params;
+  const formattedLocation = formatLocation(location);
+  
   return (
     <>
       <section className="h-[570px] overflow-hidden relative bg-pageHead">
-        <div className="z-10 relative max-w-[1250px] mx-auto mt-5 flex">
+        <div className="z-10 relative max-w-[1250px] mx-auto mt-4 flex">
           <div className="w-1/2 sm:w-[600px] px-5 sm:px-0">
-            <h1 className="font-[800] mb-5 text-[30px] sm:text-[38px]">High quality home raise and build under builder located in Brisbane</h1>
-            <p className="font-[500] text-[18px] mb-5">Maiker Constructions designs and builds custom home renovation projects in Brisbane. We specialize in timber construction and the modernization of character homes.</p>
+            <h1 className="font-[800] mb-5 text-[30px] sm:text-[38px]">High quality custom home builder located in <span className="capitalize">{formattedLocation}</span></h1>
+            <p className="font-[500] text-[18px] mb-5">Maiker Constructions is your one-stop solution for designing and constructing custom home projects in <span className="capitalize">{formattedLocation}</span>. Our expertise lies in timber construction, however, we are well-equipped and delighted to undertake any type of project. </p>
             <ScrollButtonHome targetSectionId="footer"/>
             <div className="w-full">
               <Image src="/Home_MBA_ProudMember.webp" width={516} height={136} alt="Master Builders Queensland - Proud Member" className="w-auto h-auto"/>
@@ -18,39 +22,40 @@ export default function HomeRaising() {
           </div>
         </div>
         <div className="w-[960px] h-[490px] absolute top-[40px] -right-[200px]">
-          <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Raising-Banner.webp`} width={960} height={490} alt="Home Renovation Banner" className="w-auto object-cover"/>
+          <Image src={`${process.env.APP_S3_BUCKET}/assets/Custom-New-Home-Banner.webp`} width={960} height={490} alt="Home Renovation Banner" className="w-auto object-cover"/>
         </div>
       </section>
       <main>
         <section className="py-5 sm:py-[60px] max-w-[1250px] mx-auto">
           <div className="flex flex-wrap justify-center px-5 sm:px-0">
             <h2 className="text-primary font-[800] text-center mb-[30px] text-[25px] sm:text-[38px] w-3/4">
-              Maiker Constructions Is Your Best Choice for Home Raising and Build Under in Brisbane
+              Maiker Constructions Is Your Best Choice for Custom Home Projects in <span className="capitalize">{formattedLocation}</span>
             </h2>
           </div>
           <div className='flex flex-wrap sm:flex-nowrap gap-x-10'>
             <div className='w-full sm:w-1/2'>
-              <Image src={`${process.env.APP_S3_BUCKET}/assets/Best-Choice-Home-Raising.webp`} width={600} height={735} alt="Best Choice for Home Renovation" className="object-cover h-[250px] sm:h-[735px]"/>
+              <Image src={`${process.env.APP_S3_BUCKET}/assets/Best-Choice-Custom-New-Home.webp`} width={600} height={735} alt="Best Choice for Home Renovation" className="object-cover h-[250px] sm:h-[735px]"/>
             </div>
             <div className='w-full sm:w-1/2 px-5 sm:px-0'>
               <p className='text-dark mb-5 w-full text-[16px]'>
-                House Raising has become a standard practice in the suburbs of Brisbane. As I traverse the areas that Maiker Construction services, it's common to see home renovations being lifted on every other street. This practice offers an excellent solution for increasing interior space and improving outdoor usability, all while preserving the unique charm of a Queenslander Home.
+                Maiker Constructions is a premier custom new home builder in Brisbane, renowned for our unparalleled service, exceptional workmanship, and commitment to client satisfaction. Our expertise lies in executing extensive, upscale projects constructed in timber, masonry and architectural finishes.
               </p>
               <p className='text-dark mb-5 w-full text-[16px]'>
-                Elevating a home provides numerous advantages, one of which is a considerable boost in usable space. When you lift a house, you open up the possibility for extra floors or even a basement, offering new areas for bedrooms, home offices, kitchens, and entertainment spaces. Moreover, this process enhances the functionality of your outdoor area. The act of raising a house usually entails reconfiguring the yard, resulting in a more seamless blend between indoor and outdoor living spaces. This transformation can lead to enhanced views, an influx of natural light, and easier access to outdoor amenities. Maiker Constructions specialize in raising home design and works with many architects and structural engineers who’s expertise is renovations of existing homes including house raising.
+                Our team is not just highly qualified and experienced but are master craftsmen who take immense pride in the quality of their work. They are the backbone of our business, playing a vital role in turning our clients' dream homes into reality. Each member brings a wealth of knowledge and a meticulous attention to detail that ensures every project is executed to the highest standards.
               </p>
-              <Link href="/articles/the-process-of-designing-a-home" target="_blank" className="underline text-warning text-[16px] block">
+              <p className='text-dark mb-5 w-full text-[16px]'>
+                At Maiker Constructions, we collaborate with architects and building designers to offer a comprehensive design and construction solution or we can provide an in house design service depending on which is best for our customer.        
+              </p>
+              <Link href="/articles/the-process-of-designing-a-home" target="_blank" className="underline text-warning text-[16px] block mb-5">
                 The Process for Designing a Home
-              </Link>
-              <Link href="/articles/everything-you-need-to-know-about-house-raising" target="_blank" className="underline text-warning text-[16px] mb-5 block">
-                Everything you need to know about House Raising
               </Link>
               <h3 className="text-[18px] text-tertiary font-[600] mb-5">Further Help and Questions</h3>
               <p className='text-dark mb-5 w-full text-[16px]'>
+              Should you require further details on custom new homes, feel free to reach out to us. You can request a callback by filling out the form at the bottom of the page or request a site inspection by filling out the questionnaire in our article Could We Be Your Perfect Home Builder?
                 Should you require further details on home renovation, feel free to reach out to us. You can request a callback by filling out the form at the bottom of the page or request a site inspection by filling out the questionnaire in our article <Link href="/articles/could-we-be-your-perfect-home-builder" target="_blank" className="text-warning underline">Could We Be Your Perfect Home Builder?</Link> 
               </p>
               <p className='text-dark mb-5 w-full text-[16px]'>
-                We're excited about the prospect of collaborating with you on your home renovation and house-raising project.
+                We're excited about the prospect of collaborating with you on your custom new home project.
               </p>
             </div>
           </div>
@@ -58,39 +63,32 @@ export default function HomeRaising() {
         <section className="py-0 sm:py-[80px] bg-accent">
           <div className="max-w-[1250px] mx-auto px-5 sm:px-0">
             <h2 className="text-primary font-[800] text-center mb-[30px] text-[38px]">
-              Home Raising Project Types
+              Custome New Homes Project Types
             </h2>
             <p className="text-center text-dark text-[16px] mb-[30px]">
               At Maiker Constructions, we have a strong partnership with architects and home designers to deliver exceptional renovation projects for our clients. In addition, we offer in-house design services for smaller projects. Our expertise extends to various construction methods such as brick veneer, timber, fibre cement, and architect finishes. We pride ourselves on specializing in timber construction and bringing a modern touch to character homes.
             </p>
           </div>
           <div className="flex flex-wrap sm:flex-nowrap h-full sm:h-[438px] gap-x-1">
-            <div className="relative w-full h-[283px] sm:w-1/4 sm:h-auto">
-              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">House Raising & Build Under</h2>
+            <div className="relative w-full h-[283px] sm:w-1/3 sm:h-auto">
+              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Architectural Homes</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/House-Raising.webp`} alt="Home Renovations" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Architectural-Homes.webp`} alt="Home Renovations" className="object-cover" fill={true}/>
               </div>
             </div>
-            <div className="relative w-full h-[283px] sm:w-1/4 sm:h-auto">
-              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Contemporary Queenslander&rsquo;s</h2>
+            <div className="relative w-full h-[283px] sm:w-1/3 sm:h-auto">
+              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Hampton Homes</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Contemporary-Queenslanders.webp`} alt="Contemporary Queenslander's" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Hampton-Homes.webp`} alt="Contemporary Queenslander's" className="object-cover" fill={true}/>
               </div>
             </div>
-            <div className="relative w-full h-[283px] sm:w-1/4 sm:h-auto">
-              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Home Additions</h2>
+            <div className="relative w-full h-[283px] sm:w-1/3 sm:h-auto">
+              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Small Lot Homes</h2>
               <div className="w-full h-full relative">
                 <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Additions.webp`} alt="Home Extensions & Additions" className="object-cover" fill={true}/>
-              </div>
-            </div>
-            <div className="relative w-full h-[283px] sm:w-1/4 sm:h-auto">
-              <h2 className="text-[25px] font-[800] rotate-0 sm:-rotate-90 absolute top-[unset] sm:top-full left-0 w-full sm:w-[438px] text-center origin-top-left z-10 bottom-[10px] sm:bottom-0">Character & Heritage Renovations</h2>
-              <div className="w-full h-full relative">
-                <div className="w-full h-full absolute bg-[#0000004d] z-[5]"></div>
-                <Image src={`${process.env.APP_S3_BUCKET}/assets/Character-Heritage-Renovation.webp`} alt="Kitchens & Bathrooms" className="object-cover" fill={true}/>
+                <Image src={`${process.env.APP_S3_BUCKET}/assets/Small-Lot-Homes.webp`} alt="Home Extensions & Additions" className="object-cover" fill={true}/>
               </div>
             </div>
           </div>

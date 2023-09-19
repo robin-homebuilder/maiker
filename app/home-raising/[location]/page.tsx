@@ -2,15 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 import ScrollButtonHome from "@/components/Utils/ScrollButtonHome";
+import { formatLocation } from "@/libs/formatLocationSlug";
 
-export default function HomeRaising() {
+export default function HomeRaising_Location({ params }: { params: { location: string }}) {
+  const { location } = params;
+  const formattedLocation = formatLocation(location);
+  
   return (
     <>
       <section className="h-[570px] overflow-hidden relative bg-pageHead">
         <div className="z-10 relative max-w-[1250px] mx-auto mt-5 flex">
           <div className="w-1/2 sm:w-[600px] px-5 sm:px-0">
-            <h1 className="font-[800] mb-5 text-[30px] sm:text-[38px]">High quality home raise and build under builder located in Brisbane</h1>
-            <p className="font-[500] text-[18px] mb-5">Maiker Constructions designs and builds custom home renovation projects in Brisbane. We specialize in timber construction and the modernization of character homes.</p>
+            <h1 className="font-[800] mb-5 text-[30px] sm:text-[38px]">High quality home raise and build under builder located in <span className="capitalize">{formattedLocation}</span></h1>
+            <p className="font-[500] text-[18px] mb-5">Maiker Constructions designs and builds custom home renovation projects in <span className="capitalize">{formattedLocation}</span>. We specialize in timber construction and the modernization of character homes.</p>
             <ScrollButtonHome targetSectionId="footer"/>
             <div className="w-full">
               <Image src="/Home_MBA_ProudMember.webp" width={516} height={136} alt="Master Builders Queensland - Proud Member" className="w-auto h-auto"/>
@@ -25,7 +29,7 @@ export default function HomeRaising() {
         <section className="py-5 sm:py-[60px] max-w-[1250px] mx-auto">
           <div className="flex flex-wrap justify-center px-5 sm:px-0">
             <h2 className="text-primary font-[800] text-center mb-[30px] text-[25px] sm:text-[38px] w-3/4">
-              Maiker Constructions Is Your Best Choice for Home Raising and Build Under in Brisbane
+              Maiker Constructions Is Your Best Choice for Home Raising and Build Under in <span className="capitalize">{formattedLocation}</span>
             </h2>
           </div>
           <div className='flex flex-wrap sm:flex-nowrap gap-x-10'>

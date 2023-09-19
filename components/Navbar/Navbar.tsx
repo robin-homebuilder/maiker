@@ -19,6 +19,7 @@ export default function Navbar( { page } : PageProps ) {
   const [ scrolledPastSection, setScrolledPastSection ] = useState(false);
   const [ showHamburger, setShowHamburger ] = useState<boolean>(false);
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false);
+  const [ showDropdownMobile, setShowDropdownMobile ] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -69,6 +70,10 @@ export default function Navbar( { page } : PageProps ) {
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
+  };
+  
+  const toggleDropdownMobile = () => {
+    setShowDropdownMobile(!showDropdownMobile);
   };
 
   const closeDropdown = () => {
@@ -196,19 +201,17 @@ export default function Navbar( { page } : PageProps ) {
               <div className="flex flex-wrap gap-x-10 w-full border-t border-[#2E719E]">
                 {NavigationLinks.map((item, index) => (
                   item.link == "" ?
-                    <div className="relative w-full border-b border-[#2E719E] h-full" key={index} ref={dropdownRef}>
-                      <button type="button" className={`text-white text-center font-[500] w-full p-5 text-[17px]  flex justify-center items-center gap-x-1`} onClick={toggleDropdown}>
-                        {item.name} <div className={`${showDropdown && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div>
+                    <div className="relative w-full border-b border-[#2E719E] h-full" key={index}>
+                      <button type="button" className={`text-white text-center font-[500] w-full p-5 text-[17px]  flex justify-center items-center gap-x-1`} onClick={toggleDropdownMobile}>
+                        {item.name} <div className={`${showDropdownMobile && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div>
                       </button>
-                      <div className={`flex flex-wrap w-full rounded-[20px] duration-150 ${showDropdown ? "h-[330px]": "h-0"} overflow-hidden`}>
+                      <div className={`flex flex-wrap w-full rounded-[20px] duration-150 ${showDropdownMobile ? "h-[330px]": "h-0"} overflow-hidden`}>
                         {item.dropdownItems?.map((dropdownItem, i) => (
                           <Link href={dropdownItem.link} key={i} className={`text-white text-center font-[500] w-full p-5 text-[17px]`} onClick={removeOverflow}>
                             {dropdownItem.name}
                           </Link>
                         ))}
                       </div>
-                      {/* {showDropdown && (
-                      )} */}
                     </div>
                   :
                   <Link href={item.link} key={index} className={`text-white text-center font-[500] w-full p-5 text-[17px] border-b border-[#2E719E]`} onClick={removeOverflow}>
