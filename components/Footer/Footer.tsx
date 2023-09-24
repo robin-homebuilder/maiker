@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="w-full flex flex-wrap sm:flex-nowrap justify-between items-center">
             <div className="flex flex-wrap sm:flex-nowrap gap-x-5 sm:gap-x-[70px] gap-y-2.5 sm:gap-y-0 justify-between sm:justify-start w-full sm:w-auto mb-4 sm:mb-0">
               {NavigationLinks.map((item, index) => (
-                <Link href={item.link} key={index} className="text-white font-[400] text-[17px]">
+                <Link href={item.link} key={index} className={`text-white font-[400] text-[17px] ${item.name == "Services" && "hidden"}`}>
                   {item.name}
                 </Link>
               ))}

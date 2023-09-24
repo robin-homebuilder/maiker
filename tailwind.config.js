@@ -21,12 +21,15 @@ module.exports = {
         accent: "#F6F6F6",
         danger: "#DC3545",
         fore: "#027ACA",
-        pageHead: "#1A1F33"
+        pageHead: "#1A1F33",
+        portalText: "#1C7FCD",
+        portalBG: "#1972B8"
       },
       boxShadow: {
         'mainShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)',
         'secondShadow': '4px 8px 8px rgba(0, 0, 0, .25)',
-        'stepShadow': '0px 0px 2px rgba(0, 0, 0, .25) inset'
+        'stepShadow': '0px 0px 2px rgba(0, 0, 0, .25) inset',
+        'sidebarPortal': '8px 4px 6px rgba(0, 0, 0, .5)'
       }
     },
   },

@@ -53,3 +53,61 @@ export const NavigationLinksSecond = [
     link: "/design"
   }
 ]
+
+export const NavigationPortalAdministration = [
+  {
+    name: "Client Search",
+    link: "client-search"
+  },
+  {
+    name: "Consultants",
+    link: "consultants"
+  },
+  {
+    name: "Articles",
+    link: "articles"
+  },
+  {
+    name: "Complete Projects",
+    link: "completed-projects"
+  }
+]
+
+export const NavigationPortalClientAdministration = [
+  {
+    name: "Consultant Access",
+    link: "consultant-access"
+  },
+  {
+    name: "Client Information",
+    link: "client-information"
+  },
+  {
+    name: "Site Information",
+    link: "site-information"
+  },
+  {
+    name: "Drawings and Reports",
+    link: "drawings-and-reports"
+  },
+  {
+    name: "Authority Approvals",
+    link: "authority-approvals"
+  },
+  {
+    name: "Contract Administration",
+    link: "contract-administration"
+  },
+  {
+    name: "Progress Claims, Invoices & Receipts",
+    link: "claims-invoices-receipts"
+  },
+  {
+    name: "Compliance & Operations Manual",
+    link: "compliance-operations-manual"
+  },
+  {
+    name: "Project Photos",
+    link: "project-photos"
+  }
+]

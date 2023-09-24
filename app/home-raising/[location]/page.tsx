@@ -10,18 +10,18 @@ export default function HomeRaising_Location({ params }: { params: { location: s
   
   return (
     <>
-      <section className="h-[570px] overflow-hidden relative bg-pageHead">
-        <div className="z-10 relative max-w-[1250px] mx-auto mt-5 flex">
-          <div className="w-1/2 sm:w-[600px] px-5 sm:px-0">
-            <h1 className="font-[800] mb-5 text-[30px] sm:text-[38px]">High quality home raise and build under builder located in <span className="capitalize">{formattedLocation}</span></h1>
-            <p className="font-[500] text-[18px] mb-5">Maiker Constructions designs and builds custom home renovation projects in <span className="capitalize">{formattedLocation}</span>. We specialize in timber construction and the modernization of character homes.</p>
+      <section className="h-full sm:h-[570px] overflow-hidden relative bg-pageHead">
+        <div className="z-10 relative max-w-[1250px] mx-auto mt-[60px] sm:mt-5 flex pt-[230px] sm:pt-0">
+          <div className="w-full sm:w-[600px] px-5 sm:px-0">
+            <h1 className="font-[800] mb-5 text-[25px] sm:text-[38px]">High quality home raise and build under builder located in <span className="capitalize">{formattedLocation}</span></h1>
+            <p className="font-[500] text-[16px] sm:text-[18px] mb-5">Maiker Constructions designs and builds custom home renovation projects in <span className="capitalize">{formattedLocation}</span>. We specialize in timber construction and the modernization of character homes.</p>
             <ScrollButtonHome targetSectionId="footer"/>
-            <div className="w-full">
-              <Image src="/Home_MBA_ProudMember.webp" width={516} height={136} alt="Master Builders Queensland - Proud Member" className="w-auto h-auto"/>
+            <div className="w-full mb-10 sm:mb-0">
+              <Image src="/Home_MBA_ProudMember.webp" width={516} height={136} alt="Master Builders Queensland - Proud Member" className="w-full sm:w-auto h-auto"/>
             </div>
           </div>
         </div>
-        <div className="w-[960px] h-[490px] absolute top-[40px] -right-[200px]">
+        <div className="w-full sm:w-[960px] h-auto sm:h-[490px] absolute top-[60px] sm:top-[40px] -right-[60px] sm:-right-[200px] pt-5 sm:pt-0">
           <Image src={`${process.env.APP_S3_BUCKET}/assets/Home-Raising-Banner.webp`} width={960} height={490} alt="Home Renovation Banner" className="w-auto object-cover"/>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function HomeRaising_Location({ params }: { params: { location: s
             <div className='w-full sm:w-1/2'>
               <Image src={`${process.env.APP_S3_BUCKET}/assets/Best-Choice-Home-Raising.webp`} width={600} height={735} alt="Best Choice for Home Renovation" className="object-cover h-[250px] sm:h-[735px]"/>
             </div>
-            <div className='w-full sm:w-1/2 px-5 sm:px-0'>
+            <div className='w-full sm:w-1/2 px-5 sm:px-0 pt-5 sm:pt-0'>
               <p className='text-dark mb-5 w-full text-[16px]'>
                 House Raising has become a standard practice in the suburbs of Brisbane. As I traverse the areas that Maiker Construction services, it's common to see home renovations being lifted on every other street. This practice offers an excellent solution for increasing interior space and improving outdoor usability, all while preserving the unique charm of a Queenslander Home.
               </p>
@@ -61,7 +61,7 @@ export default function HomeRaising_Location({ params }: { params: { location: s
         </section>
         <section className="py-0 sm:py-[80px] bg-accent">
           <div className="max-w-[1250px] mx-auto px-5 sm:px-0">
-            <h2 className="text-primary font-[800] text-center mb-[30px] text-[38px]">
+            <h2 className="text-primary font-[800] text-center mb-[30px] text-[25px] sm:text-[38px] pt-5 sm:pt-0">
               Home Raising Project Types
             </h2>
             <p className="text-center text-dark text-[16px] mb-[30px]">
@@ -139,13 +139,13 @@ export default function HomeRaising_Location({ params }: { params: { location: s
             </div>
           </div>
         </section>
-        <section className="py-[60px] bg-accent">
-          <div className="max-w-[1250px] mx-auto px-5 sm:px-0">
+        <section className="py-5 sm:py-[60px] bg-accent">
+          <div className="max-w-[1250px] mx-auto px-0">
             <div className="flex flex-wrap justify-center mb-10 px-5 sm:px-0">
-              <h2 className="text-primary font-[800] text-center text-[38px] w-full mb-10">
+              <h2 className="text-primary font-[800] text-center text-[25px] sm:text-[38px] w-full mb-10">
                 Where We Service
               </h2>
-              <p className="text-center text-dark text-[16px] mb-[30px]">
+              <p className="text-center text-dark text-[16px] mb-0 sm:mb-[30px]">
                 Maiker Constructions builds in the below areas of the Brisbane and the South East section of Queensland.
               </p>
             </div>

@@ -129,3 +129,11 @@ figure.table tr td img, .no-pad img {
 .content p:not(.no-pad) {
   @apply px-5 sm:px-0
 }
+
+.ck-content, .ck-source-editing-area {
+  @apply h-[405px]
+}
+
+.ck-content, .ck-source-editing-area {
+  @apply text-dark
+}
