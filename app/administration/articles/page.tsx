@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-// import { getAdministrationArticles } from "@/services/administration/articleServices";
+import { getAdministrationArticles } from "@/services/administration/articleServices";
 
-// import ArticlesListTable from "@/components/Administration/ArticlesListTable";
+import ArticlesListTable from "@/components/Administration/ArticlesListTable";
 
 export default async function AdministrationArticles() {
   
-  // const articles = await getAdministrationArticles();
+  const articles = await getAdministrationArticles();
   
   return (
     <>
