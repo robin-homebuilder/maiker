@@ -21,7 +21,7 @@ export default function ArticleEditForm({ article } : PageProps) {
     company: article.company
   })
 
-  const Editor = useMemo(() => dynamic(() => import("../../components/Utils/Editor"), { ssr: false }), []);
+  // const Editor = useMemo(() => dynamic(() => import("../../components/Utils/Editor"), { ssr: false }), []);
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -92,7 +92,7 @@ export default function ArticleEditForm({ article } : PageProps) {
         <div className="mb-6">
           <p className="text-[16px] text-portalText font-[600]">Write Article</p>
           <div className="h-full relative z-10">=
-            <Editor value={formData.content} onChange={(v) => console.log(v)} />
+            {/* <Editor value={formData.content} onChange={(v) => console.log(v)} /> */}
           </div>
         </div>
         <div className="flex justify-end gap-x-2.5 w-full">
