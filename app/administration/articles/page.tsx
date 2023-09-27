@@ -4,7 +4,7 @@ import { getAdministrationArticles } from "@/services/administration/articleServ
 
 import ArticlesListTable from "@/components/Administration/ArticlesListTable";
 
-export default async function Articles() {
+export default async function AdministrationArticles() {
   
   const articles = await getAdministrationArticles();
   
