@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import { getAdministrationArticles } from "@/services/administration/articleServices";
+// import { getAdministrationArticles } from "@/services/administration/articleServices";
 
-import ArticlesListTable from "@/components/Administration/ArticlesListTable";
+// import ArticlesListTable from "@/components/Administration/ArticlesListTable";
 
 export default async function AdministrationArticles() {
   
-  const articles = await getAdministrationArticles();
+  // const articles = await getAdministrationArticles();
   
   return (
     <>
@@ -25,7 +25,7 @@ export default async function AdministrationArticles() {
           </div>
           <div className="mb-6">
             <p className="text-[16px] text-portalText font-[600] mb-3">Article List</p>
-            <ArticlesListTable articles={articles}/>
+            {/* <ArticlesListTable articles={articles}/> */}
           </div>
         </div>
       </section>
