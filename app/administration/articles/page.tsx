@@ -1,6 +1,12 @@
 import Link from "next/link";
 
+import { getAdministrationArticles } from "@/services/administration/articleServices";
+
+import ArticlesListTable from "@/components/Administration/ArticlesListTable";
+
 export default async function Articles() {
+  
+  const articles = await getAdministrationArticles();
   
   return (
     <>
@@ -19,28 +25,7 @@ export default async function Articles() {
           </div>
           <div className="mb-6">
             <p className="text-[16px] text-portalText font-[600] mb-3">Article List</p>
-            <table className="w-full">
-              <thead className="bg-[#F8F7F7] text-left text-[#7D7D7D] font-[600] border-b border-[#7D7D7D]">
-                <tr>
-                  <th className="py-2 pl-5 w-6/12">Article</th>
-                  <th className="py-2 w-3/12">Author</th>
-                  <th className="py-2 w-2/12">Date</th>
-                  <th className="py-2 w-1/12 text-center">Edit</th>
-                </tr>
-              </thead>
-              <tbody className="text-portalText py-2">
-                <tr>
-                  <td className="py-2">How to Build a Home</td>
-                  <td className="py-2">Jeremy Verhey</td>
-                  <td className="py-2">3rd Aug 2023</td>
-                  <td className="py-2 text-center">
-                    <Link href="/administration/articles/edit/21123">
-                      <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">Edit</button>
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <ArticlesListTable articles={articles}/>
           </div>
         </div>
       </section>

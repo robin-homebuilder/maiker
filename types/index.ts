@@ -154,3 +154,19 @@ export interface ClientBriefProps {
   client_checkbox: string[],
   other_requirements?: string
 }
+
+export interface AdministrationArticlesProps {
+  _id: string,
+  title: string,
+  author: string,
+  createdAt: string
+}
+
+export interface AdministrationArticleProps {
+  title: string,
+  sub_title: string,
+  author: string,
+  company: string,
+  content: string,
+  createdAt: string
+}

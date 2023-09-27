@@ -137,3 +137,7 @@ figure.table tr td img, .no-pad img {
 .ck-content, .ck-source-editing-area {
   @apply text-dark
 }
+
+.ck-source-editing-area textarea {
+  @apply overflow-auto !important;
+}
