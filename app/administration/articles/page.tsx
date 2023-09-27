@@ -25,7 +25,7 @@ export default async function AdministrationArticles() {
           </div>
           <div className="mb-6">
             <p className="text-[16px] text-portalText font-[600] mb-3">Article List</p>
-            {/* <ArticlesListTable articles={articles}/> */}
+            <ArticlesListTable articles={articles}/>
           </div>
         </div>
       </section>
