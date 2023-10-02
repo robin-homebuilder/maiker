@@ -60,14 +60,14 @@ export default function QuestionnaireForm() {
   };
 
   const handleStep6Next = async (data: ClientBriefProps) => {
-    // await processQuestionnaire({
-    //   step1Data: step1Data, 
-    //   step2Data: step2Data, 
-    //   step3Data: step3Data, 
-    //   step4Data: step4Data, 
-    //   step5Data: step5Data, 
-    //   step6Data: data
-    // });
+    await processQuestionnaire({
+      step1Data: step1Data, 
+      step2Data: step2Data, 
+      step3Data: step3Data, 
+      step4Data: step4Data, 
+      step5Data: step5Data, 
+      step6Data: data
+    });
 
     handleNext();
 
