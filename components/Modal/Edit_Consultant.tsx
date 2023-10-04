@@ -173,7 +173,7 @@ export default function Edit_Consultant({ isOpen, closeModal, consultantData, re
               leaveTo='opacity-0 scale-95'
             >
               <Dialog.Panel className='relative w-[525px] h-auto transform rounded-[20px] bg-white text-left shadow-xl transition-all text-dark border border-[#7D7D7D] p-[30px]'>
-                <div className={`absolute top-0 left-0 w-full h-full bg-[#ffffff96] justify-center items-center text-tertiary text-[70px] ${loading ? "flex" : "hidden"}`}><FaSpinner className="animate-spin"/></div>
+                <div className={`absolute top-0 left-0 w-full h-full bg-[#ffffff96] justify-center items-center text-tertiary text-[70px] z-30 ${loading ? "flex" : "hidden"}`}><FaSpinner className="animate-spin"/></div>
                 <h3 className="text-[#1C7FCD] text-[25px] font-[800] mb-[25px]">Edit Consultant</h3>
                 <form className="flex flex-wrap gap-y-[25px]" autoComplete="off" onSubmit={onSubmit}>
                   <input 
