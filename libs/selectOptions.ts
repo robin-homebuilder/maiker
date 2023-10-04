@@ -67,3 +67,9 @@ export const YesNoOptions = [
   { value: 'Yes', label: 'Yes' },
   { value: 'No', label: 'No' }
 ]
+
+export const ClientTypeOptions = [
+  { value: 'individual_owner', label: 'Individual Owner' },
+  { value: 'company_owner', label: 'Company Owner' },
+  { value: 'trust_owner', label: 'Trustee Owner' }
+]

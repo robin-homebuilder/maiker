@@ -1,10 +1,3 @@
-// export interface ArticleProps {
-//   title: String,
-//   description: String,
-//   author: String,
-//   imageURL: String
-// }
-
 export interface UserProps {
   id: String,
   name: String,
@@ -84,8 +77,9 @@ export interface ArticleProps {
   title: string,
   sub_title: string,
   author: String,
+  company: string,
   content: string,
-  createdAt: string,
+  issued_date: string,
   with_sidebar: boolean,
   external_links: [ExternalLink],
   banner: string
@@ -159,14 +153,66 @@ export interface AdministrationArticlesProps {
   _id: string,
   title: string,
   author: string,
-  createdAt: string
+  issued_date: string
 }
 
 export interface AdministrationArticleProps {
+  _id?: string,
   title: string,
   sub_title: string,
   author: string,
   company: string,
   content: string,
-  createdAt: string
+  issued_date?: Date,
+  image: string,
+  banner: string,
+  imageFile?: File,
+  bannerFile?: File,
+  with_sidebar: boolean,
+  external_links: ExternalLink[]
+}
+
+export interface ClientListProps {
+  _id: string,
+  type: string,
+  first_name: string,
+  last_name: string,
+  company_name: string,
+  trustee_name: string,
+  site_address: string
+}
+
+export interface ClientDataProps {
+  _id: string,
+  type: string,
+  abn?: string,
+  first_name: string,
+  last_name: string,
+  company_name: string,
+  trustee_name: string,
+  trust_name: string,
+  site_address: string,
+  phone: string,
+  email: string
+}
+
+export interface ConsultantListProps {
+  _id: string,
+  id_number: number,
+  name: string,
+  licence: string,
+  insurance_link: string,
+  insurance_expiry: string,
+  email: string,
+}
+
+export interface ConsultantDataProps {
+  _id?: string,
+  id_number?: number,
+  name: string,
+  licence: string,
+  insurance: string,
+  insurance_expiry?: Date,
+  email: string,
+  insurance_file?: File
 }

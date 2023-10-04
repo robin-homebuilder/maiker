@@ -27,7 +27,7 @@ export default async function Article({ params }: { params: { slug: string }}) {
         <div className="gap-10 px-5 sm:px-0 mb-5 sm:mb-0 pt-5 sm:pt-0">
           <h1 className="text-[25px] sm:text-[38px] text-primary font-[800]">{articleData.title}</h1>
           <p className="text-[#686868] text-[18px] sm:text-[20px] mb-2">{articleData.sub_title}</p>
-          <p className="text-warning text-[15px] sm:text-[16px] italic">{articleData.author} - {convertDate(articleData.createdAt)}</p>
+          <p className="text-warning text-[15px] sm:text-[16px] italic">{articleData.author}{articleData.company && `, ${articleData.company}`} - {convertDate(articleData.issued_date)}</p>
         </div>
         <hr className="border-tertiary mt-2.5 pb-5 hidden sm:block"/>
         <div className="flex flex-wrap sm:flex-nowrap gap-x-5 flex-col-reverse sm:flex-row">

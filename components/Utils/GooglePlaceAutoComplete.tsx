@@ -35,7 +35,7 @@ const AutoCompletePlace: React.FC<GoogleMapProps> = ({ setFormValues, formValues
         });
         
         const place = australiaResults[0];
-        console.log(place)
+        
         let addressLine1 = '';
         let addressLine2 = '';
       

@@ -5,22 +5,27 @@ import { DayPicker } from 'react-day-picker';
 
 interface ComponentProps {
   handleSelectDate: (data: string) => void;
+  selectedDate: Date;
 }
 
-export default function MyDatePicker({ handleSelectDate } : ComponentProps) {
-  const [ selected, setSelected ] = React.useState<Date>();
-
+export default function MyDatePicker({ handleSelectDate, selectedDate } : ComponentProps) {
+  const [ selected, setSelected ] = React.useState<Date | undefined>(selectedDate ? new Date(selectedDate) : undefined);
+  
   useEffect( () => {
     if(selected){
       handleSelectDate(format(selected, 'PP'));
     }
   }, [selected])
 
+  const handleDateSelect = async (day: Date) => {
+    setSelected(day);
+  };
+
   return (
     <DayPicker
       mode="single"
       selected={selected}
-      onSelect={setSelected}
+      onDayClick={handleDateSelect}
       modifiersStyles={{
         selected: { 
           backgroundColor: '#358AC3',

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import AddEdit_Client from "@/components/Modal/AddEdit_Client";
+import AddEdit_Client from "@/components/Modal/Edit_Client";
 import Add_AuthorityApproval_Document from "../Modal/ClientAdministration/AuthorityApprovals/Add_Document";
 import Edit_AuthorityApproval_Document from "../Modal/ClientAdministration/AuthorityApprovals/Edit_Document";
 

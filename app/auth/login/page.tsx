@@ -8,6 +8,10 @@ import * as z  from 'zod'
 
 import { signIn } from 'next-auth/react';
 
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
+
 interface LoginFormInputs {
   email: string;
   password: string;
@@ -19,19 +23,28 @@ const schema = z.object({
 });
 
 export default function Login() {
+  const router = useRouter();
+
+  const [ submitting, setSubmitting ] = useState<boolean>(false);
   
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>({
     resolver: zodResolver(schema)
   });
 
   const onSubmit = async (data: LoginFormInputs) => {
+    setSubmitting(true);
+
     const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
       redirect: false,
     });
-
-    console.log(result)
+    
+    if(result?.error){
+      setSubmitting(false)
+    } else{
+      router.push("/administration/client-search");
+    }
   }
   
   return (
@@ -54,7 +67,7 @@ export default function Login() {
               </div>
               <hr className="mb-4 border-primary"/>
               <div className="flex justify-center">
-                <button type="submit" className="bg-tertiary rounded-[20px] shadow-mainShadow w-[200px] h-[42px] font-[500]">Log In</button>
+                <button type="submit" className="bg-tertiary rounded-[20px] shadow-mainShadow w-[200px] h-[42px] font-[500] flex justify-center items-center">{submitting ? (<>Logging In&nbsp;&nbsp;<FaSpinner className="animate-spin"/></>) : "Log In"}</button>
               </div>
             </form>
           </div>

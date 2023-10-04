@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import AddEdit_Client from "@/components/Modal/AddEdit_Client";
+import AddEdit_Client from "@/components/Modal/Edit_Client";
 
 export default function ConsultantDashboard_ClientListTable() {
   const [ openModal, setOpenModal ] = useState(false);
@@ -49,7 +49,7 @@ export default function ConsultantDashboard_ClientListTable() {
           </tbody>
         </table>
       </div>
-      <AddEdit_Client isOpen={openModal} closeModal={() => setOpenModal(false)} action={action}/>
+      {/* <AddEdit_Client isOpen={openModal} closeModal={() => setOpenModal(false)}/> */}
     </>
   )
 }
