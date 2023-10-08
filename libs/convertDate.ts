@@ -29,7 +29,6 @@ export function convertArticleDate(date: Date) : string {
   return formattedDate;
 }
 
-
 export function convertInsuranceExpiryDate(date: string) : string {
   const inputDate = new Date(date);
 
@@ -41,4 +40,16 @@ export function convertInsuranceExpiryDate(date: string) : string {
 
   const [month, day, year] = formattedDate.split('/');
   return `${month}.${day}.${year}`;
+}
+
+export function convertProjectPhotoDate(date: string) : string {
+  const inputDate = new Date(date);
+
+  const formattedDate = inputDate.toLocaleDateString('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric'
+  });
+
+  return formattedDate;
 }

@@ -216,3 +216,18 @@ export interface ConsultantDataProps {
   email: string,
   insurance_file?: File
 }
+
+export interface ProjectPhotoProps {
+  main_image?: File,
+  other_image?: File[]
+}
+
+export interface ProjectPhotoListProps {
+  _id: string,
+  image_base_url: string,
+  main_image: string,
+  other_image:string[],
+  mainImage_file?: File,
+  otherImages_file?: File[],
+  createdAt: string
+}

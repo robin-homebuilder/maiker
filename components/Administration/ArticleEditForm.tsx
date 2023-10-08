@@ -389,7 +389,7 @@ export default function ArticleEditForm({ article } : PageProps) {
           <div className="flex relative w-3/4">
             <input 
               type="text" 
-              name="postcosde" 
+              name="banner_required" 
               placeholder="Add Banner for Mobile"
               className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow w-full"
               disabled

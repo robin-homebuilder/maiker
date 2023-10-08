@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /administration/
+
+Sitemap: https://www.maiker.com.au/sitemap.xml

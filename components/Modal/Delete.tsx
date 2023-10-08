@@ -21,6 +21,9 @@ export default function Delete_Modal({ isOpen, closeModal, handleDelete } : Clie
   useEffect( () => {
     if(isOpen) {
       setShowPanel(true)
+
+      setDisableButtons(false);
+      setDeleting(false);
     }
 
   }, [isOpen])
@@ -62,7 +65,7 @@ export default function Delete_Modal({ isOpen, closeModal, handleDelete } : Clie
             >
               <Dialog.Panel className='relative w-[400px] h-auto overflow-y-auto transform rounded-[20px] bg-white text-left shadow-xl transition-all text-dark border border-[#7D7D7D] p-[30px]'>
                 <div className="w-full flex justify-center text-[50px] text-[#1C7FCD]"><FaExclamationCircle/></div>
-                <h3 className="text-[#1C7FCD] text-[25px] font-[800] mb-[25px] text-center">Confirmation to Delete the Article</h3>
+                <h3 className="text-[#1C7FCD] text-[25px] font-[800] mb-[25px] text-center">Confirmation to Delete</h3>
                 <div className="flex justify-center gap-x-2.5 w-full">
                   <button type="button" className="text-warning border border-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[120px] h-[42px] disabled:cursor-not-allowed" onClick={closeTheModal} disabled={disableButtons}>Cancel</button>
                   <button type="button" className="text-white bg-warning rounded-[20px] text-[16px] shadow-mainShadow font-[600] w-[120px] h-[42px] flex justify-center items-center disabled:cursor-not-allowed" onClick={processDelete} disabled={disableButtons}>
