@@ -8,6 +8,8 @@ import { options } from "../api/auth/[...nextauth]/options"
 
 import { redirect } from "next/navigation"
 
+import { ROLES_LIST } from "@/libs/rolesList"
+
 export const metadata = {
   title: 'Administration - Maiker Constructions',
   description: 'Administration - Maiker Construction',
@@ -18,10 +20,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const session = await getServerSession(options)
+  const session = await getServerSession(options);
+
+  let role = 0;
   
-  if(!session){
-    redirect("/auth/login");
+  if(session){
+    role = session.user.role;
+  }
+
+  if(!session || role != ROLES_LIST.Admin){
+    redirect("/");
   }
 
   return (

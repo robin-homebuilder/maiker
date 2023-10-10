@@ -65,12 +65,10 @@ export default function AdministrationHeader() {
               ))}
             </div>
             <div className={`bg-black h-full`}>
-              <Link href="/auth/login">
-                <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full" onClick={() => signOut({ redirect: false })}>
-                  <FaRegUser size="13"/>
-                  <p className="text-[14px]">Logout</p>
-                </button>
-              </Link>
+              <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full" onClick={() => signOut()}>
+                <FaRegUser size="13"/>
+                <p className="text-[14px]">Logout</p>
+              </button>
             </div>
           </div>
         </div>

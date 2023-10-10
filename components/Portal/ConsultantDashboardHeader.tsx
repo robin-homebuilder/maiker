@@ -1,13 +1,14 @@
 "use client"
 
 import Link from "next/link";
-import Image from "next/image";
 
-import { FaPhone, FaEnvelope, FaChevronRight, FaRegUser, FaChevronDown } from "react-icons/fa"
+import { FaPhone, FaEnvelope, FaRegUser, FaChevronDown } from "react-icons/fa"
 
 import { NavigationLinks, NavigationLinksSecond } from "@/libs/navigationLinks";
 import { SocialMediaLinks } from "@/libs/socialMediaLinks";
 import { useEffect, useRef, useState } from "react";
+
+import { signOut } from "next-auth/react"
 
 export default function ConsultantDashboardHeader() {
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false);
@@ -64,12 +65,10 @@ export default function ConsultantDashboardHeader() {
               ))}
             </div>
             <div className={`bg-tertiary h-full`}>
-              <Link href="/auth/login">
-                <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full">
-                  <FaRegUser size="13"/>
-                  <p className="text-[14px]">Login</p>
-                </button>
-              </Link>
+              <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full" onClick={() => signOut()}>
+                <FaRegUser size="13"/>
+                <p className="text-[14px]">Logout</p>
+              </button>
             </div>
           </div>
         </div>

@@ -231,3 +231,14 @@ export interface ProjectPhotoListProps {
   otherImages_file?: File[],
   createdAt: string
 }
+
+export interface CredentialsProps {
+  id: string,
+  email: string,
+  password: string
+}
+
+export interface AuthenticateLoginProps {
+  email: string,
+  role: number
+}

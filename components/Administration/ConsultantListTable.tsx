@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Add_Consultant from "../Modal/Add_Consultant";
 import Edit_Consultant from "../Modal/Edit_Consultant";
+import Manage_Consultant_Credentials from "../Modal/Administration/ManageConsultantsCredential";
 
 import { ConsultantDataProps, ConsultantListProps } from "@/types";
 
@@ -18,6 +19,9 @@ interface PageProps {
 export default function ConsultantListTable({ consultants } : PageProps) {
   const [ openModal, setOpenModal ] = useState(false);
   const [ openEditModal, setOpenEditModal ] = useState(false);
+  const [ openCredentialModal, setOpenCredentialModal ] = useState(false);
+
+  const [ clientID, setClientID ] = useState<string>("");
 
   const [ consultantList, setConsultantList ] = useState<ConsultantListProps[]>(consultants);
   const [ consultantData, setConsultantData ] = useState<ConsultantDataProps>({
@@ -37,6 +41,12 @@ export default function ConsultantListTable({ consultants } : PageProps) {
 
     setConsultantData(data);
     setOpenEditModal(true);
+  }
+
+  const showCredentialModal = async (id : string) => {
+    setClientID(id)
+
+    setOpenCredentialModal(true);
   }
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,12 +78,13 @@ export default function ConsultantListTable({ consultants } : PageProps) {
           <thead className="bg-[#F8F7F7] text-left text-[#7D7D7D] font-[600] border-b border-[#7D7D7D]">
             <tr>
               <th className="py-2 pl-2 w-[14%]">ID Number</th>
-              <th className="py-2 w-[15%]">Name</th>
+              <th className="py-2 w-[12%]">Name</th>
               <th className="py-2 w-[10%]">Licence</th>
               <th className="py-2 w-[14%] text-center">Insurance</th>
-              <th className="py-2 w-[15%] pl-5">Expiry</th>
-              <th className="py-2 w-[16%]">Email</th>
-              <th className="py-2 w-[14%] text-center">Edit</th>
+              <th className="py-2 w-[14%] pl-5">Expiry</th>
+              <th className="py-2 w-[12%]">Email</th>
+              <th className="py-2 w-[12%] text-center">Edit</th>
+              <th className="py-2 w-[12%] text-center">Credentials</th>
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
@@ -92,6 +103,9 @@ export default function ConsultantListTable({ consultants } : PageProps) {
                 <td className="py-2 text-center">
                   <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showEditModal(item._id)}>Edit</button>
                 </td>
+                <td className="py-2 text-center">
+                  <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showCredentialModal(item._id)}>Manage</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -99,6 +113,7 @@ export default function ConsultantListTable({ consultants } : PageProps) {
       </div>
       <Add_Consultant isOpen={openModal} closeModal={() => setOpenModal(false)} refreshClientList={refreshClientList}/>
       <Edit_Consultant isOpen={openEditModal} closeModal={() => setOpenEditModal(false)} consultantData={consultantData} refreshClientList={refreshClientList}/>
+      <Manage_Consultant_Credentials isOpen={openCredentialModal} closeModal={() => setOpenCredentialModal(false)} clientID={clientID} />
     </>
   )
 }

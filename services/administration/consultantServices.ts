@@ -1,9 +1,12 @@
-import { ConsultantDataProps, ConsultantListProps } from "@/types";
+import { ConsultantDataProps, ConsultantListProps, CredentialsProps } from "@/types";
 
 interface AddConsultantProps {
   data: ConsultantDataProps
 }
 
+interface SaveClientCredentialProps {
+  data: CredentialsProps
+}
 
 export async function getConsultantList(){
   try {
@@ -24,6 +27,43 @@ export async function getConsultantByID(id: string){
     const clients : ConsultantDataProps = await response.json();
 
     return clients;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getConsultantCredentialByID(id: string){
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/consultants/credential/${id}`, { cache: 'no-store' })
+
+    const credential : CredentialsProps = await response.json();
+
+    return credential;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function saveConsultantCredential({ data } : SaveClientCredentialProps){
+  const body = {
+    id: data.id,
+    email: data.email,
+    password: data.password
+  }
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/consultants/credential`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      cache: "no-store"
+    });
+
+    const credential : CredentialsProps = await response.json();
+
+    return credential;
   } catch (error) {
     throw error;
   }

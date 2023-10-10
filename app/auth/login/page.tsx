@@ -1,16 +1,20 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation";
+
+import { getSession, signIn } from 'next-auth/react';
 
 import { useForm } from 'react-hook-form'
+
+import { useState } from "react";
+
+import { FaSpinner } from "react-icons/fa";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z  from 'zod'
 
-import { signIn } from 'next-auth/react';
-
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { ROLES_LIST } from "@/libs/rolesList";
 
 interface LoginFormInputs {
   email: string;
@@ -40,10 +44,22 @@ export default function Login() {
       redirect: false,
     });
     
+    const session = await getSession();
+
     if(result?.error){
       setSubmitting(false)
     } else{
-      router.push("/administration/client-search");
+      if (session && session.user) {
+        const { role } = session.user;
+
+        if (role === ROLES_LIST.Admin) {
+          router.push("/administration/client-search");
+        } else if(role === ROLES_LIST.Client) {
+          router.push("/client-administration/consultant-access");
+        } else if(role === ROLES_LIST.Consultant) {
+          router.push("/consultant-dashboard/client-search");
+        }
+      }
     }
   }
   
@@ -67,7 +83,7 @@ export default function Login() {
               </div>
               <hr className="mb-4 border-primary"/>
               <div className="flex justify-center">
-                <button type="submit" className="bg-tertiary rounded-[20px] shadow-mainShadow w-[200px] h-[42px] font-[500] flex justify-center items-center">{submitting ? (<>Logging In&nbsp;&nbsp;<FaSpinner className="animate-spin"/></>) : "Log In"}</button>
+                <button type="submit" className={`bg-tertiary rounded-[20px] shadow-mainShadow w-[200px] h-[42px] font-[500] flex justify-center items-center`}>{submitting ? (<>Logging In&nbsp;&nbsp;<FaSpinner className="animate-spin"/></>) : "Log In"}</button>
               </div>
             </form>
           </div>

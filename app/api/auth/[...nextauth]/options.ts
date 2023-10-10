@@ -1,26 +1,44 @@
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+import { login } from '@/services/authenticationServices';
+
 export const options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {},
       async authorize(credentials) {
-          const {email, password} = credentials as {
-              email: string,
-              password: string,
-          };
-          
-          const user = { id: "42", name: "admin@maiker.com.au", password: "admin123" }
+        const { email, password } = credentials as any;
 
-          if (email === user.name && password === user.password) {
-              return {...user, apiToken: "qwewqewqeqwe"}
-          } else {
-              return null
-          }
+        const result = await login({email, password});
+        
+        const user = {
+          id: result?.email || "",
+          ...result
+        }
+
+        if (result.email && result.role) {
+          return {...user};
+        } else {
+          return null
+        }
       }
     })
   ],
-  session: { strategy: "jwt" }
+  pages: {
+    signIn: "/auth/login",
+    signOut: "/auth/login"
+  },
+  callbacks: {
+    jwt({ token, user }) {
+      if(user) token.role = user.role
+      return token
+    },
+    session({ session, token }) {
+      session.user.role = token.role
+      return session
+    }
+  }
+  // session: { strategy: "jwt" }
 }

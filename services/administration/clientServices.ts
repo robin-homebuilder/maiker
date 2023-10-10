@@ -1,7 +1,11 @@
-import { ClientDataProps, ClientListProps } from "@/types";
+import { ClientDataProps, ClientListProps, CredentialsProps } from "@/types";
 
 interface UpdateClientProps {
   data: ClientDataProps
+}
+
+interface SaveClientCredentialProps {
+  data: CredentialsProps
 }
 
 export async function getClientsList(){
@@ -46,6 +50,43 @@ export async function getClientByID(id: string){
     const clients : ClientDataProps = await response.json();
 
     return clients;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getClientCredentialByID(id: string){
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/clients/credential/${id}`, { cache: 'no-store' })
+
+    const credential : CredentialsProps = await response.json();
+
+    return credential;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function saveClientCredential({ data } : SaveClientCredentialProps){
+  const body = {
+    id: data.id,
+    email: data.email,
+    password: data.password
+  }
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/clients/credential`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      cache: "no-store"
+    });
+
+    const credential : CredentialsProps = await response.json();
+
+    return credential;
   } catch (error) {
     throw error;
   }

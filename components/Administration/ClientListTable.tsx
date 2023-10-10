@@ -4,9 +4,11 @@ import { useState } from "react";
 
 import Edit_Client from "@/components/Modal/Edit_Client";
 import Add_Client from "@/components/Modal/Add_Client";
+import Manage_Client_Credentials from "@/components/Modal/Administration/ManageClientsCredential";
 
-import { ClientDataProps, ClientListProps } from "@/types";
-import { getClientByID, getClientsSearch } from "@/services/administration/clientServices";
+import { ClientDataProps, ClientListProps, CredentialsProps } from "@/types";
+
+import { getClientByID, getClientCredentialByID, getClientsSearch } from "@/services/administration/clientServices";
 
 interface PageProps {
   clients: ClientListProps[]
@@ -15,6 +17,9 @@ interface PageProps {
 export default function ClientListTable({ clients } : PageProps) {
   const [ openAddModal, setOpenAddModal ] = useState(false);
   const [ openModal, setOpenModal ] = useState(false);
+  const [ openCredentialModal, setOpenCredentialModal ] = useState(false);
+
+  const [ clientID, setClientID ] = useState<string>("");
 
   const [ clientList, setClientList ] = useState<ClientListProps[]>(clients);
   const [ clientData, setClientData ] = useState<ClientDataProps>({
@@ -36,8 +41,16 @@ export default function ClientListTable({ clients } : PageProps) {
 
   const showModal = async (id : string) => {
     const data = await getClientByID(id);
+
     setClientData(data)
+
     setOpenModal(true);
+  }
+
+  const showCredentialModal = async (id : string) => {
+    setClientID(id)
+
+    setOpenCredentialModal(true);
   }
   
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,8 +82,9 @@ export default function ClientListTable({ clients } : PageProps) {
           <thead className="bg-[#F8F7F7] text-left text-[#7D7D7D] font-[600] border-b border-[#7D7D7D]">
             <tr>
               <th className="py-2 pl-5 w-3/12">Name</th>
-              <th className="py-2 w-7/12">Site Address</th>
-              <th className="py-2 w-2/12">Edit</th>
+              <th className="py-2 w-5/12">Site Address</th>
+              <th className="py-2 w-2/12 text-center">Edit</th>
+              <th className="py-2 w-2/12 text-center">Credentials</th>
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
@@ -89,7 +103,8 @@ export default function ClientListTable({ clients } : PageProps) {
                 <tr key={index}>
                   <td className="py-2">{clientName}</td>
                   <td className="py-2">{item.site_address}</td>
-                  <td className="py-2"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal(item._id)}>Open</button></td>
+                  <td className="py-2 text-center"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal(item._id)}>Open</button></td>
+                  <td className="py-2 text-center"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showCredentialModal(item._id)}>Manage</button></td>
                 </tr>
               )
             })}
@@ -98,6 +113,7 @@ export default function ClientListTable({ clients } : PageProps) {
       </div>
       <Edit_Client isOpen={openModal} closeModal={() => setOpenModal(false)} clientData={clientData} refreshClientList={refreshClientList}/>
       <Add_Client isOpen={openAddModal} closeModal={() => setOpenAddModal(false)} refreshClientList={refreshClientList}/>
+      <Manage_Client_Credentials isOpen={openCredentialModal} closeModal={() => setOpenCredentialModal(false)} clientID={clientID} />
     </>
   )
 }

@@ -8,6 +8,7 @@ import Footer from "../components/Footer/Footer";
 
 import Past_Projects from "@/components/Utils/ProjectsCard";
 import ScrollButtonHome from "@/components/Utils/ScrollButtonHome";
+import MapComponent from "@/components/Utils/MapComponent";
 
 export default function Home() {
   return (
@@ -178,7 +179,8 @@ export default function Home() {
             </p>
           </div>
           <div className="w-full h-[319px] sm:h-[600px] relative">
-            <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.webp`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/>
+            <MapComponent />
+            {/* <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.webp`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/> */}
           </div>
         </section>
       </main>
