@@ -73,3 +73,19 @@ export const ClientTypeOptions = [
   { value: 'company_owner', label: 'Company Owner' },
   { value: 'trust_owner', label: 'Trustee Owner' }
 ]
+
+export const ProjectStatusOptions = [
+  { value: 301, label: 'Investigation' },
+  { value: 302, label: 'Concept Design' },
+  { value: 303, label: 'Design Development' },
+  { value: 304, label: 'Under Construction' },
+  { value: 305, label: 'Defects Period' },
+  { value: 306, label: 'Complete' }
+]
+
+
+export const ClaimsInvoiceStatusOptions = [
+  { value: 'pending', label: 'Pending' },
+  { value: 'approved', label: 'Approved' },
+  { value: 'rejected', label: 'Rejected' }
+]

@@ -240,5 +240,233 @@ export interface CredentialsProps {
 
 export interface AuthenticateLoginProps {
   email: string,
-  role: number
+  role: number,
+  client: string
+}
+
+export interface ClientDataForClientPageProps {
+  _id: string,
+  type: string,
+  abn?: string,
+  first_name: string,
+  last_name: string,
+  company_name: string,
+  trustee_name: string,
+  trust_name: string,
+  site_address: string,
+  phone: string,
+  email: string,
+  project_status: number
+}
+
+export interface SiteInformationID {
+  id: string
+}
+
+export interface SiteDetailsProps {
+  site_address: string,
+  description: string,
+  site_area: string,
+  local_government: string
+}
+
+export interface SiteDocumentProps {
+  _id: string,
+  name: string,
+  document_date?: Date,
+  url: string,
+  file_name: string,
+  document_file?: File
+}
+
+export interface DrawingsAndReportProps {
+  _id?: string,
+  section_name: string,
+  name: string,
+  file_name: string,
+  document_file?: File,
+  document_date?: Date,
+  amendment: string,
+  documents?: {
+    name: string,
+    document_date?: Date,
+    amendment: string,
+    url: string,
+    file_name: string,
+  }[]
+}
+
+export interface DrawingAndReportFileProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  amendment: string,
+  url: string,
+  file_name: string,
+  document_file?: File,
+}
+
+export interface AuthorityApprovalProps {
+  _id?: string,
+  section_name: string,
+  name: string,
+  file_name: string,
+  document_file?: File,
+  document_date?: Date,
+  amendment: string,
+  documents?: {
+    name: string,
+    document_date?: Date,
+    amendment: string,
+    url: string,
+    file_name: string,
+  }[]
+}
+
+export interface AuthorityApprovalFileProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  amendment: string,
+  url: string,
+  file_name: string,
+  document_file?: File,
+}
+
+export interface ComplianceOperationsProps {
+  _id?: string,
+  section_name: string,
+  name: string,
+  file_name: string,
+  document_file?: File,
+  document_date?: Date,
+  documents?: {
+    name: string,
+    document_date?: Date,
+    url: string,
+    file_name: string,
+  }[]
+}
+
+export interface ComplianceOperationsFileProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  url: string,
+  file_name: string,
+  document_file?: File,
+}
+
+export interface ClientProjectPhotosProps {
+  _id?: string,
+  url?: string,
+  file_name: string,
+  document_file?: File,
+  createdAt?: string
+}
+
+export interface ClientConsultantAccessListProps {
+  _id: string,
+  consultant_id: {
+    _id: string,
+    id_number: string,
+    name: string
+  }
+}
+
+export interface ClientConsultantAccessProps {
+  _id: string,
+  id_number: string,
+  name: string
+}
+
+export interface ProgressClaimsProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  claim_amount: string,
+  status: string,
+  file_name: string,
+  url?: string,
+  document_file?: File
+}
+
+export interface InvoiceProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  invoice_amount: string,
+  status: string,
+  file_name: string,
+  url?: string,
+  document_file?: File
+}
+
+export interface ContractSumProps {
+  _id: string,
+  original_contract_sum: string,
+  variation: string,
+  revised_contract_sum: string
+}
+
+export interface PracticalCompletionProps {
+  _id: string,
+  original_practical_completion?: string,
+  approved_extension_of_time?: string,
+  revised_practical_completion?: string
+}
+
+export interface EditPracticalCompletionProps {
+  _id: string,
+  original_practical_completion?: Date,
+  approved_extension_of_time?: string,
+  revised_practical_completion?: Date
+}
+
+export interface ContractDocumentProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  file_name: string,
+  url?: string,
+  document_file?: File
+}
+
+export interface ExtensionTimeProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  days_submitted: string,
+  status: string,
+  file_name: string,
+  url?: string,
+  document_file?: File
+}
+
+export interface VariationProps {
+  _id?: string,
+  name: string,
+  document_date?: Date,
+  amount_submitted: string,
+  status: string,
+  file_name: string,
+  url?: string,
+  document_file?: File
+}
+
+export interface ClientDocumentsProps {
+  _id?: string,
+  name: string,
+  file_name: string,
+  document_date?: Date,
+  url?: string,
+  document_file?: File
+}
+
+export interface ClientInformationClientsProps {
+  _id?: string,
+  client_name: string,
+  phone: string,
+  email: string,
+  mailing_address: string
 }

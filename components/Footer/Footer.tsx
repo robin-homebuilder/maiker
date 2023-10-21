@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,6 +11,13 @@ import { SocialMediaLinks } from "@/libs/socialMediaLinks";
 import RequstCallBackForm from "./RequstCallBackForm";
 
 export default function Footer() {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const targetSection = document.getElementById("footer");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="relative overflow-hidden" id="footer">
       <div className="h-full sm:h-[482px] w-full relative">
@@ -42,6 +51,9 @@ export default function Footer() {
               </Link>
             </div>
             <div className="flex gap-x-2.5 w-full sm:w-auto justify-between">
+              <button type="button" className="bg-white text-secondary px-5 font-[600] rounded-[20px] h-[42px] flex items-center gap-x-0 sm:gap-x-2 shadow-mainShadow" onClick={(e) => handleClick(e)}>
+                Request Call Back <FaChevronRight />
+              </button>
               {NavigationLinksSecond.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <button type="button" className="bg-white text-secondary px-5 font-[600] rounded-[20px] h-[42px] flex items-center gap-x-0 sm:gap-x-2 shadow-mainShadow">

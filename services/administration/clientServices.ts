@@ -1,4 +1,4 @@
-import { ClientDataProps, ClientListProps, CredentialsProps } from "@/types";
+import { ClientDataForClientPageProps, ClientDataProps, ClientListProps, CredentialsProps } from "@/types";
 
 interface UpdateClientProps {
   data: ClientDataProps
@@ -11,6 +11,29 @@ interface SaveClientCredentialProps {
 export async function getClientsList(){
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/clients/`, { cache: 'no-store' })
+
+    const clients : ClientListProps[] = await response.json();
+
+    return clients;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateClientProjcetStatus(status: string, clientID: string){
+  const body = {
+    status: status
+  }
+  
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/clients/project_status/${clientID}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      cache: "no-store"
+    });
 
     const clients : ClientListProps[] = await response.json();
 
@@ -48,6 +71,19 @@ export async function getClientByID(id: string){
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/clients/${id}`, { cache: 'no-store' })
 
     const clients : ClientDataProps = await response.json();
+
+    return clients;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getClientByIDForClientPage(id: string){
+  
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/administration/clients/${id}`, { cache: 'no-store' })
+
+    const clients : ClientDataForClientPageProps = await response.json();
 
     return clients;
   } catch (error) {

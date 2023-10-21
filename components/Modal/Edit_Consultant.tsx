@@ -198,9 +198,9 @@ export default function Edit_Consultant({ isOpen, closeModal, consultantData, re
                     <div className="relative w-3/4">
                       <input 
                         type="text" 
-                        name="postcode" 
+                        name="insurance_name" 
                         placeholder="Add Insurance"
-                        className="border border-tertiary rounded-l-[20px] h-[42px] shadow-mainShadow w-full pr-[30px]"
+                        className="border border-tertiary rounded-l-[20px] h-[42px] shadow-mainShadow w-full pr-[30px] text-ellipsis"
                         value={formData.insurance}
                         disabled
                         required

@@ -1,14 +1,60 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Add_Consultant from "../Modal/ClientAdministration/Add_Consultant";
 
-export default function ConsultantAccessTable() {
+import { deleteConsultantAccess, getConsultantAccess } from "@/services/clientAdministration/consultantAccessServices";
+
+import { ClientConsultantAccessListProps } from "@/types";
+import Delete_Modal from "../Modal/Delete";
+
+interface PageProps {
+  clientID: string
+}
+
+export default function ConsultantAccessTable({ clientID } : PageProps) {
   const [ openModal, setOpenModal ] = useState(false);
+  const [ openDeleteModal, setOpenDeleteModal ] = useState(false);
+
+  const [ selectedAccess, setSelectedAccess ] = useState<string>("");
+  const [ selectedConsultantID, setSelectedConsultantID ] = useState<string>("");
+  
+  const [ consultants, setConsultants ] = useState<ClientConsultantAccessListProps[]>([]);
+
+  useEffect( () => {
+    getConsultantAccess(clientID)
+      .then(data => {
+        setConsultants(data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [clientID])
   
   const showModal = async (action : string) => {
     setOpenModal(true);
+  }
+
+  const showDeleteModal = async (id: string, consultantID: string) => {
+    setSelectedAccess(id);
+    setSelectedConsultantID(consultantID);
+
+    setOpenDeleteModal(true);
+  }
+
+  const refreshList = async () => {
+    const data = await getConsultantAccess(clientID);
+
+    setConsultants(data);
+  }
+
+  const handleDelete = async () => {
+    await deleteConsultantAccess(selectedAccess, selectedConsultantID, clientID);
+
+    refreshList();
+
+    setOpenDeleteModal(false);
   }
   
   return (
@@ -23,11 +69,21 @@ export default function ConsultantAccessTable() {
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
-            <tr>
-              <td className="py-2">32546836</td>
-              <td className="py-2">YK Designs</td>
-              <td className="py-2 text-center"><button type="button" className="bg-warning w-auto px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">Remove Access</button></td>
-            </tr>
+            {consultants.map((item, index) => (
+              <tr key={index}>
+                <td className="py-2">{item.consultant_id.id_number}</td>
+                <td className="py-2">{item.consultant_id.name}</td>
+                <td className="py-2 text-center">
+                  <button 
+                    type="button" 
+                    className="bg-warning w-auto px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow"
+                    onClick={() => showDeleteModal(item._id, item.consultant_id._id)}
+                  >
+                    Remove Access
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -35,7 +91,8 @@ export default function ConsultantAccessTable() {
       <div className="w-full flex justify-end">
         <button type="button" className="w-[262px] h-[42px] bg-portalBG rounded-[20px] text-[16px] font-[600]" onClick={() => showModal("Edit")}>Add Consultant Access</button>
       </div>
-      <Add_Consultant isOpen={openModal} closeModal={() => setOpenModal(false)}/>
+      <Add_Consultant isOpen={openModal} closeModal={() => setOpenModal(false)} clientID={clientID} refreshList={refreshList}/>
+      <Delete_Modal isOpen={openDeleteModal} closeModal={() => setOpenDeleteModal(false)} handleDelete={handleDelete}/>
     </>
   )
 }

@@ -17,6 +17,29 @@ export function convertDate(date: string) : string {
   return formattedDate;
 }
 
+export function convertDateFormat(date: Date) : string {
+  if(!date){
+    return "";
+  }
+  
+  const inputDate = new Date(date);
+
+  const ordinalSuffixes = ['th', 'st', 'nd', 'rd'];
+
+  const day = inputDate.getDate();
+  
+  const daySuffix = ordinalSuffixes[(day % 10)] || ordinalSuffixes[0];
+
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const month = monthNames[inputDate.getMonth()];
+
+  const year = inputDate.getFullYear();
+
+  const formattedDate = `${day}${daySuffix} ${month} ${year}`;
+
+  return formattedDate;
+}
+
 export function convertArticleDate(date: Date) : string {
   const inputDate = new Date(date);
 

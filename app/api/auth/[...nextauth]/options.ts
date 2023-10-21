@@ -12,12 +12,12 @@ export const options: NextAuthOptions = {
         const { email, password } = credentials as any;
 
         const result = await login({email, password});
-        
+
         const user = {
           id: result?.email || "",
           ...result
         }
-
+        
         if (result.email && result.role) {
           return {...user};
         } else {
@@ -32,11 +32,16 @@ export const options: NextAuthOptions = {
   },
   callbacks: {
     jwt({ token, user }) {
-      if(user) token.role = user.role
+      if(user) {
+        token.role = user.role
+        token.client = user.client
+      }
+      
       return token
     },
     session({ session, token }) {
       session.user.role = token.role
+      session.user.client = token.client || ""
       return session
     }
   }

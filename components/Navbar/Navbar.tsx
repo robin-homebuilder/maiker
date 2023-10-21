@@ -79,6 +79,13 @@ export default function Navbar( { page } : PageProps ) {
   const closeDropdown = () => {
     setShowDropdown(false);
   };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const targetSection = document.getElementById("footer");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <>
@@ -143,7 +150,7 @@ export default function Navbar( { page } : PageProps ) {
                       {item.name} <div className={`${showDropdown && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div>
                     </button>
                     {showDropdown && (
-                      <div className={`absolute top-full -left-5 shadow-[0px_2px_4px_1px_rgba(0,0,0,0.75)] w-[200px] rounded-[20px] mt-2 ${(page == "home" && !scrolledPastSection) ? "bg-none" : "bg-white"}`}>
+                      <div className={`absolute top-full -left-5 shadow-[0px_2px_4px_1px_rgba(0,0,0,0.75)] w-[200px] rounded-[20px] mt-2 ${(page == "home" && !scrolledPastSection) ? "bg-[#00000080]" : "bg-white"}`}>
                         {item.dropdownItems?.map((dropdownItem, i) => (
                           <Link href={dropdownItem.link} key={i} className={`block px-5 py-3 font-[500] ${(page == "home" && !scrolledPastSection) ? "text-white" : "text-dark"}`}>
                             {dropdownItem.name}
@@ -159,6 +166,9 @@ export default function Navbar( { page } : PageProps ) {
               ))}
             </div>
             <div className="flex gap-x-2.5">
+              <button type="button" className={`${(page == "home" && !scrolledPastSection) ? "bg-white text-dark" : " bg-fore shadow-mainShadow"} px-5 rounded-[20px] h-[42px] flex items-center font-[600] gap-x-2`} onClick={(e) => handleClick(e)}>
+                Request Call Back <FaChevronRight />
+              </button>
               {NavigationLinksSecond.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <button type="button" name={item.name} className={`${(page == "home" && !scrolledPastSection) ? "bg-white text-dark" : " bg-fore shadow-mainShadow"} px-5 rounded-[20px] h-[42px] flex items-center font-[600] gap-x-2`}>

@@ -82,7 +82,8 @@ export default function ClientListTable({ clients } : PageProps) {
           <thead className="bg-[#F8F7F7] text-left text-[#7D7D7D] font-[600] border-b border-[#7D7D7D]">
             <tr>
               <th className="py-2 pl-5 w-3/12">Name</th>
-              <th className="py-2 w-5/12">Site Address</th>
+              <th className="py-2 w-3/12">Site Address</th>
+              <th className="py-2 w-2/12 text-center">Administration</th>
               <th className="py-2 w-2/12 text-center">Edit</th>
               <th className="py-2 w-2/12 text-center">Credentials</th>
             </tr>
@@ -103,7 +104,12 @@ export default function ClientListTable({ clients } : PageProps) {
                 <tr key={index}>
                   <td className="py-2">{clientName}</td>
                   <td className="py-2">{item.site_address}</td>
-                  <td className="py-2 text-center"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal(item._id)}>Open</button></td>
+                  <td className="py-2 text-center">
+                    <a href={`/client-administration/${item._id}/consultant-access`} target="_blank">
+                      <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">Open</button>
+                    </a>
+                  </td>
+                  <td className="py-2 text-center"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal(item._id)}>Edit</button></td>
                   <td className="py-2 text-center"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showCredentialModal(item._id)}>Manage</button></td>
                 </tr>
               )

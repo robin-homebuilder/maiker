@@ -43,14 +43,25 @@ export const NavigationLinks = [
   }
 ];
 
+// export const NavigationLinksSecond = [
+//   {
+//     name: "Quote My Plans",
+//     link: "/quote"
+//   },
+//   {
+//     name: "Design My Home",
+//     link: "/design"
+//   }
+// ]
+
 export const NavigationLinksSecond = [
+  // {
+  //   name: "Quote My Plans",
+  //   link: "/quote"
+  // },
   {
-    name: "Quote My Plans",
-    link: "/quote"
-  },
-  {
-    name: "Design My Home",
-    link: "/design"
+    name: "Site Meeting Request",
+    link: "/articles/could-we-be-your-perfect-home-builder"
   }
 ]
 

@@ -22,7 +22,7 @@ export async function login({ email, password } : LoginProps){
     });
 
     const credential : AuthenticateLoginProps = await response.json();
-
+    
     return credential;
   } catch (error) {
     console.error('Error while creating payment intent:', error);

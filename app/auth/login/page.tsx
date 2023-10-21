@@ -45,17 +45,17 @@ export default function Login() {
     });
     
     const session = await getSession();
-
+    
     if(result?.error){
       setSubmitting(false)
     } else{
       if (session && session.user) {
-        const { role } = session.user;
+        const { role, client } = session.user;
 
         if (role === ROLES_LIST.Admin) {
           router.push("/administration/client-search");
         } else if(role === ROLES_LIST.Client) {
-          router.push("/client-administration/consultant-access");
+          router.push(`/client-portal/${client}/client-information`);
         } else if(role === ROLES_LIST.Consultant) {
           router.push("/consultant-dashboard/client-search");
         }

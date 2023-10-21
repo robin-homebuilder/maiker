@@ -115,7 +115,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-5 sm:py-[60px] max-w-[1250px] mx-auto">
+        {/* <section className="py-5 sm:py-[60px] max-w-[1250px] mx-auto">
           <div className="flex flex-wrap justify-center px-5 sm:px-0">
             <h2 className="text-primary font-[800] text-center mb-5 text-[38px] w-full">
               Services
@@ -155,8 +155,8 @@ export default function Home() {
               <Image src={`${process.env.APP_S3_BUCKET}/assets/Quote-My-Plans.webp`} width={620} height={391} alt="Quote Your Architect's Plans" className="object-cover w-auto"/>
             </div>
           </div>
-        </section>
-        <section className="py-2.5 sm:py-[60px] bg-accent">
+        </section> */}
+        <section className="py-2.5 sm:py-[60px]">
           <div className="max-w-[1250px] mx-auto">
             <h2 className="text-primary font-[800] text-center mb-[30px] text-[38px]">
               Past Projects
@@ -169,18 +169,20 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-[60px] max-w-[1250px] mx-auto">
-          <div className="flex flex-wrap justify-center mb-10 px-5 sm:px-0">
-            <h2 className="text-primary font-[800] text-center text-[38px] w-full mb-10">
-              Where We Service
-            </h2>
-            <p className="text-center text-dark text-[16px] mb-[30px]">
-              Maiker Constructions builds in the below areas of the Brisbane and the South East section of Queensland.
-            </p>
-          </div>
-          <div className="w-full h-[319px] sm:h-[600px] relative">
-            <MapComponent />
-            {/* <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.webp`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/> */}
+        <section className="py-2.5 sm:py-[60px] bg-accent">
+          <div className="max-w-[1250px] mx-auto">
+            <div className="flex flex-wrap justify-center mb-10 px-5 sm:px-0">
+              <h2 className="text-primary font-[800] text-center text-[38px] w-full mb-10">
+                Where We Service
+              </h2>
+              <p className="text-center text-dark text-[16px] mb-[30px]">
+                Maiker Constructions builds in the below areas of the Brisbane and the South East section of Queensland.
+              </p>
+            </div>
+            <div className="w-full h-[319px] sm:h-[600px] relative">
+              <MapComponent />
+              {/* <Image src={`${process.env.APP_S3_BUCKET}/assets/Where-We-Service.webp`} fill={true} alt="Where We Service" className="object-cover shadow-secondShadow"/> */}
+            </div>
           </div>
         </section>
       </main>

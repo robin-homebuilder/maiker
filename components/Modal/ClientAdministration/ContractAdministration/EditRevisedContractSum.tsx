@@ -1,37 +1,77 @@
 "use client"
 
-import Image from 'next/image';
-
 import { Fragment, useEffect, useState } from 'react'
 
+import { FaSpinner } from 'react-icons/fa';
+
 import { Dialog, Transition } from '@headlessui/react';
+
+import { ContractSumProps } from '@/types';
+
+import { updateContractSum } from '@/services/clientAdministration/contractAdministrationServices';
 
 interface ClientProps {
   isOpen: boolean;
   closeModal: () => void;
+  contractSum: ContractSumProps;
+  refreshContractSum: () => void;
 }
 
-export default function Edit_RevisedContractSum({ isOpen, closeModal } : ClientProps) {
+export default function Edit_RevisedContractSum({ isOpen, closeModal, contractSum, refreshContractSum } : ClientProps) {
   const [ showPanel, setShowPanel ] = useState(true);
+  const [ loading, setLoading ] = useState<boolean>(false);
+  
+  const [ formData, setFormData ] = useState<ContractSumProps>({
+    _id: contractSum._id,
+    original_contract_sum: contractSum?.original_contract_sum || "0",
+    variation: contractSum?.variation || "0",
+    revised_contract_sum: contractSum?.revised_contract_sum || "0"
+  });
 
   useEffect( () => {
     if(isOpen) {
       setShowPanel(true)
+
+      setLoading(false);
+
+      setFormData({
+        _id: contractSum._id,
+        original_contract_sum: contractSum?.original_contract_sum || "0",
+        variation: contractSum?.variation || "0",
+        revised_contract_sum: contractSum?.revised_contract_sum || "0"
+      });
     }
 
-  }, [isOpen])
+  }, [isOpen, contractSum])
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+  
   const closeTheModal = () => {
     closeModal();
   }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    setLoading(true);
+  
+    await updateContractSum({ data: formData });
+
+    refreshContractSum();
+    
+    closeModal();
   }
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as='div' className='relative z-[100]' onClose={closeModal}>
+      <Dialog as='div' className='relative z-[100]' onClose={() => {}} static>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -55,27 +95,34 @@ export default function Edit_RevisedContractSum({ isOpen, closeModal } : ClientP
               leaveTo='opacity-0 scale-95'
             >
               <Dialog.Panel className='relative w-[525px] h-auto overflow-y-auto transform rounded-[20px] bg-white text-left shadow-xl transition-all text-dark border border-[#7D7D7D] p-[30px]'>
+                <div className={`absolute top-0 left-0 w-full h-full bg-[#ffffff96] justify-center items-center z-10 text-tertiary text-[70px] ${loading ? "flex" : "hidden"}`}><FaSpinner className="animate-spin"/></div>
                 <h3 className="text-[#1C7FCD] text-[25px] font-[800] mb-[25px]">Edit Revised Contract Sum</h3>
                 <form className="flex flex-wrap gap-y-[25px]" autoComplete="off" onSubmit={onSubmit}>
                   <input 
-                    type="text" 
-                    name="postcode" 
+                    type="number" 
+                    name="original_contract_sum" 
                     placeholder="Original Contract Sum"
-                    className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow w-full"
+                    className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow no-spinners w-full"
+                    value={formData.original_contract_sum}
+                    onChange={handleInputChange}
                     required
                   />
                   <input 
-                    type="text" 
-                    name="postcode" 
+                    type="number" 
+                    name="variation" 
                     placeholder="Variation"
-                    className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow w-full"
+                    className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow no-spinners w-full"
+                    value={formData.variation}
+                    onChange={handleInputChange}
                     required
                   />
                   <input 
-                    type="text" 
-                    name="postcode" 
+                    type="number" 
+                    name="revised_contract_sum" 
                     placeholder="Revised Contract Sum"
-                    className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow w-full"
+                    className="border border-tertiary rounded-[20px] h-[42px] shadow-mainShadow no-spinners w-full"
+                    value={formData.revised_contract_sum}
+                    onChange={handleInputChange}
                     required
                   />
                   <div className="flex justify-end gap-x-2.5 w-full">
