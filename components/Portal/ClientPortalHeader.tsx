@@ -1,15 +1,21 @@
 "use client"
 
 import Link from "next/link";
-import Image from "next/image";
 
-import { FaPhone, FaEnvelope, FaChevronRight, FaRegUser, FaChevronDown } from "react-icons/fa"
+import { useEffect, useRef, useState } from "react";
+
+import { FaPhone, FaEnvelope, FaRegUser, FaChevronDown } from "react-icons/fa"
 
 import { NavigationLinks } from "@/libs/navigationLinks";
 import { SocialMediaLinks } from "@/libs/socialMediaLinks";
-import { useEffect, useRef, useState } from "react";
 
-export default function ClientPortalHeader() {
+import { ClientDataForClientPageProps } from "@/types";
+
+interface PageProps {
+  clientData: ClientDataForClientPageProps
+}
+
+export default function ClientPortalHeader({ clientData } : PageProps) {
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false);
 
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -75,7 +81,24 @@ export default function ClientPortalHeader() {
         </div>
       </div>
       <div className="py-5 px-[50px] flex justify-between items-center">
-        <h1 className="font-[800] text-[25px]">Project Dashboard - Test Name</h1>
+        <h1 className="font-[800] text-[25px]">Project Dashboard - {(() => {
+            switch (clientData.type) {
+              case "individual_owner":
+                return (
+                  `${clientData.first_name} ${clientData.last_name}`
+                );
+              case "company_owner":
+                return (
+                  clientData.company_name
+                );
+              case "trust_owner":
+                return (
+                  clientData.trustee_name
+                );
+              default:
+                return null;
+            }
+          })()}</h1>
         <div className="flex gap-x-10">
           {NavigationLinks.map((item, index) => (
             item.link == "" ?

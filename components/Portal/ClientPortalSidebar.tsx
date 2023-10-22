@@ -6,10 +6,19 @@ import Image from "next/image";
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 import { NavigationPortalClientPortal } from "@/libs/navigationLinks";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
-export default function ClientPortalSideBar() {
+import { ClientDataForClientPageProps } from "@/types";
+
+import { ProjectStatusOptions } from "@/libs/selectOptions";
+
+interface PageProps {
+  clientData: ClientDataForClientPageProps
+}
+
+export default function ClientPortalSideBar({ clientData } : PageProps) {
   const activeSegment = useSelectedLayoutSegment();
+
+  const project_status = ProjectStatusOptions.find(option => option.value === clientData.project_status);
 
   return (
     <section className="w-[335px] h-full bg-primary fixed shadow-sidebarPortal z-40">
@@ -18,24 +27,24 @@ export default function ClientPortalSideBar() {
         <hr className="border-white w-full"/>
       </div>
       <div className="px-[30px] pb-[30px]">
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <p className="uppercase text-[10px]">Client Name</p>
           <p className="font-[700] text-[18px]">M.Palle & S.Palle</p>
-        </div>
+        </div> */}
         <div className="mb-4">
           <p className="uppercase text-[10px]">Project Address</p>
-          <p className="font-[700] text-[18px]">7 Ben Street, Chermside West, Qld, 4032</p>
-        </div>
-        <div className="mb-4">
-          <p className="uppercase text-[10px] mb-2.5">Project Status</p>
-          <button type="button" className="w-full h-[42px] rounded-[10px] bg-warning px-[30px] flex justify-between items-center text-[18px] font-[700] shadow-mainShadow">Under Construction <FaChevronDown /></button>
+          <p className="font-[700] text-[18px]">{clientData.site_address}</p>
         </div>
         <div>
+          <p className="uppercase text-[10px] mb-2.5">Project Status</p>
+          <button type="button" className="w-full h-[42px] rounded-[10px] bg-warning px-[30px] flex justify-between items-center text-[18px] font-[700] shadow-mainShadow text-center">{project_status?.label}</button>
+        </div>
+        {/* <div>
           <p className="uppercase text-[10px] mb-2.5">Contact Maiker</p>
           <a href="mailto:admin@maiker.com.au">
             <button type="button" className="w-full h-[42px] rounded-[20px] px-[30px] bg-white shadow-mainShadow text-dark text-[16px] font-[600] flex justify-between items-center">Email Maiker<FaChevronRight /></button>
           </a>
-        </div>
+        </div> */}
       </div>
       <div>
         <ul className="border-y border-[#1972BB]">

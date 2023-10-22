@@ -1,10 +1,19 @@
-import ClientPortal_ClientInformation_Individual from "@/components/ClientPortal/ClientInformation/ClientIndividual";
-import ClientPortal_ClientInformation_Company from "@/components/ClientPortal/ClientInformation/ClientCompany";
-import ClientPortal_ClientInformation_Trustee from "@/components/ClientPortal/ClientInformation/ClientTrustee";
+import { getServerSession } from "next-auth/next"
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
+import ClientPortal_ClientInformation_Individual from "@/components/ClientPortal/ClientInformation/ClientIndividual";
 import ClientPortal_ClientInformation_Documents from "@/components/ClientPortal/ClientInformation/ClientDocuments";
 
+import { getClientAdditionals, getClientDocuments } from "@/services/clientAdministration/clientInformationServices";
+
 export default async function ConsultantsAccess() {
+  const session = await getServerSession(options);
+
+  const clientID = session?.user.client;
+  
+  const additionalClients = await getClientAdditionals(clientID!);
+
+  const clientDocuments = await getClientDocuments(clientID!);
   
   return (
     <>
@@ -12,16 +21,10 @@ export default async function ConsultantsAccess() {
         <div className="p-[50px] pr-0 max-w-[1200px]">
           <h2 className='text-dark font-[800] text-[25px] mb-6'>Client Information</h2>
           <div className="mb-6">
-            <ClientPortal_ClientInformation_Individual />
+            <ClientPortal_ClientInformation_Individual additionalClients={additionalClients}/>
           </div>
           <div className="mb-6">
-            <ClientPortal_ClientInformation_Company />
-          </div>
-          <div className="mb-6">
-            <ClientPortal_ClientInformation_Trustee />
-          </div>
-          <div className="mb-6">
-            <ClientPortal_ClientInformation_Documents />
+            <ClientPortal_ClientInformation_Documents clientDocuments={clientDocuments}/>
           </div>
         </div>
       </section>

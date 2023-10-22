@@ -1,7 +1,18 @@
+import { getServerSession } from "next-auth/next"
+import { options } from "@/app/api/auth/[...nextauth]/options";
+
 import ClientPortal_ProgressClaims_Documents from "@/components/ClientPortal/ClaimsAndInvoices/ProgressClaims";
 import ClientPortal_Invoices_Documents from "@/components/ClientPortal/ClaimsAndInvoices/Invoices";
+import { getInvoices, getProgressClaims } from "@/services/clientAdministration/claimsInvoicesServices";
 
 export default async function ClaimsAndInvoices() {
+  const session = await getServerSession(options);
+
+  const clientID = session?.user.client;
+  
+  const progressClaims = await getProgressClaims(clientID!);
+
+  const invoices = await getInvoices(clientID!);
   
   return (
     <>
@@ -9,10 +20,10 @@ export default async function ClaimsAndInvoices() {
         <div className="p-[50px] pr-0 max-w-[1200px]">
           <h2 className='text-dark font-[800] text-[25px] mb-6'>Progress Claims & Invoices</h2>
           <div className="mb-6">
-            <ClientPortal_ProgressClaims_Documents />
+            <ClientPortal_ProgressClaims_Documents progressClaims={progressClaims}/>
           </div>
           <div className="mb-6">
-            <ClientPortal_Invoices_Documents />
+            <ClientPortal_Invoices_Documents invoices={invoices}/>
           </div>
         </div>
       </section>

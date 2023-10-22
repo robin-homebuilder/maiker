@@ -1,4 +1,12 @@
-export default function ClientPortal_ClientInformation_Documents() {
+import { convertDateFormat } from "@/libs/convertDate";
+import { ClientDocumentsProps } from "@/types";
+
+interface PageProps {
+  clientDocuments: ClientDocumentsProps[]
+}
+
+export default function ClientPortal_ClientInformation_Documents({ clientDocuments } : PageProps) {
+  
   return (
     <>
       <div className="mb-[25px]">
@@ -12,13 +20,17 @@ export default function ClientPortal_ClientInformation_Documents() {
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
-            <tr>
-              <td className="py-2">Sample Document</td>
-              <td className="py-2 text-center">24th Sept. 2023</td>
-              <td className="py-2 text-center">
-                <button type="button" className="bg-warning w-full px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">View</button>
-              </td>
-            </tr>
+            {clientDocuments.map((item,index) => (
+              <tr key={index}>
+                <td className="py-2">{item.name}</td>
+                <td className="py-2 text-center">{convertDateFormat(item.document_date!)}</td>
+                <td className="py-2 text-center">
+                  <a href={item.url} target="_blank">
+                    <button type="button" className="bg-warning w-[75px] px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">View</button>
+                  </a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -1,4 +1,10 @@
-export default function ClientPortal_SiteInformation_Details() {
+import { SiteDetailsProps } from "@/types"
+
+interface PageProps {
+  siteDetails: SiteDetailsProps
+}
+
+export default function ClientPortal_SiteInformation_Details({ siteDetails } : PageProps) {
   return (
     <>
       <div className="mb-[25px]">
@@ -14,10 +20,10 @@ export default function ClientPortal_SiteInformation_Details() {
           </thead>
           <tbody className="text-portalText py-2">
             <tr>
-              <td className="py-2">7 Ben Street, Chermside West, Q, 4032</td>
-              <td className="py-2 text-center">Test Description</td>
-              <td className="py-2 text-center">Test Site Area</td>
-              <td className="py-2 text-center">Local Goverment</td>
+              <td className="py-2">{siteDetails.site_address}</td>
+              <td className="py-2 text-center">{siteDetails.description}</td>
+              <td className="py-2 text-center">{siteDetails.site_area}</td>
+              <td className="py-2 text-center">{siteDetails.local_government}</td>
             </tr>
           </tbody>
         </table>

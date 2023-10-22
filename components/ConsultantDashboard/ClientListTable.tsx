@@ -1,20 +1,41 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import AddEdit_Client from "@/components/Modal/Edit_Client";
+import { ClientListForConsultantProps } from "@/types";
 
-export default function ConsultantDashboard_ClientListTable() {
+import { getConsultantClientsSearch } from "@/services/consultantDashboard/consultantClients";
+
+interface PageProps {
+  clients: ClientListForConsultantProps[],
+  consultantID: string
+}
+
+export default function ConsultantDashboard_ClientListTable({ clients, consultantID } : PageProps) {
   const [ openModal, setOpenModal ] = useState(false);
   const [ action, setAction ] = useState<string>("");
-  
-  const showModal = async (action : string) => {
-    setOpenModal(true);
-    setAction(action)
+
+  const [ clientLists, setClientLists ] = useState<ClientListForConsultantProps[]>([]);
+
+  useEffect( () => {
+    setClientLists(clients)
+  }, [clients]);
+
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    
+    const searchClient = await getConsultantClientsSearch(value, consultantID);
+
+    setClientLists(searchClient);
   }
   
   return (
     <>
+      <h2 className='text-dark font-[800] text-[25px] mb-5'>Client Search</h2>
+      <div className="mb-6">
+        <p className="text-[16px] text-portalText font-[600] mb-3">Search For Client</p>
+        <input type="text" placeholder="Client Name or Address" className="h-[42px] w-[771px] rounded-[20px] border border-portalText shadow-mainShadow" onChange={handleSearch}/>
+      </div>
       <div className="mb-6">
         <p className="text-[16px] text-portalText font-[600] mb-3">Client List</p>
         <table className="w-full">
@@ -22,34 +43,34 @@ export default function ConsultantDashboard_ClientListTable() {
             <tr>
               <th className="py-2 pl-5 w-3/12">Name</th>
               <th className="py-2 w-7/12">Site Address</th>
-              <th className="py-2 w-2/12">Edit</th>
+              <th className="py-2 w-2/12 text-center">Edit</th>
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
-            <tr>
-              <td className="py-2">M. Palle & S.Palle</td>
-              <td className="py-2">7 Ben Street, Chermside West Q, 4032</td>
-              <td className="py-2"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal("Edit")}>Open</button></td>
-            </tr>
-            <tr>
-              <td className="py-2">M. Palle & S.Palle</td>
-              <td className="py-2">7 Ben Street, Chermside West Q, 4032</td>
-              <td className="py-2"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal("Edit")}>Open</button></td>
-            </tr>
-            <tr>
-              <td className="py-2">M. Palle & S.Palle</td>
-              <td className="py-2">7 Ben Street, Chermside West Q, 4032</td>
-              <td className="py-2"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal("Edit")}>Open</button></td>
-            </tr>
-            <tr>
-              <td className="py-2">M. Palle & S.Palle</td>
-              <td className="py-2">7 Ben Street, Chermside West Q, 4032</td>
-              <td className="py-2"><button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={() => showModal("Edit")}>Open</button></td>
-            </tr>
+            {clientLists.map((item,index) => {
+              let clientName = "";
+
+              if(item.type == "individual_owner"){
+                clientName = `${item.first_name} ${item.last_name}`
+              } else if(item.type == "company_owner"){
+                clientName = item.company_name
+              } else if(item.type == "trust_owner"){
+                clientName = item.trustee_name
+              }
+
+              return (
+                <tr key={index}>
+                  <td className="py-2">{clientName}</td>
+                  <td className="py-2">{item.project_id.site_address}</td>
+                  <td className="py-2 text-center">
+                    <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">Open</button>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
-      {/* <AddEdit_Client isOpen={openModal} closeModal={() => setOpenModal(false)}/> */}
     </>
   )
 }

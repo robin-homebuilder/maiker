@@ -1,4 +1,12 @@
-export default function ClientPortal_ExtensionOfTime() {
+import { convertDateFormat } from "@/libs/convertDate"
+
+import { ExtensionTimeProps } from "@/types"
+
+interface PageProps { 
+  extensionOfTime: ExtensionTimeProps[]
+}
+
+export default function ClientPortal_ExtensionOfTime({ extensionOfTime } : PageProps) {
   return (
     <>
       <div className="mb-[25px]">
@@ -14,15 +22,19 @@ export default function ClientPortal_ExtensionOfTime() {
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
-            <tr>
-              <td className="py-2">Sample Document</td>
-              <td className="py-2 text-center">1</td>
-              <td className="py-2 text-center">Approved</td>
-              <td className="py-2 text-center">24th Sept. 2023</td>
-              <td className="py-2 text-center">
-                <button type="button" className="bg-warning w-[75px] px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">View</button>
-              </td>
-            </tr>
+            {extensionOfTime.map((item,index) => (
+              <tr key={index}>
+                <td className="py-2">{item.name}</td>
+                <td className="py-2 text-center">{item.days_submitted}</td>
+                <td className="py-2 text-center capitalize">{item.status}</td>
+                <td className="py-2 text-center">{convertDateFormat(item.document_date!)}</td>
+                <td className="py-2 text-center">
+                  <a href={item.url} target="_blank">
+                    <button type="button" className="bg-warning w-[75px] px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">View</button>
+                  </a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

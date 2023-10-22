@@ -58,7 +58,6 @@ export default function ProgressClaims_Data({ progressClaim, clientID, refreshLi
             <a href={progressClaims.url} target="_blank">
               <button type="button" className="bg-warning w-[75px] px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">View</button>
             </a>
-            {/* <button type="button" className="bg-warning w-[75px] px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">View</button> */}
             <button type="button" className="bg-portalBG w-[75px] px-5 h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow" onClick={showEditModal}>Edit</button>
           </div>
         </td>

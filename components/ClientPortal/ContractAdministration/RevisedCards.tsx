@@ -1,4 +1,13 @@
-export default function ClientPortal_RevisedCards() {
+import { convertDate } from "@/libs/convertDate"
+
+import { ContractSumProps, PracticalCompletionProps } from "@/types"
+
+interface PageProps {
+  contractSum: ContractSumProps,
+  practicalCompletion: PracticalCompletionProps
+}
+
+export default function ClientPortal_RevisedCards({ contractSum, practicalCompletion } : PageProps) {
   return (
     <>
       <div className="flex gap-x-10">
@@ -14,15 +23,15 @@ export default function ClientPortal_RevisedCards() {
             <tbody className="text-dark py-2">
               <tr>
                 <td className="pl-2.5 font-[500] text-[18px]">Original Contract Sum</td>
-                <td className="text-right font-[500] text-[18px]">$135,330.00</td>
+                <td className="text-right font-[500] text-[18px]">${contractSum?.original_contract_sum ? parseInt(contractSum.original_contract_sum).toLocaleString('en-US', { minimumFractionDigits: 2 }) : 0}</td>
               </tr>
               <tr className="border-b border-tertiary">
                 <td className="pl-2.5 font-[500] text-[18px]">Variations</td>
-                <td className="text-right font-[500] text-[18px]">$450.00</td>
+                <td className="text-right font-[500] text-[18px]">${contractSum?.variation ? parseInt(contractSum.variation).toLocaleString('en-US', { minimumFractionDigits: 2 }) : 0}</td>
               </tr>
               <tr>
                 <td className="pl-2.5 font-[700] text-[18px]">Revised Contract Sum</td>
-                <td className="text-right font-[700] text-[18px]">$135,780.00</td>
+                <td className="text-right font-[700] text-[18px]">${contractSum?.revised_contract_sum ? parseInt(contractSum.revised_contract_sum).toLocaleString('en-US', { minimumFractionDigits: 2 }) : 0}</td>
               </tr>
             </tbody>
           </table>
@@ -39,15 +48,15 @@ export default function ClientPortal_RevisedCards() {
             <tbody className="text-dark py-2">
               <tr>
                 <td className="pl-2.5 font-[500] text-[18px]">Original Practical Completion</td>
-                <td className="text-right font-[500] text-[18px]">11th October 2023</td>
+                <td className="text-right font-[500] text-[18px]">{practicalCompletion?.original_practical_completion ? convertDate(practicalCompletion.original_practical_completion) : ""}</td>
               </tr>
               <tr className="border-b border-tertiary">
                 <td className="pl-2.5 font-[500] text-[18px]">Approved Extensions of Time</td>
-                <td className="text-right font-[500] text-[18px]">4 days</td>
+                <td className="text-right font-[500] text-[18px]">{practicalCompletion?.approved_extension_of_time ? `${practicalCompletion.approved_extension_of_time} days` : "0 day"}</td>
               </tr>
               <tr>
                 <td className="pl-2.5 font-[700] text-[18px]">Revised Practical Completion</td>
-                <td className="text-right font-[700] text-[18px]">15th October 2023</td>
+                <td className="text-right font-[700] text-[18px]">{practicalCompletion?.revised_practical_completion ? convertDate(practicalCompletion.revised_practical_completion) : ""}</td>
               </tr>
             </tbody>
           </table>

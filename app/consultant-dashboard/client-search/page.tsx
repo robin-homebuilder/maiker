@@ -1,17 +1,22 @@
+import { getServerSession } from "next-auth/next"
+import { options } from "@/app/api/auth/[...nextauth]/options";
+
 import ConsultantDashboard_ClientListTable from "@/components/ConsultantDashboard/ClientListTable";
 
+import { getConsultantClientsList } from "@/services/consultantDashboard/consultantClients";
+
 export default async function ClientSearch() {
+  const session = await getServerSession(options);
+
+  const client = session?.user.client;
   
+  const clients = await getConsultantClientsList(client!);
+
   return (
     <>
       <section className='pl-[335px] pt-[113px] min-h-[1074px]'>
         <div className="p-[50px] pr-0 max-w-[1200px]">
-          <h2 className='text-dark font-[800] text-[25px] mb-5'>Client Search</h2>
-          <div className="mb-6">
-            <p className="text-[16px] text-portalText font-[600] mb-3">Search For Client</p>
-            <input type="text" placeholder="Client Name or Address" className="h-[42px] w-[771px] rounded-[20px] border border-portalText shadow-mainShadow"/>
-          </div>
-          <ConsultantDashboard_ClientListTable />
+          <ConsultantDashboard_ClientListTable clients={clients} consultantID={client!}/>
         </div>
       </section>
     </>

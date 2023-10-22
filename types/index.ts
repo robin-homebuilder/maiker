@@ -182,6 +182,18 @@ export interface ClientListProps {
   site_address: string
 }
 
+export interface ClientListForConsultantProps {
+  _id: string,
+  type: string,
+  first_name: string,
+  last_name: string,
+  company_name: string,
+  trustee_name: string,
+  project_id: {
+    site_address: string
+  }
+}
+
 export interface ClientDataProps {
   _id: string,
   type: string,
