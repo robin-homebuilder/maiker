@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { FaPhone, FaEnvelope, FaRegUser, FaChevronDown } from "react-icons/fa"
 
+import { signOut } from "next-auth/react"
+
 import { NavigationLinks } from "@/libs/navigationLinks";
 import { SocialMediaLinks } from "@/libs/socialMediaLinks";
 
@@ -70,12 +72,16 @@ export default function ClientPortalHeader({ clientData } : PageProps) {
               ))}
             </div>
             <div className={`bg-tertiary h-full`}>
-              <Link href="/auth/login">
+              <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full" onClick={() => signOut()}>
+                <FaRegUser size="13"/>
+                <p className="text-[14px]">Logout</p>
+              </button>
+              {/* <Link href="/auth/login">
                 <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full">
                   <FaRegUser size="13"/>
                   <p className="text-[14px]">Login</p>
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
