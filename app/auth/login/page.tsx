@@ -55,7 +55,7 @@ export default function Login() {
         if (role === ROLES_LIST.Admin) {
           router.push("/administration/client-search");
         } else if(role === ROLES_LIST.Client) {
-          router.push(`/client-portal/${client}/client-information`);
+          router.push(`/client-portal/client-information`);
         } else if(role === ROLES_LIST.Consultant) {
           router.push("/consultant-dashboard/client-search");
         }
