@@ -125,7 +125,6 @@ export default function Edit_DrawingsAndReport_File({ isOpen, closeModal, data, 
     
     setFormData((prevFormValues) => ({
       ...prevFormValues,
-      name: selectedFile.name,
       file_name: selectedFile.name,
       document_file: selectedFile
     }));
@@ -135,7 +134,6 @@ export default function Edit_DrawingsAndReport_File({ isOpen, closeModal, data, 
   const handleRemoveFile = () => {
     setFormData((prevFormValues) => ({
       ...prevFormValues,
-      name: "",
       file_name: "",
       document_file: undefined
     }));
