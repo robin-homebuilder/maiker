@@ -43,7 +43,7 @@ export default function ConsultantDashboard_ClientListTable({ clients, consultan
             <tr>
               <th className="py-2 pl-5 w-3/12">Name</th>
               <th className="py-2 w-7/12">Site Address</th>
-              <th className="py-2 w-2/12 text-center">Edit</th>
+              <th className="py-2 w-2/12 text-center"></th>
             </tr>
           </thead>
           <tbody className="text-portalText py-2">
@@ -63,7 +63,9 @@ export default function ConsultantDashboard_ClientListTable({ clients, consultan
                   <td className="py-2">{clientName}</td>
                   <td className="py-2">{item.project_id.site_address}</td>
                   <td className="py-2 text-center">
-                    <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">Open</button>
+                    <a href={`/consultant-dashboard/${item._id}/client-information`}>
+                      <button type="button" className="bg-warning w-[120px] h-[32px] rounded-[20px] text-[16px] font-[600] text-white shadow-mainShadow">Open</button>
+                    </a>
                   </td>
                 </tr>
               )

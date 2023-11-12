@@ -268,7 +268,9 @@ export interface ClientDataForClientPageProps {
   site_address: string,
   phone: string,
   email: string,
-  project_status: number
+  project_status: number,
+  project_no?: number,
+  consultant?: string
 }
 
 export interface SiteInformationID {
