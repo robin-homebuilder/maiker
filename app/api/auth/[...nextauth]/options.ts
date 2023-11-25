@@ -12,7 +12,7 @@ export const options: NextAuthOptions = {
         const { email, password } = credentials as any;
 
         const result = await login({email, password});
-
+        
         const user = {
           id: result?.email || "",
           ...result
@@ -35,6 +35,7 @@ export const options: NextAuthOptions = {
       if(user) {
         token.role = user.role
         token.client = user.client
+        token.userID = user.userID
       }
       
       return token
@@ -42,6 +43,7 @@ export const options: NextAuthOptions = {
     session({ session, token }) {
       session.user.role = token.role
       session.user.client = token.client || ""
+      session.user.userID = token.userID
       return session
     }
   }

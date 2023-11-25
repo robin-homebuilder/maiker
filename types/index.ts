@@ -250,10 +250,16 @@ export interface CredentialsProps {
   password: string
 }
 
+export interface UserCredentialsProps {
+  _id: string,
+  user_pass: string
+}
+
 export interface AuthenticateLoginProps {
   email: string,
   role: number,
-  client: string
+  client: string,
+  userID: string
 }
 
 export interface ClientDataForClientPageProps {

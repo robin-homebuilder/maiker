@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { FaPhone, FaEnvelope, FaRegUser, FaChevronDown } from "react-icons/fa"
+import { FaPhone, FaEnvelope, FaRegUser, FaChevronDown, FaCog, FaLock } from "react-icons/fa"
 
 import { NavigationLinks } from "@/libs/navigationLinks";
 import { SocialMediaLinks } from "@/libs/socialMediaLinks";
@@ -10,10 +10,20 @@ import { useEffect, useRef, useState } from "react";
 
 import { signOut } from "next-auth/react"
 
-export default function AdministrationHeader() {
+import Manage_Credential from "../Modal/Manage_Credential";
+
+interface PageProps {
+  userID: string
+}
+
+export default function AdministrationHeader({ userID } : PageProps) {
+  const [ openCredentialModal, setOpenCredentialModal ] = useState(false);
+  
   const [ showDropdown, setShowDropdown ] = useState<boolean>(false);
+  const [ showSettings, setShowSettings ] = useState<boolean>(false);
 
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const settingsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -21,17 +31,33 @@ export default function AdministrationHeader() {
         setShowDropdown(false);
       }
     }
-    
+
+    function handleSettingsClickOutside(event: MouseEvent) {
+      if (settingsRef.current && !settingsRef.current.contains(event.target as Node)) {
+        setShowSettings(false);
+      }
+    }
+
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleSettingsClickOutside);
     
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleSettingsClickOutside);
     };
   }, []);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const toggleSettingsDropdown = () => {
+    setShowSettings(!showSettings);
+  };
+  
+  const showCredentialModal = async () => {
+    setOpenCredentialModal(true);
+  }
 
   return (
     <nav className="pl-[335px] w-full h-auto bg-black fixed z-30">
@@ -64,8 +90,19 @@ export default function AdministrationHeader() {
                 </Link>
               ))}
             </div>
-            <div className={`bg-black h-full`}>
-              <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full" onClick={() => signOut()}>
+            <div className={`bg-black h-full flex`}>
+              <div className="relative" ref={settingsRef}>
+                <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full" onClick={toggleSettingsDropdown}>
+                  <FaCog size="13"/>
+                  <div className="text-[14px] flex items-center gap-x-1">Settings <div className={`${showSettings && "rotate-[180deg]"}`}><FaChevronDown size={13}/></div></div>
+                </button>
+                {showSettings && (
+                  <div className={`absolute top-full right-0 shadow-[0px_2px_4px_1px_rgba(0,0,0,0.75)] w-[190px] rounded-[5px] mt-2 bg-white`}>
+                    <button type="button" className="px-5 py-3 font-[500] text-dark flex items-center gap-x-1.5" onClick={showCredentialModal}><FaLock /> Change Password</button>
+                  </div>
+                )}
+              </div>
+              <button type="button" name="login" className="flex gap-x-1 px-2 items-center h-full border-l border-r-primary" onClick={() => signOut()}>
                 <FaRegUser size="13"/>
                 <p className="text-[14px]">Logout</p>
               </button>
@@ -99,6 +136,7 @@ export default function AdministrationHeader() {
           ))}
         </div>
       </div>
+      <Manage_Credential isOpen={openCredentialModal} closeModal={() => setOpenCredentialModal(false)} userID={userID} />
     </nav>
   )
 }

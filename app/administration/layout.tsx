@@ -23,9 +23,11 @@ export default async function RootLayout({
   const session = await getServerSession(options);
   
   let role = 0;
+  let userID = "";
   
   if(session){
     role = session.user.role;
+    userID = session.user.userID
   }
 
   if(!session || role != ROLES_LIST.Admin){
@@ -37,7 +39,7 @@ export default async function RootLayout({
       <Provider session={session}>
         <main>
           <AdministrationSideBar />
-          <AdministrationHeader />
+          <AdministrationHeader userID={userID}/>
           {children}
           <PortalFooter />
         </main>
